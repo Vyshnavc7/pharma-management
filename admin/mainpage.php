@@ -57,7 +57,7 @@
 				}
 
 				if (isset($_POST['psubmit'])) {
-					header("location:mainpage1.php");
+					header("location:../employe/mainpage1.php");
 				}
 				?>
 
