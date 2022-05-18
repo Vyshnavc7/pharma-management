@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Regal Admin</title>
+  <title>Pharma Admin</title>
   <!-- base:css -->
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -26,10 +26,10 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+    <nav  class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div style="background-color: #3b3a3a;" class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="#"><img src="images/logo.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -55,11 +55,7 @@
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown mr-4 d-lg-flex d-none">
-            <a class="nav-link count-indicatord-flex align-item s-center justify-content-center" href="#">
-              <i class="icon-grid"></i>
-            </a>
-          </li>
+          
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
           data-toggle="offcanvas">
@@ -70,13 +66,13 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav style="background-color: #3b3a3a;" class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="user-profile">
           <div class="user-image">
             <img src="images/faces/pharm1.png">
           </div>
           <div class="user-name">
-            Pharm Management
+            Pharma Management
           </div>
           <div class="user-designation">
             Admin
@@ -158,13 +154,13 @@
           <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <i class="icon-file menu-icon"></i>
-              <span class="menu-title">View Sales Invoice Details</span>
+              <span class="menu-title">Sales Invoice Details</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="icon-pie-graph menu-icon"></i>
-              <span class="menu-title">View Sold Products Details</span>
+              <span class="menu-title">Sold Products Details</span>
             </a>
           </li>
           <li class="nav-item">
@@ -182,15 +178,14 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">Medicine:Low stock </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Medicine Expiry </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Transaction Report </a></li>
+                
               </ul>
             </div>
+            
           </li>
-          
         </ul>
       </nav>
       <!-- partial -->
