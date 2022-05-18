@@ -203,9 +203,12 @@
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Customers</h4>
+                      <h4 class="card-title">New Sale</h4>
                       <a href="../pos1.php" title="Add New Sale">
-                        <img style="width: 75%;height: 96%;" class="text-center" src="images/meds/carticon1.png"  alt="Add New Sale">
+                        <img style="padding-left: 52px;
+    width: 65%;
+    height: 80%;
+    padding-top: 29px;" src="images/meds/carticon1.png"  alt="Add New Sale">
                       </a>
                     </div>
                   </div>
@@ -213,9 +216,12 @@
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Customers</h4>
+                      <h4 class="card-title">Add New medicine</h4>
                       <a href="inventory-view.php" title="View Inventory">
-					<img src="images/meds/inventory.png" style="width: 75%;height: 96%;" alt="Inventory">
+					<img src="images/meds/inventory.png" style="    padding-left: 52px;
+    width: 65%;
+    height: 80%;
+    padding-top: 29px;" alt="Inventory">
 				</a>
                     </div>
                   </div>
@@ -228,9 +234,12 @@
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Customers</h4>
+                      <h4 class="card-title">Manage Employees</h4>
                       <a href="employee-view.php" title="View Employees">
-					<img src="images/meds/emp.png" style="width: 75%;height: 96%;" alt="Employees List">
+					<img src="images/meds/emp.png" style="    padding-left: 52px;
+    width: 65%;
+    height: 80%;
+    padding-top: 29px;" alt="Employees List">
 				</a>
                     </div>
                   </div>
@@ -238,9 +247,12 @@
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Customers</h4>
+                      <h4 class="card-title">Sales Report</h4>
                       <a href="salesreport.php" title="View Transactions">
-					<img src="images/meds/moneyicon.png" style="width: 75%;height: 96%;" alt="Transactions List">
+					<img src="images/meds/moneyicon.png" style="    padding-left: 52px;
+    width: 65%;
+    height: 80%;
+    padding-top: 29px;" alt="Transactions List">
 				</a>
                     </div>
                   </div>
