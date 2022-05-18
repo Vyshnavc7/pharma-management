@@ -154,7 +154,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="pages/forms/basic_elements.html">
+            <a style="border-top: solid;" class="nav-link" href="sales-view.php">
               <i class="icon-file menu-icon"></i>
               <span class="menu-title">Sales Invoice Details</span>
             </a>
