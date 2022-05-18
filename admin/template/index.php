@@ -160,13 +160,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="pages/charts/chartjs.html">
+            <a style="border-top: solid;" class="nav-link" href="salesitems-view.php">
               <i class="icon-pie-graph menu-icon"></i>
               <span class="menu-title">Sold Products Details</span>
             </a>
           </li>
           <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="pages/tables/basic-table.html">
+            <a style="border-top: solid;" class="nav-link" href="pos1.php">
               <i class="icon-command menu-icon"></i>
               <span class="menu-title">Add New Sale</span>
             </a>

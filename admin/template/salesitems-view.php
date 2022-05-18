@@ -199,42 +199,44 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> SUPPLIERS LIST</h2>
+					<h2> SALES INVOICE DETAILS</h2>
 				</div>
 
 				<table class="table table-bordered  table-hover">
 					<thead class="table-dark">
 						<tr>
-							<th>Supplier ID</th>
-							<th>Company Name</th>
-							<th>Address</th>
-							<th>Phone Number</th>
-							<th>Email Address</th>
-							<th>Action</th>
+							<th>Sale ID</th>
+							<th>Medicine ID</th>
+							<th>Medicine Name</th>
+							<th>Quantity Sold</th>
+							<th>Total Price</th>
 						</tr>
 					</thead>
 					<?php
 
 					include "config.php";
-					$sql = "SELECT sup_id,sup_name,sup_add,sup_phno,sup_mail FROM suppliers";
+					$sql = "SELECT sale_id, med_id,sale_qty,tot_price FROM sales_items";
 					$result = $conn->query($sql);
-
 					if ($result->num_rows > 0) {
 
 						while ($row = $result->fetch_assoc()) {
 
-							echo "<tr>";
-							echo "<td>" . $row["sup_id"] . "</td>";
-							echo "<td>" . $row["sup_name"] . "</td>";
-							echo "<td>" . $row["sup_add"] . "</td>";
-							echo "<td>" . $row["sup_phno"] . "</td>";
-							echo "<td>" . $row["sup_mail"] . "</td>";
-							echo "<td align=center>";
-							echo "<a class='btn btn-primary mr-2' href=supplier-update.php?id=" . $row['sup_id'] . ">Edit</a>";
-							echo "<a class='btn btn-danger ml-2' href=supplier-delete.php?id=" . $row['sup_id'] . ">Delete</a>";
-							echo "</td>";
-							echo "</tr>";
+							$sql1 = "SELECT med_name from meds where med_id=" . $row["med_id"] . "";
+							$result1 = $conn->query($sql1);
+
+
+							while ($row1 = $result1->fetch_assoc()) {
+
+								echo "<tr>";
+								echo "<td>" . $row["sale_id"] . "</td>";
+								echo "<td>" . $row["med_id"] . "</td>";
+								echo "<td>" . $row1["med_name"] . "</td>";
+								echo "<td>" . $row["sale_qty"] . "</td>";
+								echo "<td>" . $row["tot_price"] . "</td>";
+								echo "</tr>";
+							}
 						}
+
 						echo "</table>";
 					}
 
