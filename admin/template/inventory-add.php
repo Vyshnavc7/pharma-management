@@ -19,6 +19,8 @@
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="nav2.css">
+	<link rel="stylesheet" type="text/css" href="form4.css">
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -202,25 +204,25 @@
 					<h2> ADD MEDICINE DETAILS</h2>
 				</div>
 
-				<div class="form">
+				<div class="form-group ">
 					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div class="column">
 
 							<p>
 								<label for="medid">Medicine ID:</label><br>
-								<input type="number" name="medid">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="medid">
 							</p>
 							<p>
 								<label for="medname">Medicine Name:</label><br>
-								<input type="text" name="medname">
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="medname">
 							</p>
 							<p>
 								<label for="qty">Quantity:</label><br>
-								<input type="number" name="qty">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="qty">
 							</p>
 							<p>
 								<label for="cat">Category:</label><br>
-								<select id="cat" name="cat">
+								<select class="form-select btn btn-info text-left"  id="cat" name="cat">
 									<option>Tablet</option>
 									<option>Capsule</option>
 									<option>Syrup</option>
@@ -232,16 +234,16 @@
 
 							<p>
 								<label for="sp">Price: </label><br>
-								<input type="number" step="0.01" name="sp">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" step="0.01" name="sp">
 							</p>
 							<p>
 								<label for="loc">Location:</label><br>
-								<input type="text" name="loc">
+								<input style="width: 50%;border: double;"  class="form-control" type="text" name="loc">
 							</p>
 						</div>
 
 
-						<input type="submit" name="add" value="Add Medicine">
+						<input class="btn btn-primary" type="submit" name="add" value="Add Medicine">
 					</form>
 				</div>
 				<?php
