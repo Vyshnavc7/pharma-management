@@ -209,15 +209,15 @@
 						<div class="column">
 							<p>
 								<label for="sid">Supplier ID:</label><br>
-								<input type="number" name="sid">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="sid">
 							</p>
 							<p>
 								<label for="sname">Supplier Company Name:</label><br>
-								<input type="text" name="sname">
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="sname">
 							</p>
 							<p>
 								<label for="sadd">Address:</label><br>
-								<input type="text" name="sadd">
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="sadd">
 							</p>
 
 
@@ -225,18 +225,18 @@
 						<div class="column">
 							<p>
 								<label for="sphno">Phone Number:</label><br>
-								<input type="number" name="sphno">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="sphno">
 							</p>
 
 							<p>
 								<label for="smail">Email Address </label><br>
-								<input type="text" name="smail">
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="smail">
 							</p>
 
 						</div>
 
 
-						<input type="submit" name="add" value="Add Supplier">
+						<input class="btn btn-primary" type="submit" name="add" value="Add Supplier">
 					</form>
 				</div>
 				<?php
