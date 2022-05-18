@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<title>
 		New Sales
@@ -73,7 +73,7 @@
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
 			<!-- partial:partials/_sidebar.html -->
-			<nav style="background-color: #3b3a3a;" class="sidebar sidebar-offcanvas" id="sidebar">
+			<nav style="background-color: #3b3a3a;margin-left: -15px;" class="sidebar sidebar-offcanvas" id="sidebar">
 				<div class="user-profile">
 					<div class="user-image">
 						<img src="images/faces/pharm1.png">
@@ -224,7 +224,7 @@
 
 							</select>
 							&nbsp;&nbsp;
-							<input type="submit" name="custadd" value="Add to Proceed.">
+							<input class="btn btn-primary" type="submit" name="custadd" value="Add to Proceed.">
 						</center>
 					</form>
 
@@ -254,7 +254,7 @@
 					?>
 				</div>
 
-				<div class="form2">
+				<div class="form-group">
 					<center>
 						<form method="post">
 							<select id="med" name="med">
@@ -275,7 +275,7 @@
 
 							</select>
 							&nbsp;&nbsp;
-							<input type="submit" name="search" value="Search">
+							<input class="btn btn-primary" type="submit" name="search" value="Search">
 						</form>
 					</center>
 				</div>
@@ -292,38 +292,38 @@
 
 				<div class="form3">
 					<center>
-					<form method="post">
+					<form class="form-group" method="post">
 						<div class="column">
 
 							<label for="medid">Medicine ID:</label>
-							<input type="number" name="medid" value="<?php echo $row4[0]; ?>" readonly><br><br>
+							<input style="width: 50%;" class="form-control" type="number" name="medid" value="<?php echo $row4[0]; ?>" readonly><br><br>
 
 							<label for="mdname">Medicine Name:</label>
-							<input type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
+							<input class="form-control" style="width: 50%;" style="width: 50%;" type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
 
 						</div>
 						<div class="column">
 
 							<label for="mcat">Category:</label>
-							<input type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
+							<input style="width: 50%;" class="form-control" type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
 
 							<label for="mloc">Location:</label>
-							<input type="text" name="mloc" value="<?php echo $row4[5]; ?>" readonly><br><br>
+							<input class="form-control" style="width: 50%;" type="text" name="mloc" value="<?php echo $row4[5]; ?>" readonly><br><br>
 
 						</div>
 						<div class="column">
 
 							<label for="mqty">Quantity Available:</label>
-							<input type="number" name="mqty" value="<?php echo $row4[2]; ?>" readonly><br><br>
+							<input style="width: 50%;" class="form-control" type="number" name="mqty" value="<?php echo $row4[2]; ?>" readonly><br><br>
 
 							<label for="mprice">Price of One Unit:</label>
-							<input type="number" name="mprice" value="<?php echo $row4[4]; ?>" readonly><br><br>
+							<input style="width: 50%;" class="form-control" type="number" name="mprice" value="<?php echo $row4[4]; ?>" readonly><br><br>
 
 						</div>
 						<label for="mcqty">Quantity Required:</label>
-						<input type="number" name="mcqty">
+						<input style="width: 50%;" class="form-control" type="number" name="mcqty">
 						&nbsp;&nbsp;&nbsp;
-						<input type="submit" name="add" value="Add Medicine">&nbsp;&nbsp;&nbsp;
+						<input class="btn btn-primary mt-3" type="submit" name="add" value="Add Medicine">&nbsp;&nbsp;&nbsp;
 
 						<?php
 
@@ -373,6 +373,12 @@
 	<div class="one row" style="margin-right:160px;">
 
 	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 <script>
