@@ -203,7 +203,7 @@
 				</div>
 
 				<table class="table table-bordered  table-hover">
-					<thead>
+					<thead class="table-dark">
 						<tr>
 							<th>Medicine ID</th>
 							<th>Medicine Name</th>
