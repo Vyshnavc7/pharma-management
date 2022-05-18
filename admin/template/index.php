@@ -82,7 +82,7 @@
         </div>
         <ul class="nav">
           <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="#">
+            <a style="border-top: solid;" class="nav-link" href="index.php">
               <i class="icon-box menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -215,7 +215,7 @@
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Add New medicine</h4>
+                      <h4 class="card-title">Medicine Inventory</h4>
                       <a href="inventory-view.php" title="View Inventory">
                         <img src="images/meds/inventory.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Inventory">
                       </a>

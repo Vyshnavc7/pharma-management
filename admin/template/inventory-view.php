@@ -199,161 +199,56 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 100px;padding-top: 34px;" class="mt-3 text-center">
-					<h2> POINT OF SALE</h2>
+					<h2> MEDICINE INVENTORY</h2>
 				</div>
-				<div class="form1">
-					<form class="form-group" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-						<center>
 
-							<select class="form-select" id="cid" name="cid">
-								<option  value="0" selected="selected">*Select Customer ID (only once for a customer's sales)</option>
-								<?php
-
-								include "config.php";
-								$qry = "SELECT c_id FROM customer";
-								$result = $conn->query($qry);
-								echo mysqli_error($conn);
-								if ($result->num_rows > 0) {
-									while ($row = $result->fetch_assoc()) {
-										echo "<option>" . $row["c_id"] . "</option>";
-									}
-								}
-								?>
-
-							</select>
-							&nbsp;&nbsp;
-							<input class="btn btn-primary" type="submit" name="custadd" value="Add to Proceed.">
-						</center>
-					</form>
-
+				<table class="table table-bordered  table-hover">
+					<thead>
+						<tr>
+							<th>Medicine ID</th>
+							<th>Medicine Name</th>
+							<th>Quantity Available</th>
+							<th>Category</th>
+							<th>Price</th>
+							<th>Location in Store</th>
+							<th>Action</th>
+						</tr>
+					</thead>
 					<?php
+					include "config.php";
 
-					session_start();
+					$sql = "SELECT med_id, med_name,med_qty,category,med_price,location_rack FROM meds";
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
 
-					$qry1 = "SELECT id from admin where a_username='$_SESSION[user]'";
-					$result1 = $conn->query($qry1);
-					$row1 = $result1->fetch_row();
-					$eid = $row1[0];
+						while ($row = $result->fetch_assoc()) {
 
-					if (isset($_GET['sid'])) {
-						$sid = $_GET['sid'];
-					}
+							echo "<tr>";
+							echo "<td>" . $row["med_id"] . "</td>";
+							echo "<td>" . $row["med_name"] . "</td>";
+							echo "<td>" . $row["med_qty"] . "</td>";
+							echo "<td>" . $row["category"] . "</td>";
+							echo "<td>" . $row["med_price"] . "</td>";
+							echo "<td>" . $row["location_rack"] . "</td>";
+							echo "<td align=center>";
 
-					if (isset($_POST['cid']))
-						$cid = $_POST['cid'];
+							echo "<a class='button1 edit-btn' href=inventory-update.php?id=" . $row['med_id'] . ">Edit</a>";
 
-					if (isset($_POST['custadd'])) {
+							echo "<a class='button1 del-btn' href=inventory-delete.php?id=" . $row['med_id'] . ">Delete</a>";
 
-						$qry2 = "INSERT INTO sales(c_id,e_id) VALUES ('$cid','$eid')";
-						if (!($result2 = $conn->query($qry2))) {
-							echo "<p style='font-size:8; color:red;'>Invalid! Enter valid Customer ID to record Sales.</p>";
+							echo "</td>";
+							echo "</tr>";
 						}
+						echo "</table>";
 					}
+
+					$conn->close();
 					?>
-				</div>
-
-				<div class="form-group">
-					<center>
-						<form method="post">
-							<select class="form-select" id="med" name="med">
-								<option  value="0" selected="selected">Select Medicine</option>
+				</table>
 
 
-								<?php
-								$qry3 = "SELECT med_name FROM meds";
-								$result3 = $conn->query($qry3);
-								echo mysqli_error($conn);
-								if ($result3->num_rows > 0) {
-									while ($row4 = $result3->fetch_assoc()) {
 
-										echo "<option>" . $row4["med_name"] . "</option>";
-									}
-								}
-								?>
 
-							</select>
-							&nbsp;&nbsp;
-							<input class="btn btn-primary" type="submit" name="search" value="Search">
-						</form>
-					</center>
-				</div>
-				<?php
-
-				if (isset($_POST['search']) && !empty($_POST['med'])) {
-
-					$med = $_POST['med'];
-					$qry4 = "SELECT * FROM meds where med_name='$med'";
-					$result4 = $conn->query($qry4);
-					$row4 = $result4->fetch_row();
-				}
-				?>
-
-				<div class="form3">
-					<center>
-					<form class="form-group" method="post">
-						<div class="column">
-
-							<label for="medid">Medicine ID:</label>
-							<input style="width: 50%;" class="form-control" type="number" name="medid" value="<?php echo $row4[0]; ?>" readonly><br><br>
-
-							<label for="mdname">Medicine Name:</label>
-							<input class="form-control" style="width: 50%;" style="width: 50%;" type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
-
-						</div>
-						<div class="column">
-
-							<label for="mcat">Category:</label>
-							<input style="width: 50%;" class="form-control" type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
-
-							<label for="mloc">Location:</label>
-							<input class="form-control" style="width: 50%;" type="text" name="mloc" value="<?php echo $row4[5]; ?>" readonly><br><br>
-
-						</div>
-						<div class="column">
-
-							<label for="mqty">Quantity Available:</label>
-							<input style="width: 50%;" class="form-control" type="number" name="mqty" value="<?php echo $row4[2]; ?>" readonly><br><br>
-
-							<label for="mprice">Price of One Unit:</label>
-							<input style="width: 50%;" class="form-control" type="number" name="mprice" value="<?php echo $row4[4]; ?>" readonly><br><br>
-
-						</div>
-						<label for="mcqty">Quantity Required:</label>
-						<input style="width: 50%;" class="form-control" type="number" name="mcqty">
-						&nbsp;&nbsp;&nbsp;
-						<input class="btn btn-primary mt-3" type="submit" name="add" value="Add Medicine">&nbsp;&nbsp;&nbsp;
-
-						<?php
-
-						if (isset($_POST['add'])) {
-
-							$qry5 = "select sale_id from sales ORDER BY sale_id DESC LIMIT 1";
-							$result5 = $conn->query($qry5);
-							$row5 = $result5->fetch_row();
-							$sid = $row5[0];
-							echo mysqli_error($conn);
-
-							$mid = $_POST['medid'];
-							$aqty = $_POST['mqty'];
-							$qty = $_POST['mcqty'];
-
-							if ($qty > $aqty || $qty == 0) {
-								echo "QUANTITY INVALID!";
-							} else {
-								$price = $_POST['mprice'] * $qty;
-								$qry6 = "INSERT INTO sales_items(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
-								$result6 = mysqli_query($conn, $qry6);
-								echo mysqli_error($conn);
-
-								echo "<br><br> <center>";
-								echo "<a class='button1 view-btn' href=pos2.php?sid=" . $sid . ">View Order</a>";
-								echo "</center>";
-							}
-						}
-						?>
-					</form>
-					</center>
-				</div>
 			</div>
 
 
