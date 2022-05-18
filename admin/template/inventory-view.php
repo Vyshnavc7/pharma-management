@@ -198,7 +198,7 @@
 			<!-- partial -->
 
 			<div class="container">
-				<div style="width: 100%;height: 100px;padding-top: 34px;" class="mt-3 text-center">
+				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
 					<h2> MEDICINE INVENTORY</h2>
 				</div>
 
@@ -232,9 +232,9 @@
 							echo "<td>" . $row["location_rack"] . "</td>";
 							echo "<td align=center>";
 
-							echo "<a class='button1 edit-btn' href=inventory-update.php?id=" . $row['med_id'] . ">Edit</a>";
+							echo "<a class='btn btn-primary mr-2'  href=inventory-update.php?id=" . $row['med_id'] . ">Edit</a>";
 
-							echo "<a class='button1 del-btn' href=inventory-delete.php?id=" . $row['med_id'] . ">Delete</a>";
+							echo "<a class='btn btn-danger ml-2'  href=inventory-delete.php?id=" . $row['med_id'] . ">Delete</a>";
 
 							echo "</td>";
 							echo "</tr>";

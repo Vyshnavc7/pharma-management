@@ -21768,7 +21768,26 @@ dl li {
   -moz-box-shadow: 6px 16px 31px -18px #b7bcd1;
   -ms-box-shadow: 6px 16px 31px -18px #b7bcd1;
 }
+.button1 {
+  border:none;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+.edit-btn
+{
+	background-color:#2E8B57;
+}
+
+.del-btn
+{
+	background-color:#800000;
+}
 .sidebar .nav {
   overflow: hidden;
   flex-wrap: nowrap;

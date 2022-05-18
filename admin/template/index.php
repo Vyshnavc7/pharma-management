@@ -96,7 +96,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Medicine</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="inventory-add.php">Add New Medicine</a></li>
                 <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Inventory</a></li>
               </ul>
             </div>
@@ -225,10 +225,10 @@
 
               </div>
             </div>
-            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
-              <div class="row flex-grow">
-                <div class="col-sm-12 grid-margin stretch-card">
-                  <div class="card">
+            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
+              <div class="row flex-grow ">
+                <div class="col-sm-12 grid-margin stretch-card ">
+                  <div class="card ">
                     <div class="card-body">
                       <h4 class="card-title">Manage Employees</h4>
                       <a href="employee-view.php" title="View Employees">
