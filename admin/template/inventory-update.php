@@ -1,3 +1,13 @@
+<?php
+include "config.php";
+
+if (isset($_GET['id'])) {
+	$id = $_GET['id'];
+	$qry1 = "SELECT * FROM meds WHERE med_id='$id'";
+	$result = $conn->query($qry1);
+	$row = $result->fetch_row();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,73 +211,61 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> ADD MEDICINE DETAILS</h2>
+					<h2> UPDATE MEDICINE DETAILS</h2>
 				</div>
 
 				<div class="form-group ">
 					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div class="column">
-
 							<p>
 								<label for="medid">Medicine ID:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="medid">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="medid" value="<?php echo $row[0]; ?>" readonly>
 							</p>
 							<p>
 								<label for="medname">Medicine Name:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="medname">
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="medname" value="<?php echo $row[1]; ?>">
 							</p>
 							<p>
 								<label for="qty">Quantity:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="qty">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="qty" value="<?php echo $row[2]; ?>">
 							</p>
 							<p>
 								<label for="cat">Category:</label><br>
-								<select class="form-select btn btn-info text-left" id="cat" name="cat">
-									<option>Tablet</option>
-									<option>Capsule</option>
-									<option>Syrup</option>
-								</select>
+								<input type="text" name="cat" value="<?php echo $row[3]; ?>">
 							</p>
-
 						</div>
-						<div class="column">
 
+						<div class="column">
 							<p>
 								<label for="sp">Price: </label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" step="0.01" name="sp">
+								<input style="width: 50%;    border: double;" class="form-control" type="number" step="0.01" name="sp" value="<?php echo $row[4]; ?>">
 							</p>
 							<p>
 								<label for="loc">Location:</label><br>
-								<input style="width: 50%;border: double;" class="form-control" type="text" name="loc">
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="loc" value="<?php echo $row[5]; ?>">
 							</p>
 						</div>
 
-
-						<input class="btn btn-primary" type="submit" name="add" value="Add Medicine">
+						<input class="btn btn-primary" type="submit" name="update" value="Update">
 					</form>
 				</div>
 				<?php
 
-				include "config.php";
+				if (isset($_POST['medname']) || isset($_POST['qty']) || isset($_POST['cat']) || isset($_POST['sp']) || isset($_POST['loc'])) {
+					$id = $_POST['medid'];
+					$name = $_POST['medname'];
+					$qty = $_POST['qty'];
+					$cat = $_POST['cat'];
+					$price = $_POST['sp'];
+					$lcn = $_POST['loc'];
 
-				if (isset($_POST['add'])) {
-					$id = mysqli_real_escape_string($conn, $_REQUEST['medid']);
-					$name = mysqli_real_escape_string($conn, $_REQUEST['medname']);
-					$qty = mysqli_real_escape_string($conn, $_REQUEST['qty']);
-					$category = mysqli_real_escape_string($conn, $_REQUEST['cat']);
-					$sprice = mysqli_real_escape_string($conn, $_REQUEST['sp']);
-					$location = mysqli_real_escape_string($conn, $_REQUEST['loc']);
-
-
-					$sql = "INSERT INTO meds VALUES ($id, '$name', $qty,'$category',$sprice, '$location')";
-					if (mysqli_query($conn, $sql)) {
-						echo "<p style='font-size:8;'>Medicine details successfully added!</p>";
-					} else {
-						echo "<p style='font-size:8; color:red;'>Error! Check details.</p>";
-					}
+					$sql = "UPDATE meds SET med_name='$name',med_qty='$qty',category='$cat',med_price='$price',location_rack='$lcn' where med_id='$id'";
+					if ($conn->query($sql))
+						header("location:inventory-view.php");
+					else
+						echo "<p style='font-size:8;color:red;'>Error! Unable to update.</p>";
 				}
 
-				$conn->close();
 				?>
 
 
