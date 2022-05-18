@@ -28,7 +28,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav  class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div style="background-color: #3b3a3a;" class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="#"><img src="images/logo.svg" alt="logo" /></a>
+        <a style="color:  white;" class="navbar-brand brand-logo" href="#">PHARMA</a>
         <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -80,107 +80,107 @@
         </div>
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="../pos1.php">
+            <a style="border-top: solid;" class="nav-link" href="../pos1.php">
               <i class="icon-box menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-disc menu-icon"></i>
               <span class="menu-title">Inventory</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add New Medicine</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Manage Inventory</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Medicine</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Inventory</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-disc menu-icon"></i>
               <span class="menu-title">Suppliers</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add New Supplier</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Manage Suppliers</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Supplier</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Suppliers</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-disc menu-icon"></i>
               <span class="menu-title">Stock Purchase</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add New Purchase</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Manage Purchase</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Purchase</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Purchase</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-disc menu-icon"></i>
               <span class="menu-title">Employees</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add New Employees</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Manage Employees</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Employees</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Employees</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-disc menu-icon"></i>
               <span class="menu-title">Customers</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add New Customers</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Manage Customers</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Customers</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Customers</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a style="border-top: solid;" class="nav-link" href="pages/forms/basic_elements.html">
               <i class="icon-file menu-icon"></i>
               <span class="menu-title">Sales Invoice Details</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a style="border-top: solid;" class="nav-link" href="pages/charts/chartjs.html">
               <i class="icon-pie-graph menu-icon"></i>
               <span class="menu-title">Sold Products Details</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a style="border-top: solid;" class="nav-link" href="pages/tables/basic-table.html">
               <i class="icon-command menu-icon"></i>
               <span class="menu-title">Add New Sale</span>
             </a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Reports</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">Medicine:Low stock </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Medicine Expiry </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Transaction Report </a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login.html">Medicine:Low stock </a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login-2.html"> Medicine Expiry </a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/register.html"> Transaction Report </a></li>
                 
               </ul>
             </div>
