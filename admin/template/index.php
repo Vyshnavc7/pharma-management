@@ -26,7 +26,7 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav  class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div style="background-color: #3b3a3a;" class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a style="color:  white;" class="navbar-brand brand-logo" href="#">PHARMA</a>
         <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo" /></a>
@@ -35,17 +35,15 @@
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="icon-menu"></span>
         </button>
-        
+
         <ul class="navbar-nav navbar-nav-right">
-          
-          
+
+
           <li class="nav-item dropdown d-flex mr-4 ">
-            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
-              id="notificationDropdown" href="#" data-toggle="dropdown">
+            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-cog"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-              aria-labelledby="notificationDropdown">
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
               <a class="dropdown-item preview-item">
                 <i class="icon-head"></i> Profile
@@ -55,10 +53,9 @@
               </a>
             </div>
           </li>
-          
+
         </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
         </button>
       </div>
@@ -85,7 +82,7 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          
+
           <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-disc menu-icon"></i>
@@ -169,7 +166,7 @@
               <span class="menu-title">Add New Sale</span>
             </a>
           </li>
-          
+
           <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
@@ -181,10 +178,10 @@
                 <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login.html">Medicine:Low stock </a></li>
                 <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login-2.html"> Medicine Expiry </a></li>
                 <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/register.html"> Transaction Report </a></li>
-                
+
               </ul>
             </div>
-            
+
           </li>
         </ul>
       </nav>
@@ -194,207 +191,65 @@
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
               <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
-              <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p>
+
             </div>
           </div>
           <div class="row mt-3">
-            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card">
+            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
               <div class="row flex-grow">
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Customers</h4>
-                      <p>23% increase in conversion</p>
-                      <h4 class="text-dark font-weight-bold mb-2">43,981</h4>
-                      <canvas id="customers"></canvas>
+                      <a href="../pos1.php" title="Add New Sale">
+                        <img style="width: 75%;height: 96%;" class="text-center" src="images/meds/carticon1.png"  alt="Add New Sale">
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-12 stretch-card">
+                <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Orders</h4>
-                      <p>6% decrease in earnings</p>
-                      <h4 class="text-dark font-weight-bold mb-2">55,543</h4>
-                      <canvas id="orders"></canvas>
+                      <h4 class="card-title">Customers</h4>
+                      <a href="inventory-view.php" title="View Inventory">
+					<img src="images/meds/inventory.png" style="width: 75%;height: 96%;" alt="Inventory">
+				</a>
                     </div>
                   </div>
                 </div>
+                
               </div>
             </div>
-            <div class="col-xl-9 d-flex grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Website Audience Metrics</h4>
-                  <div class="row">
-                    <div class="col-lg-5">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit amet cumque cupiditate</p>
-                    </div>
-                    <div class="col-lg-7">
-                      <div class="chart-legends d-lg-block d-none" id="chart-legends"></div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <canvas id="web-audience-metrics-satacked" class="mt-3"></canvas>
+            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
+              <div class="row flex-grow">
+                <div class="col-sm-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Customers</h4>
+                      <a href="employee-view.php" title="View Employees">
+					<img src="images/meds/emp.png" style="width: 75%;height: 96%;" alt="Employees List">
+				</a>
                     </div>
                   </div>
-
                 </div>
+                <div class="col-sm-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Customers</h4>
+                      <a href="salesreport.php" title="View Transactions">
+					<img src="images/meds/moneyicon.png" style="width: 75%;height: 96%;" alt="Transactions List">
+				</a>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
             </div>
+            
           </div>
-          <div class="row">
-            <div class="col-xl-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between mb-3">
-                    <h4 class="card-title">Market Trends</h4>
-                    <div class="dropdown">
-                      <button class="btn btn-sm dropdown-toggle text-dark pt-0 pr-0" type="button"
-                        id="dropdownMenuSizeButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        This week
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton3">
-                        <h6 class="dropdown-header">This week</h6>
-                        <h6 class="dropdown-header">This month</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="chart-legends-market-trend" class="chart-legends mt-1">
-                  </div>
-                  <div class="row mt-2 mb-2">
-                    <div class="col-6">
-                      <div class="text-small"><span class="text-success">18.2%</span> higher </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="text-small"><span class="text-danger">0.7%</span> higher </div>
-                    </div>
-                  </div>
-                  <div class="marketTrends mt-4">
-                    <canvas id="marketTrendssatacked"></canvas>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Traffic Sources</h4>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="d-flex justify-content-between mt-2 text-dark mb-2">
-                        <div><span class="font-weight-bold">4453</span> Leads</div>
-                        <div>Goal: 2000</div>
-                      </div>
-                      <div class="progress progress-md grouped mb-2">
-                        <div class="progress-bar  bg-danger" role="progressbar" style="width: 30%" aria-valuenow="25"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="50"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar  bg-primary" role="progressbar" style="width: 10%" aria-valuenow="25"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="50"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 5%" aria-valuenow="50"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-light" role="progressbar" style="width: 25%" aria-valuenow="50"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <div class="traffic-source-legend">
-                        <div class="d-flex justify-content-between mb-1 mt-2">
-                          <div class="font-weight-bold">SOURCE</div>
-                          <div class="font-weight-bold">TOTAL</div>
-                        </div>
-                        <div class="d-flex justify-content-between legend-label">
-                          <div><span class="bg-danger"></span>Google Search</div>
-                          <div>30%</div>
-                        </div>
-                        <div class="d-flex justify-content-between legend-label">
-                          <div><span class="bg-info"></span>Social Media</div>
-                          <div>20%</div>
-                        </div>
-                        <div class="d-flex justify-content-between legend-label">
-                          <div><span class="bg-primary"></span>Referrals</div>
-                          <div>10%</div>
-                        </div>
-                        <div class="d-flex justify-content-between legend-label">
-                          <div><span class="bg-warning"></span>Organic Traffic</div>
-                          <div>10%</div>
-                        </div>
-                        <div class="d-flex justify-content-between legend-label">
-                          <div><span class="bg-success"></span>Google Search</div>
-                          <div>5%</div>
-                        </div>
-                        <div class="d-flex justify-content-between legend-label">
-                          <div><span class="bg-light"></span>Email Marketing</div>
-                          <div>25%</div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title mb-3">Recent Activity</h4>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="text-dark">
-                        <div class="d-flex pb-3 border-bottom justify-content-between">
-                          <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                          <div class="font-weight-bold mr-sm-4">
-                            <div>Deposit has updated to Paid</div>
-                            <div class="text-muted font-weight-normal mt-1">32 Minutes Ago</div>
-                          </div>
-                          <div>
-                            <h6 class="font-weight-bold text-info ml-sm-2">$325</h6>
-                          </div>
-                        </div>
-                        <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
-                          <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                          <div class="font-weight-bold mr-sm-4">
-                            <div>Your Withdrawal Proceeded</div>
-                            <div class="text-muted font-weight-normal mt-1">45 Minutes Ago</div>
-                          </div>
-                          <div>
-                            <h6 class="font-weight-bold text-info ml-sm-2">$4987</h6>
-                          </div>
-                        </div>
-                        <div class="d-flex pb-3 pt-3 border-bottom justify-content-between">
-                          <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                          <div class="font-weight-bold mr-sm-4">
-                            <div>Deposit has updated to Paid </div>
-                            <div class="text-muted font-weight-normal mt-1">1 Days Ago</div>
-                          </div>
-                          <div>
-                            <h6 class="font-weight-bold text-info ml-sm-2">$5391</h6>
-                          </div>
-                        </div>
-                        <div class="d-flex pt-3 justify-content-between">
-                          <div class="mr-3"><i class="mdi mdi-signal-cellular-outline icon-md"></i></div>
-                          <div class="font-weight-bold mr-sm-4">
-                            <div>Deposit has updated to Paid</div>
-                            <div class="text-muted font-weight-normal mt-1">3 weeks Ago</div>
-                          </div>
-                          <div>
-                            <h6 class="font-weight-bold text-info ml-sm-2">$264</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
+          
+          
+          <!-- <div class="row">
             <div class="col-xl-9 grid-margin-lg-0 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -432,8 +287,7 @@
                             <div class="row">
                               <div class="col-sm-10">
                                 <div class="progress">
-                                  <div class="progress-bar bg-info" role="progressbar" style="width: 25%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                               </div>
                               <div class="col-sm-2">
@@ -457,8 +311,7 @@
                             <div class="row">
                               <div class="col-sm-10">
                                 <div class="progress">
-                                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                               </div>
                               <div class="col-sm-2">
@@ -481,8 +334,7 @@
                             <div class="row">
                               <div class="col-sm-10">
                                 <div class="progress">
-                                  <div class="progress-bar bg-info" role="progressbar" style="width: 10%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                               </div>
                               <div class="col-sm-2">
@@ -505,8 +357,7 @@
                             <div class="row">
                               <div class="col-sm-10">
                                 <div class="progress">
-                                  <div class="progress-bar bg-info" role="progressbar" style="width: 70%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                               </div>
                               <div class="col-sm-2">
@@ -529,8 +380,7 @@
                             <div class="row">
                               <div class="col-sm-10">
                                 <div class="progress">
-                                  <div class="progress-bar bg-info" role="progressbar" style="width: 60%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                               </div>
                               <div class="col-sm-2">
@@ -580,8 +430,7 @@
                       <div class="row">
                         <div class="col-sm-10">
                           <div class="progress progress-lg mt-1">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
-                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                         <div class="col-sm-2 p-lg-0">
@@ -605,8 +454,7 @@
                       <div class="row">
                         <div class="col-sm-10">
                           <div class="progress progress-lg mt-1">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 45%"
-                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                         <div class="col-sm-2 p-lg-0">
@@ -630,8 +478,7 @@
                       <div class="row">
                         <div class="col-sm-10">
                           <div class="progress progress-lg mt-1">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%"
-                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                         <div class="col-sm-2 p-lg-0">
@@ -655,8 +502,7 @@
                       <div class="row">
                         <div class="col-sm-10">
                           <div class="progress progress-lg mt-1">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 8%" aria-valuenow="25"
-                              aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 8%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                         <div class="col-sm-2 p-lg-0">
@@ -680,8 +526,7 @@
                       <div class="row">
                         <div class="col-sm-10">
                           <div class="progress progress-lg mt-1">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="25"
-                              aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                         <div class="col-sm-2 p-lg-0">
@@ -721,17 +566,15 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-              2020</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from
-              Bootstrapdash.com</span>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between ">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Pharma
+              2022</span>
+            
           </div>
         </footer>
         <!-- partial -->
