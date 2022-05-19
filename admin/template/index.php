@@ -36,7 +36,7 @@
           <span class="icon-menu"></span>
         </button>
         <strong>
-          <p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p>
+        <a href="index.php"><p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p></a>
         </strong>
 
 
