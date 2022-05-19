@@ -135,8 +135,8 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Employees</a></li>
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Employees</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-add.php">Add New Employees</a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-view.php">Manage Employees</a></li>
               </ul>
             </div>
           </li>
@@ -247,7 +247,7 @@
                     </div>
                   </div>
                 </div>
-                
+
 
               </div>
             </div>
@@ -274,7 +274,7 @@
                     </div>
                   </div>
                 </div> -->
-                
+
 
               </div>
             </div>

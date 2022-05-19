@@ -201,83 +201,107 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> ADD PURCHASE DETAILS</h2>
+					<h2> ADD EMPLOYEE DETAILS</h2>
 				</div>
 
 				<div class="form-group ">
-					<form class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<?php
 
-						<?php
+					include "config.php";
 
-						include "config.php";
+					if (isset($_POST['add'])) {
+						$id = mysqli_real_escape_string($conn, $_REQUEST['eid']);
+						$fname = mysqli_real_escape_string($conn, $_REQUEST['efname']);
+						$lname = mysqli_real_escape_string($conn, $_REQUEST['elname']);
+						$bdate = mysqli_real_escape_string($conn, $_REQUEST['ebdate']);
+						$age = mysqli_real_escape_string($conn, $_REQUEST['eage']);
+						$sex = mysqli_real_escape_string($conn, $_REQUEST['esex']);
+						$etype = mysqli_real_escape_string($conn, $_REQUEST['etype']);
+						$jdate = mysqli_real_escape_string($conn, $_REQUEST['ejdate']);
+						$sal = mysqli_real_escape_string($conn, $_REQUEST['esal']);
+						$phno = mysqli_real_escape_string($conn, $_REQUEST['ephno']);
+						$mail = mysqli_real_escape_string($conn, $_REQUEST['e_mail']);
+						$add = mysqli_real_escape_string($conn, $_REQUEST['eadd']);
 
-						if (isset($_POST['add'])) {
-							$pid = mysqli_real_escape_string($conn, $_REQUEST['pid']);
-							$sid = mysqli_real_escape_string($conn, $_REQUEST['sid']);
-							$mid = mysqli_real_escape_string($conn, $_REQUEST['mid']);
-							$qty = mysqli_real_escape_string($conn, $_REQUEST['pqty']);
-							$cost = mysqli_real_escape_string($conn, $_REQUEST['pcost']);
-							$pdate = mysqli_real_escape_string($conn, $_REQUEST['pdate']);
-							$mdate = mysqli_real_escape_string($conn, $_REQUEST['mdate']);
-							$edate = mysqli_real_escape_string($conn, $_REQUEST['edate']);
 
-							$sql = "INSERT INTO purchase VALUES ($pid, $sid, $mid,'$qty','$cost','$pdate','$mdate','$edate')";
-							if (mysqli_query($conn, $sql)) {
-								echo "<p style='font-size:8;'>Purchase details successfully added!</p>";
-							} else {
-								echo "<p style='font-size:8;color:red;'>Error! Check details.</p>";
-							}
+						$sql = "INSERT INTO employee VALUES ($id, '$fname','$lname','$bdate',$age,'$sex','$etype','$jdate','$sal',$phno, '$mail','$add')";
+						if (mysqli_query($conn, $sql)) {
+							echo "<p style='font-size:8;'>Employee successfully added!</p>";
+						} else {
+							echo "<p style='font-size:8; color:red;'>Error! Check details.</p>";
 						}
+					}
 
-						$conn->close();
-						?>
+					$conn->close();
+					?>
 
+					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
+							<p>
+								<label for="eid">Employee ID:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eid">
+							</p>
+							<p>
+								<label for="efname">First Name:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname">
+							</p>
+							<p>
+								<label for="elname">Last Name:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname">
+							</p>
+							<p>
+								<label for="ebdate">Date of Birth:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate">
+							</p>
+							<p>
+								<label for="eage">Age:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage">
+							</p>
+							<p>
+								<label for="esex">Sex:</label><br>
+								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="esex" name="esex">
+									<option value="selected">Select</option>
+									<option>Female</option>
+									<option>Male</option>
+									<option>Others</option>
+								</select>
+							</p>
+						</div>
+						<div style="float: left;width: 50%;" class="column">
+							<p>
+								<label for="etype">Employee Type:</label><br>
+								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="etype" name="etype">
+									<option value="selected">Select</option>
+									<option>Pharmacist</option>
+									<option>Manager</option>
+								</select>
+							</p>
+							<p>
+								<label for="ejdate">Date of Joining:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate">
+							</p>
+							<p>
+								<label for="esal">Salary:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal">
+							</p>
+							<p>
+								<label for="ephno">Phone Number:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno">
+							</p>
 
 							<p>
-								<label for="pid">Purchase ID:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="number" name="pid">
+								<label for="e_mail">Email ID:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail">
 							</p>
 							<p>
-								<label for="sid">Supplier ID:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="number" name="sid">
+								<label for="eadd">Address:</label><br>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd">
 							</p>
-							<p>
-								<label for="mid">Medicine ID:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="number" name="mid">
-							</p>
-							<p>
-								<label for="pqty">Purchase Quantity:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="number" name="pqty">
-							</p>
-
 
 						</div>
-						<div style="float: right;width: 50%;" class="column">
-
-							<p>
-								<label for="pcost">Purchase Cost:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="number" step="0.01" name="pcost">
-							</p>
 
 
-							<p>
-								<label for="pdate">Date of Purchase:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="date" name="pdate">
-							</p>
-							<p>
-								<label for="mdate">Manufacturing Date:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="date" name="mdate">
-							</p>
-							<p>
-								<label for="edate">Expiry Date:</label><br>
-								<input class="form-control" style="width: 50%;    border: double;" type="date" name="edate">
-							</p>
-
-						</div>
-
-
-						<inpuT class="btn btn-primary" type="submit" name="add" value="Add Purchase">
+						<input class="btn btn-primary" type="submit" name="add" value="Add Employee">
 					</form>
 
 
@@ -292,8 +316,6 @@
 		<div class="one row" style="margin-right:160px;">
 
 		</div>
-
-
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
