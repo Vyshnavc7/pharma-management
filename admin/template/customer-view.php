@@ -234,7 +234,7 @@
 							echo "<td>" . $row["c_mail"] . "</td>";
 							echo "<td align=center>";
 							echo "<a class='btn btn-primary m-3' href=customer-update.php?id=" . $row['c_id'] . ">Edit</a>";
-							echo "<a class='btn btn-danger' href=customer-delete.php?id=" . $row['c_id'] . ">Delete</a>";
+							echo "<a onclick='return confirm('Are you sure to delete?');' class='btn btn-danger' href=customer-delete.php?id=" . $row['c_id'] . ">Delete</a>";
 							echo "</td>";
 							echo "</tr>";
 						}
