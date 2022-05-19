@@ -1,3 +1,32 @@
+<?php
+include "config.php";
+
+if (isset($_GET['pid']) && isset($_GET['sid']) && isset($_GET['mid'])) {
+	$pid = $_GET['pid'];
+	$sid = $_GET['sid'];
+	$mid = $_GET['mid'];
+	$qry1 = "SELECT * FROM purchase WHERE p_id='$pid' and sup_id='$sid' and med_id='$mid'";
+	$result = $conn->query($qry1);
+	$row = $result->fetch_row();
+}
+
+if (isset($_POST['update'])) {
+	$pid = $_POST['pid'];
+	$sid = $_POST['sid'];
+	$mid = $_POST['mid'];
+	$qty = $_POST['pqty'];
+	$cost = $_POST['pcost'];
+	$pdate = $_POST['pdate'];
+	$mdate = $_POST['mdate'];
+	$edate = $_POST['edate'];
+
+	$sql = "UPDATE purchase SET p_cost='$cost',p_qty='$qty',pur_date='$pdate',mfg_date='$mdate',exp_date='$edate' 
+				where p_id='$pid' and sup_id='$sid' and med_id='$mid'";
+	if ($conn->query($sql))
+		header("location:purchase-view.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +48,8 @@
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="nav2.css">
+	<link rel="stylesheet" type="text/css" href="form4.css">
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -199,104 +230,78 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> STOCK PURCHASE LIST</h2>
+					<h2> UPDATE SUPPLIER DETAILS</h2>
 				</div>
 
-				<table class="table table-bordered table-responsive  table-hover">
-					<thead class="table-dark">
-						<tr>
-							<th>Purchase ID</th>
-							<th>Supplier ID</th>
-							<th>Medicine ID</th>
-							<th>Medicine Name</th>
-							<th>Quantity</th>
-							<th>Cost of Purchase</th>
-							<th>Date of Purchase</th>
-							<th>Manufacturing Date</th>
-							<th>Expiry Date</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<?php
+				<div class="form-group ">
+					<form class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+						<div style="float: left;width: 50%;" class="column">
+							<p>
+								<label for="pid">Purchase ID:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pid" value="<?php echo $row[0]; ?>" readonly>
+							</p>
+							<p>
+								<label for="sid">Supplier ID:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="sid" value="<?php echo $row[1]; ?>" readonly>
+							</p>
+							<p>
+								<label for="mid">Medicine ID:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="mid" value="<?php echo $row[2]; ?>" readonly>
+							</p>
+							<p>
+								<label for="pqty">Purchase Quantity:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pqty" value="<?php echo $row[3]; ?>">
+							</p>
+						</div>
 
-					include "config.php";
-					$sql = "SELECT p_id,sup_id,med_id,p_qty,p_cost,pur_date,mfg_date,exp_date FROM purchase";
-					$result = $conn->query($sql);
+						<div style="float: left;width: 50%;" class="column">
+							<p>
+								<label for="pcost">Purchase Cost:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="pcost" value="<?php echo $row[4]; ?>">
+							</p>
 
-					if ($result->num_rows > 0) {
 
-						while ($row = $result->fetch_assoc()) {
+							<p>
+								<label for="pdate">Date of Purchase:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="pdate" value="<?php echo $row[5]; ?>">
+							</p>
+							<p>
+								<label for="mdate">Manufacturing Date:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="mdate" value="<?php echo $row[6]; ?>">
+							</p>
+							<p>
+								<label for="edate">Expiry Date:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="edate" value="<?php echo $row[7]; ?>">
+							</p>
+						</div>
 
-							$sql1 = "SELECT med_name from meds where med_id=" . $row["med_id"] . "";
-							$result1 = $conn->query($sql1);
+						<input class="btn btn-primary" type="submit" name="update" value="Update">
+					</form>
 
-							while ($row1 = $result1->fetch_assoc()) {
 
-								echo "<tr>";
-								echo "<td>" . $row["p_id"] . "</td>";
-								echo "<td>" . $row["sup_id"] . "</td>";
-								echo "<td>" . $row["med_id"] . "</td>";
-								echo "<td>" . $row1["med_name"] . "</td>";
-								echo "<td>" . $row["p_qty"] . "</td>";
-								echo "<td>" . $row["p_cost"] . "</td>";
-								echo "<td>" . $row["pur_date"] . "</td>";
-								echo "<td>" . $row["mfg_date"] . "</td>";
-								echo "<td>" . $row["exp_date"] . "</td>";
-								echo "<td align:center>";
-								echo "<a class='btn btn-primary mt-2' href=purchase-update.php?pid=" . $row['p_id'] . "&sid=" . $row['sup_id'] . "&mid=" . $row['med_id'] . ">Edit</a>";
-								echo "<a class='btn btn-danger mt-2' href=purchase-delete.php?pid=" . $row['p_id'] . "&sid=" . $row['sup_id'] . "&mid=" . $row['med_id'] . ">Delete</a>";
-								echo "</td>";
-								echo "</tr>";
-							}
-						}
-						echo "</table>";
-					}
-					$conn->close();
+				</div>
 
-					?>
-
-					<?php
-					if (isset($_POST['update'])) {
-						$pid = $_POST['pid'];
-						$sid = $_POST['sid'];
-						$mid = $_POST['mid'];
-						$qty = $_POST['pqty'];
-						$cost = $_POST['pcost'];
-						$pdate = $_POST['pdate'];
-						$mdate = $_POST['mdate'];
-						$edate = $_POST['edate'];
-
-						$sql = "UPDATE purchase SET p_cost='$cost',p_qty='$qty',pur_date='$pdate',mfg_date='$mdate',exp_date='$edate' 
-				where p_id='$pid' and sup_id='$sid' and med_id='$mid'";
-						if (!($conn->query($sql)))
-							echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
-					}
-					?>
-				</table>
 
 			</div>
 
+		</div>
+
+
+
+
+
+
+
+
+		<div class="one row" style="margin-right:160px;">
 
 		</div>
 
-	</div>
 
 
-
-
-
-
-
-
-	<div class="one row" style="margin-right:160px;">
-
-	</div>
-
-
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 <script>
