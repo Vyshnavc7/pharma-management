@@ -218,19 +218,19 @@ if (isset($_GET['id'])) {
 				</div>
 
 				<div class="form-group ">
-					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div class="column">
 							<p>
 								<label for="sid">Supplier ID:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="sid" value="<?php echo $row[0]; ?>" readonly>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="sid" value="<?php echo $row[0]; ?>" readonly>
 							</p>
 							<p>
 								<label for="sname">Supplier Company Name:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="sname" value="<?php echo $row[1]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="sname" value="<?php echo $row[1]; ?>">
 							</p>
 							<p>
 								<label for="sadd">Address:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="sadd" value="<?php echo $row[2]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="sadd" value="<?php echo $row[2]; ?>">
 							</p>
 
 
@@ -238,12 +238,12 @@ if (isset($_GET['id'])) {
 						<div class="column">
 							<p>
 								<label for="sphno">Phone Number:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="sphno" value="<?php echo $row[3]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="sphno" value="<?php echo $row[3]; ?>">
 							</p>
 
 							<p>
 								<label for="smail">Email Address </label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="smail" value="<?php echo $row[4]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="smail" value="<?php echo $row[4]; ?>">
 							</p>
 
 						</div>

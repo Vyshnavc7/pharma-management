@@ -217,7 +217,7 @@
 				</div>
 
 				<div class="form-group ">
-					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form class="m-4" style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="eid">Employee ID:</label><br>

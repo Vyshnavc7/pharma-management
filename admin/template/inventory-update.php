@@ -217,34 +217,38 @@ if (isset($_GET['id'])) {
 				</div>
 
 				<div class="form-group ">
-					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div class="column">
 							<p>
 								<label for="medid">Medicine ID:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="medid" value="<?php echo $row[0]; ?>" readonly>
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="medid" value="<?php echo $row[0]; ?>" readonly>
 							</p>
 							<p>
 								<label for="medname">Medicine Name:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="medname" value="<?php echo $row[1]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="medname" value="<?php echo $row[1]; ?>">
 							</p>
 							<p>
 								<label for="qty">Quantity:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="qty" value="<?php echo $row[2]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="qty" value="<?php echo $row[2]; ?>">
 							</p>
 							<p>
 								<label for="cat">Category:</label><br>
-								<input type="text" name="cat" value="<?php echo $row[3]; ?>">
+								<select style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-select btn btn-info text-left" id="cat" name="cat">
+									<option>Tablet</option>
+									<option>Capsule</option>
+									<option>Syrup</option>
+								</select>
 							</p>
 						</div>
 
 						<div class="column">
 							<p>
 								<label for="sp">Price: </label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" step="0.01" name="sp" value="<?php echo $row[4]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" step="0.01" name="sp" value="<?php echo $row[4]; ?>">
 							</p>
 							<p>
 								<label for="loc">Location:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="loc" value="<?php echo $row[5]; ?>">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="loc" value="<?php echo $row[5]; ?>">
 							</p>
 						</div>
 

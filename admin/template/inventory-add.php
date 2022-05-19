@@ -207,24 +207,24 @@
 				</div>
 
 				<div class="form-group ">
-					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div class="column">
 
 							<p>
 								<label for="medid">Medicine ID:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="medid">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="medid">
 							</p>
 							<p>
 								<label for="medname">Medicine Name:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="text" name="medname">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="medname">
 							</p>
 							<p>
 								<label for="qty">Quantity:</label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" name="qty">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="qty">
 							</p>
 							<p>
 								<label for="cat">Category:</label><br>
-								<select class="form-select btn btn-info text-left" id="cat" name="cat">
+								<select style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-select btn btn-info text-left" id="cat" name="cat">
 									<option>Tablet</option>
 									<option>Capsule</option>
 									<option>Syrup</option>
@@ -236,11 +236,11 @@
 
 							<p>
 								<label for="sp">Price: </label><br>
-								<input style="width: 50%;    border: double;" class="form-control" type="number" step="0.01" name="sp">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" step="0.01" name="sp">
 							</p>
 							<p>
 								<label for="loc">Location:</label><br>
-								<input style="width: 50%;border: double;" class="form-control" type="text" name="loc">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="loc">
 							</p>
 						</div>
 

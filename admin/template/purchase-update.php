@@ -236,7 +236,7 @@ if (isset($_POST['update'])) {
 				</div>
 
 				<div class="form-group ">
-					<form class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="pid">Purchase ID:</label><br>
