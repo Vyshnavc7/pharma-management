@@ -333,5 +333,4 @@ if (isset($_GET['id'])) {
 <!-- Custom js for this page-->
 <script src="js/dashboard.js"></script>
 <!-- End custom js for this page-->
-
 </html>
