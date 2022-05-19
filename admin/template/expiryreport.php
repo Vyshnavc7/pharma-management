@@ -19,14 +19,12 @@
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="nav2.css">
-	<link rel="stylesheet" type="text/css" href="form4.css">
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<title>
-		ADD CUSTOMER
+		New Sales
 	</title>
 </head>
 
@@ -43,7 +41,7 @@
 					<span class="icon-menu"></span>
 				</button>
 				<strong>
-				  	<a href="index.php"><p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p></a>	
+					<p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p>
 				</strong>
 
 
@@ -129,8 +127,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="purchase-add.php">Add New Purchase</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="purchase-view.php">Manage Purchase</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Purchase</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Purchase</a></li>
 							</ul>
 						</div>
 					</li>
@@ -142,8 +140,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-add.php">Add New Employees</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-view.php">Manage Employees</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Employees</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Employees</a></li>
 							</ul>
 						</div>
 					</li>
@@ -155,8 +153,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-add.php">Add New Customers</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-view.php">Manage Customers</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Customers</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Customers</a></li>
 							</ul>
 						</div>
 					</li>
@@ -187,9 +185,9 @@
 						</a>
 						<div class="collapse" id="auth">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="stockreport.php">Medicine:Low stock </a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="expiryreport.php"> Medicine Expiry </a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="salesreport.php"> Transaction Report </a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login.html">Medicine:Low stock </a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login-2.html"> Medicine Expiry </a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/register.html"> Transaction Report </a></li>
 
 							</ul>
 						</div>
@@ -201,92 +199,64 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> ADD CUSTOMER DETAILS</h2>
+					<h2>STOCK EXPIRING WITHIN 6 MONTHS</h2>
 				</div>
 
-				<div class="form-group ">
-					<form class="mt-4" style="height: 500px;border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-						<div style="float: left;width: 50%;" class="column">
-							<p>
-								<label for="cid">Customer ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cid">
-							</p>
-							<p>
-								<label for="cfname">First Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="cfname">
-							</p>
-							<p>
-								<label for="clname">Last Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname">
-							</p>
-							<p>
-								<label for="age">Age:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="age">
-							</p>
-
-
-
-						</div>
-						<div style="float: left;width: 50%;" class="column">
-							<p>
-								<label for="sex">Sex: </label><br>
-								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="sex" name="sex">
-									<option value="selected">Select</option>
-									<option>Female</option>
-									<option>Male</option>
-									<option>Others</option>
-								</select>
-							</p>
-
-							<p>
-								<label for="phno">Phone Number: </label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="phno">
-							</p>
-							<p>
-								<label for="emid">Email ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="emid">
-							</p>
-						</div>
-
-
-						<input class="btn btn-success mt-4" type="submit" name="add" value="Add Customer">
-					</form>
-
+				<table class="table table-bordered table-responsive table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th>Purchase ID</th>
+							<th>Supplier ID</th>
+							<th>Medicine ID</th>
+							<th>Quantity</th>
+							<th>Cost of Purchase</th>
+							<th>Date of Purchase</th>
+							<th>Manufacturing Date</th>
+							<th>Expiry Date</th>
+						</tr>
+					</thead>
 					<?php
+
 					include "config.php";
+					$result = mysqli_query($conn, "CALL `EXPIRY`();");
+					if ($result->num_rows > 0) {
 
-					if (isset($_POST['add'])) {
-						$id = mysqli_real_escape_string($conn, $_REQUEST['cid']);
-						$fname = mysqli_real_escape_string($conn, $_REQUEST['cfname']);
-						$lname = mysqli_real_escape_string($conn, $_REQUEST['clname']);
-						$age = mysqli_real_escape_string($conn, $_REQUEST['age']);
-						$sex = mysqli_real_escape_string($conn, $_REQUEST['sex']);
-						$phno = mysqli_real_escape_string($conn, $_REQUEST['phno']);
-						$mail = mysqli_real_escape_string($conn, $_REQUEST['emid']);
+						while ($row = $result->fetch_assoc()) {
 
-
-						$sql = "INSERT INTO customer VALUES ($id, '$fname', '$lname',$age,'$sex',$phno, '$mail')";
-						if (mysqli_query($conn, $sql)) {
-							echo "<p style='font-size:8;'>Customer successfully added!</p>";
-						} else {
-							echo "<p style='font-size:8; color:red;'>Error! Check details.</p>";
+							echo "<tr>";
+							echo "<td>" . $row["p_id"] . "</td>";
+							echo "<td>" . $row["sup_id"] . "</td>";
+							echo "<td>" . $row["med_id"] . "</td>";
+							echo "<td>" . $row["p_qty"] . "</td>";
+							echo "<td>" . $row["p_cost"] . "</td>";
+							echo "<td>" . $row["pur_date"] . "</td>";
+							echo "<td>" . $row["mfg_date"] . "</td>";
+							echo "<td style='color:red;'>" . $row["exp_date"] . "</td>";
+							echo "</tr>";
 						}
+						echo "</table>";
 					}
 
 					$conn->close();
+
 					?>
+				</table>
 
 
-				</div>
 
 
 			</div>
 
+
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 <script>
