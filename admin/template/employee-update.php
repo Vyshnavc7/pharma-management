@@ -1,32 +1,15 @@
 <?php
-include "config.php";
+		include "config.php";
+		
+		if(isset($_GET['id']))
+		{
+			$id=$_GET['id'];
+			$qry1="SELECT * FROM employee WHERE e_id='$id'";
+			$result = $conn->query($qry1);
+			$row = $result -> fetch_row();
+		}
 
-if (isset($_GET['pid']) && isset($_GET['sid']) && isset($_GET['mid'])) {
-	$pid = $_GET['pid'];
-	$sid = $_GET['sid'];
-	$mid = $_GET['mid'];
-	$qry1 = "SELECT * FROM purchase WHERE p_id='$pid' and sup_id='$sid' and med_id='$mid'";
-	$result = $conn->query($qry1);
-	$row = $result->fetch_row();
-}
-
-if (isset($_POST['update'])) {
-	$pid = $_POST['pid'];
-	$sid = $_POST['sid'];
-	$mid = $_POST['mid'];
-	$qty = $_POST['pqty'];
-	$cost = $_POST['pcost'];
-	$pdate = $_POST['pdate'];
-	$mdate = $_POST['mdate'];
-	$edate = $_POST['edate'];
-
-	$sql = "UPDATE purchase SET p_cost='$cost',p_qty='$qty',pur_date='$pdate',mfg_date='$mdate',exp_date='$edate' 
-				where p_id='$pid' and sup_id='$sid' and med_id='$mid'";
-	if ($conn->query($sql))
-		header("location:purchase-view.php");
-}
-?>
-
+		 ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,55 +213,94 @@ if (isset($_POST['update'])) {
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> UPDATE SUPPLIER DETAILS</h2>
+					<h2> UPDATE EMPLOYEE DETAILS</h2>
 				</div>
 
 				<div class="form-group ">
-					<form class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
-								<label for="pid">Purchase ID:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pid" value="<?php echo $row[0]; ?>" readonly>
+								<label for="eid">Employee ID:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eid" value="<?php echo $row[0]; ?>" readonly>
 							</p>
 							<p>
-								<label for="sid">Supplier ID:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="sid" value="<?php echo $row[1]; ?>" readonly>
+								<label for="efname">First Name:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname" value="<?php echo $row[1]; ?>">
 							</p>
 							<p>
-								<label for="mid">Medicine ID:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="mid" value="<?php echo $row[2]; ?>" readonly>
+								<label for="elname">Last Name:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname" value="<?php echo $row[2]; ?>">
 							</p>
 							<p>
-								<label for="pqty">Purchase Quantity:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pqty" value="<?php echo $row[3]; ?>">
+								<label for="ebdate">Date of Birth:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate" value="<?php echo $row[3]; ?>">
+							</p>
+							<p>
+								<label for="eage">Age:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage" value="<?php echo $row[4]; ?>">
+							</p>
+							<p>
+								<label for="esex">Sex:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="esex" value="<?php echo $row[5]; ?>">
 							</p>
 						</div>
-
 						<div style="float: left;width: 50%;" class="column">
 							<p>
-								<label for="pcost">Purchase Cost:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="pcost" value="<?php echo $row[4]; ?>">
+								<label for="etype">Employee Type:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="etype" value="<?php echo $row[6]; ?>">
+							</p>
+							<p>
+								<label for="ejdate">Date of Joining:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate" value="<?php echo $row[7]; ?>">
+							</p>
+							<p>
+								<label for="esal">Salary:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal" value="<?php echo $row[8]; ?>">
+							</p>
+							<p>
+								<label for="ephno">Phone Number:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno" value="<?php echo $row[9]; ?>">
 							</p>
 
+							<p>
+								<label for="e_mail">Email ID:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail" value="<?php echo $row[10]; ?>">
+							</p>
+							<p>
+								<label for="eadd">Address:</label><br>
+								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd" value="<?php echo $row[11]; ?>">
+							</p>
 
-							<p>
-								<label for="pdate">Date of Purchase:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="pdate" value="<?php echo $row[5]; ?>">
-							</p>
-							<p>
-								<label for="mdate">Manufacturing Date:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="mdate" value="<?php echo $row[6]; ?>">
-							</p>
-							<p>
-								<label for="edate">Expiry Date:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="edate" value="<?php echo $row[7]; ?>">
-							</p>
 						</div>
+
 
 						<input class="btn btn-primary" type="submit" name="update" value="Update">
 					</form>
 
+					<?php
+					if (isset($_POST['update'])) {
+						$id = mysqli_real_escape_string($conn, $_REQUEST['eid']);
+						$fname = mysqli_real_escape_string($conn, $_REQUEST['efname']);
+						$lname = mysqli_real_escape_string($conn, $_REQUEST['elname']);
+						$bdate = mysqli_real_escape_string($conn, $_REQUEST['ebdate']);
+						$age = mysqli_real_escape_string($conn, $_REQUEST['eage']);
+						$sex = mysqli_real_escape_string($conn, $_REQUEST['esex']);
+						$etype = mysqli_real_escape_string($conn, $_REQUEST['etype']);
+						$jdate = mysqli_real_escape_string($conn, $_REQUEST['ejdate']);
+						$sal = mysqli_real_escape_string($conn, $_REQUEST['esal']);
+						$phno = mysqli_real_escape_string($conn, $_REQUEST['ephno']);
+						$mail = mysqli_real_escape_string($conn, $_REQUEST['e_mail']);
+						$add = mysqli_real_escape_string($conn, $_REQUEST['eadd']);
 
+						$sql = "UPDATE employee SET e_fname='$fname',e_lname='$lname',bdate='$bdate',e_age='$age',e_sex='$sex',e_type='$etype',e_jdate='$jdate',e_sal='$sal',e_phno='$phno',e_mail='$mail',e_add='$add' where e_id='$id'";
+
+						if ($conn->query($sql))
+							header("location:employee-view.php");
+						else
+							echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
+					}
+
+					?>
 				</div>
 
 
