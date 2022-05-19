@@ -1,3 +1,14 @@
+<?php
+include "config.php";
+
+if (isset($_GET['id'])) {
+	$id = $_GET['id'];
+	$qry1 = "SELECT * FROM suppliers WHERE sup_id='$id'";
+	$result = $conn->query($qry1);
+	$row = $result->fetch_row();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +30,8 @@
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="nav2.css">
+	<link rel="stylesheet" type="text/css" href="form4.css">
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -199,65 +212,160 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> SUPPLIERS LIST</h2>
+					<h2> TRANSACTION DETAILS</h2>
 				</div>
 
-				<table class="table table-bordered  table-hover">
-					<thead class="table-dark">
-						<tr>
-							<th>Supplier ID</th>
-							<th>Company Name</th>
-							<th>Address</th>
-							<th>Phone Number</th>
-							<th>Email Address</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<?php
+				<div class="form-group ">
 
-					include "config.php";
-					$sql = "SELECT sup_id,sup_name,sup_add,sup_phno,sup_mail FROM suppliers";
-					$result = $conn->query($sql);
+					<form style="padding-left: 310px;" class=" m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+						<p class="">
+							<label for="start">Start Date:</label>
+						</p>
+						<p>
+						<div style="width: 108%;" class="text-center  m-3">
+							<input style="width: 50%; height: 56px;   border: double;" class="text-center form-control" type="date" name="start">
+						</div>
+						</p>
 
-					if ($result->num_rows > 0) {
+						<p>
+							<label for="end">End Date:</label>
+						</p>
 
-						while ($row = $result->fetch_assoc()) {
+						<p>
+						<div style="width: 108%;" class="text-center  m-3">
 
-							echo "<tr>";
-							echo "<td>" . $row["sup_id"] . "</td>";
-							echo "<td>" . $row["sup_name"] . "</td>";
-							echo "<td>" . $row["sup_add"] . "</td>";
-							echo "<td>" . $row["sup_phno"] . "</td>";
-							echo "<td>" . $row["sup_mail"] . "</td>";
-							echo "<td align=center>";
-							echo "<a class='btn btn-primary mr-2' href=supplier-update.php?id=" . $row['sup_id'] . ">Edit</a>";
-							echo "<a class='btn btn-danger ml-2' href=supplier-delete.php?id=" . $row['sup_id'] . ">Delete</a>";
-							echo "</td>";
-							echo "</tr>";
-						}
-						echo "</table>";
+							<input style="width: 50%; height: 56px;   border: double;" class="text-center form-control" type="date" name="end">
+						</div>
+						</p>
+
+						<div style="width: 140%;" class="text-center float-right m-3">
+							<input class="btn btn-primary m-4 " type="submit" name="submit" value="View Records">
+						</div>
+					</form>
+
+				</div>
+				<?php
+				include "config.php";
+				if (isset($_POST['submit'])) {
+
+					$start = $_POST['start'];
+					$end = $_POST['end'];
+					$res = mysqli_query($conn, "SELECT P_AMT('$start','$end') AS PAMT") or die(mysqli_error($conn));
+					while ($row = mysqli_fetch_array($res)) {
+						$pamt = $row['PAMT'];
 					}
 
-					$conn->close();
+					$res = mysqli_query($conn, "SELECT S_AMT('$start','$end') AS SAMT;") or die(mysqli_error($conn));
+					while ($row = mysqli_fetch_array($res)) {
+						$samt = $row['SAMT'];
+					}
 
-					?>
-				</table>
+					$profit = $samt - $pamt;
+					$profits = number_format($profit, 2);
+				?>
+
+					<table class="table table-bordered  table-hover " id="table1">
+						<tr>
+							<th class="table-dark">Purchase ID</th>
+							<th class="table-dark">Supplier ID</th>
+							<th class="table-dark">Medicine ID</th>
+
+							<th class="table-dark">Quantity</th>
+							<th class="table-dark">Date of Purchase</th>
+							<th class="table-dark">Cost of Purchase(in Rs)</th>
+						</tr>
+						<?php
+						$sql = "SELECT p_id,sup_id,med_id,p_qty,p_cost,pur_date FROM purchase WHERE pur_date >= '$start' AND pur_date <= '$end';";
+						$result = $conn->query($sql);
+						if ($result->num_rows > 0) {
+
+							while ($row = $result->fetch_assoc()) {
+
+								echo "<tr>";
+								echo "<td>" . $row["p_id"] . "</td>";
+								echo "<td>" . $row["sup_id"] . "</td>";
+								echo "<td>" . $row["med_id"] . "</td>";
+								echo "<td>" . $row["p_qty"] . "</td>";
+								echo "<td>" . $row["pur_date"] . "</td>";
+								echo "<td style='color: red;'>" . $row["p_cost"] . "</td>";
+
+								echo "</tr>";
+							}
+						}
+
+						echo "<tr>";
+						echo "<td colspan=5>Total</td>";
+						echo "<td >Rs." . $pamt . "</td>";
+						echo "</tr>";
+						echo "</table>";
+						echo "</table>";
+						?>
 
 
+						<table class="table table-bordered  table-hover mt-4" id="table1" >
+							<tr>
+								<th class="table-dark">Sale ID</th>
+								<th class="table-dark">Customer ID</th>
+								<th class="table-dark">Employee ID</th>
+								<th class="table-dark">Date</th>
+								<th class="table-dark">Sale Amount(in Rs)</th>
+							</tr>
+
+							<?php
+							include "config.php";
+							$sql = "SELECT sale_id, c_id,s_date,s_time,total_amt,e_id FROM sales WHERE s_date >= '$start' AND s_date <= '$end';";
+							$result = $conn->query($sql);
+							if ($result->num_rows > 0) {
+
+								while ($row = $result->fetch_assoc()) {
+
+
+									echo "<tr>";
+									echo "<td>" . $row["sale_id"] . "</td>";
+									echo "<td>" . $row["c_id"] . "</td>";
+									echo "<td>" . $row["e_id"] . "</td>";
+									echo "<td>" . $row["s_date"] . "</td>";
+									echo "<td style='color: red;'>" . $row["total_amt"] . "</td>";
+
+									echo "</tr>";
+								}
+								echo "<tr>";
+								echo "<td colspan=4>Total</td>";
+								echo "<td style='color: red;'>Rs." . $samt . "</td>";
+								echo "</tr>";
+								echo "</table>";
+							}
+							?>
+
+							<table class="table mt-4"  id="table1" >
+								<tr style="background-color: #f2f2f2;">
+									<td>Transaction Amount </td>
+									<td style="color: red;">Rs.<?php echo $profits;
+										} ?></td>
+								</tr>
+							</table>
 
 
 			</div>
 
+		</div>
+
+
+
+
+
+
+
+
+		<div class="one row" style="margin-right:160px;">
 
 		</div>
 
-	</div>
 
 
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 <script>

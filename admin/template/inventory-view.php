@@ -202,7 +202,7 @@
 					<h2> MEDICINE INVENTORY</h2>
 				</div>
 
-				<table class="table table-bordered  table-hover">
+				<table class="table table-bordered  table-hover table-responsive">
 					<thead class="table-dark">
 						<tr>
 							<th>Medicine ID</th>
