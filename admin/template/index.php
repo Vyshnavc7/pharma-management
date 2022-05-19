@@ -247,6 +247,34 @@
                     </div>
                   </div>
                 </div>
+                
+
+              </div>
+            </div>
+
+            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
+              <div class="row flex-grow ">
+                <div class="col-lg-12 grid-margin stretch-card ">
+                  <div class="card ">
+                    <div class="card-body">
+                      <h4 class="card-title">Low Stock Alert</h4>
+                      <a href="stockreport.php" title="View Employees">
+                        <img src="images/meds/alert.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-sm-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Sales Report</h4>
+                      <a href="salesreport.php" title="View Transactions">
+                        <img src="images/meds/moneyicon.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Transactions List">
+                      </a>
+                    </div>
+                  </div>
+                </div> -->
+                
 
               </div>
             </div>

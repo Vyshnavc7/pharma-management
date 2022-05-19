@@ -1,14 +1,3 @@
-<?php
-include "config.php";
-
-if (isset($_GET['id'])) {
-	$id = $_GET['id'];
-	$qry1 = "SELECT * FROM suppliers WHERE sup_id='$id'";
-	$result = $conn->query($qry1);
-	$row = $result->fetch_row();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -212,160 +201,90 @@ if (isset($_GET['id'])) {
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> TRANSACTION DETAILS</h2>
+					<h2> ADD MEDICINE DETAILS</h2>
 				</div>
 
 				<div class="form-group ">
+					<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+						<div class="column">
+							<p>
+								<label for="sid">Supplier ID:</label><br>
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="sid">
+							</p>
+							<p>
+								<label for="sname">Supplier Company Name:</label><br>
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="sname">
+							</p>
+							<p>
+								<label for="sadd">Address:</label><br>
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="sadd">
+							</p>
 
-					<form  class=" m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-						<p class="">
-							<label for="start">Start Date:</label>
-						</p>
-						<p>
-						<div style="width: 108%;" class="text-center  m-3">
-							<input style="width: 50%; height: 56px;   border: double;" class="text-center form-control" type="date" name="start">
+
 						</div>
-						</p>
+						<div class="column">
+							<p>
+								<label for="sphno">Phone Number:</label><br>
+								<input style="width: 50%;    border: double;" class="form-control" type="number" name="sphno">
+							</p>
 
-						<p>
-							<label for="end">End Date:</label>
-						</p>
+							<p>
+								<label for="smail">Email Address </label><br>
+								<input style="width: 50%;    border: double;" class="form-control" type="text" name="smail">
+							</p>
 
-						<p>
-						<div style="width: 108%;" class="text-center  m-3">
-
-							<input style="width: 50%; height: 56px;   border: double;" class="text-center form-control" type="date" name="end">
 						</div>
-						</p>
 
-						<div style="width: 140%;" class="text-center float-right m-3">
-							<input class="btn btn-primary m-4 " type="submit" name="submit" value="View Records">
-						</div>
+
+						<input class="btn btn-primary" type="submit" name="add" value="Add Supplier">
 					</form>
-
 				</div>
 				<?php
 				include "config.php";
-				if (isset($_POST['submit'])) {
 
-					$start = $_POST['start'];
-					$end = $_POST['end'];
-					$res = mysqli_query($conn, "SELECT P_AMT('$start','$end') AS PAMT") or die(mysqli_error($conn));
-					while ($row = mysqli_fetch_array($res)) {
-						$pamt = $row['PAMT'];
+				if (isset($_POST['add'])) {
+					$id = mysqli_real_escape_string($conn, $_REQUEST['sid']);
+					$name = mysqli_real_escape_string($conn, $_REQUEST['sname']);
+					$add = mysqli_real_escape_string($conn, $_REQUEST['sadd']);
+					$phno = mysqli_real_escape_string($conn, $_REQUEST['sphno']);
+					$mail = mysqli_real_escape_string($conn, $_REQUEST['smail']);
+
+
+					$sql = "INSERT INTO suppliers VALUES ($id, '$name','$add',$phno, '$mail')";
+					if (mysqli_query($conn, $sql)) {
+						echo "<p style='font-size:8;'>Supplier details successfully added!</p>";
+					} else {
+						echo "<p style='font-size:8; color:red;'>Error! Check details.</p>";
 					}
+				}
 
-					$res = mysqli_query($conn, "SELECT S_AMT('$start','$end') AS SAMT;") or die(mysqli_error($conn));
-					while ($row = mysqli_fetch_array($res)) {
-						$samt = $row['SAMT'];
-					}
-
-					$profit = $samt - $pamt;
-					$profits = number_format($profit, 2);
+				$conn->close();
 				?>
-
-					<table class="table table-bordered  table-hover " id="table1">
-						<tr>
-							<th class="table-dark">Purchase ID</th>
-							<th class="table-dark">Supplier ID</th>
-							<th class="table-dark">Medicine ID</th>
-
-							<th class="table-dark">Quantity</th>
-							<th class="table-dark">Date of Purchase</th>
-							<th class="table-dark">Cost of Purchase(in Rs)</th>
-						</tr>
-						<?php
-						$sql = "SELECT p_id,sup_id,med_id,p_qty,p_cost,pur_date FROM purchase WHERE pur_date >= '$start' AND pur_date <= '$end';";
-						$result = $conn->query($sql);
-						if ($result->num_rows > 0) {
-
-							while ($row = $result->fetch_assoc()) {
-
-								echo "<tr>";
-								echo "<td>" . $row["p_id"] . "</td>";
-								echo "<td>" . $row["sup_id"] . "</td>";
-								echo "<td>" . $row["med_id"] . "</td>";
-								echo "<td>" . $row["p_qty"] . "</td>";
-								echo "<td>" . $row["pur_date"] . "</td>";
-								echo "<td style='color: red;'>" . $row["p_cost"] . "</td>";
-
-								echo "</tr>";
-							}
-						}
-
-						echo "<tr>";
-						echo "<td colspan=5>Total</td>";
-						echo "<td >Rs." . $pamt . "</td>";
-						echo "</tr>";
-						echo "</table>";
-						echo "</table>";
-						?>
-
-
-						<table class="table table-bordered  table-hover mt-4" id="table1" >
-							<tr>
-								<th class="table-dark">Sale ID</th>
-								<th class="table-dark">Customer ID</th>
-								<th class="table-dark">Employee ID</th>
-								<th class="table-dark">Date</th>
-								<th class="table-dark">Sale Amount(in Rs)</th>
-							</tr>
-
-							<?php
-							include "config.php";
-							$sql = "SELECT sale_id, c_id,s_date,s_time,total_amt,e_id FROM sales WHERE s_date >= '$start' AND s_date <= '$end';";
-							$result = $conn->query($sql);
-							if ($result->num_rows > 0) {
-
-								while ($row = $result->fetch_assoc()) {
-
-
-									echo "<tr>";
-									echo "<td>" . $row["sale_id"] . "</td>";
-									echo "<td>" . $row["c_id"] . "</td>";
-									echo "<td>" . $row["e_id"] . "</td>";
-									echo "<td>" . $row["s_date"] . "</td>";
-									echo "<td style='color: red;'>" . $row["total_amt"] . "</td>";
-
-									echo "</tr>";
-								}
-								echo "<tr>";
-								echo "<td colspan=4>Total</td>";
-								echo "<td style='color: red;'>Rs." . $samt . "</td>";
-								echo "</tr>";
-								echo "</table>";
-							}
-							?>
-
-							<table class="table mt-4"  id="table1" >
-								<tr style="background-color: #f2f2f2;">
-									<td>Transaction Amount </td>
-									<td style="color: red;">Rs.<?php echo $profits;
-										} ?></td>
-								</tr>
-							</table>
 
 
 			</div>
 
-		</div>
-
-
-
-
-
-
-
-
-		<div class="one row" style="margin-right:160px;">
 
 		</div>
 
+	</div>
 
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+
+
+	<div class="one row" style="margin-right:160px;">
+
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 <script>
