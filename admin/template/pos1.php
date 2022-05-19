@@ -41,7 +41,9 @@
 					<span class="icon-menu"></span>
 				</button>
 				<strong>
-					<p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p>
+					<a href="index.php">
+						<p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p>
+					</a>
 				</strong>
 
 
@@ -127,8 +129,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Purchase</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Purchase</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="purchase-add.php">Add New Purchase</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="purchase-view.php">Manage Purchase</a></li>
 							</ul>
 						</div>
 					</li>
@@ -140,8 +142,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Employees</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Employees</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-add.php">Add New Employees</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-view.php">Manage Employees</a></li>
 							</ul>
 						</div>
 					</li>
@@ -153,8 +155,8 @@
 						</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/buttons.html">Add New Customers</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/ui-features/typography.html">Manage Customers</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-add.php">Add New Customers</a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-view.php">Manage Customers</a></li>
 							</ul>
 						</div>
 					</li>
@@ -185,9 +187,9 @@
 						</a>
 						<div class="collapse" id="auth">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login.html">Medicine:Low stock </a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/login-2.html"> Medicine Expiry </a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="pages/samples/register.html"> Transaction Report </a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="stockreport.php">Medicine:Low stock </a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="expiryreport.php"> Medicine Expiry </a></li>
+								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="salesreport.php"> Transaction Report </a></li>
 
 							</ul>
 						</div>
@@ -206,7 +208,7 @@
 						<center>
 
 							<select class="form-select" id="cid" name="cid">
-								<option  value="0" selected="selected">*Select Customer ID (only once for a customer's sales)</option>
+								<option value="0" selected="selected">*Select Customer ID (only once for a customer's sales)</option>
 								<?php
 
 								include "config.php";
@@ -256,7 +258,7 @@
 					<center>
 						<form method="post">
 							<select class="form-select" id="med" name="med">
-								<option  value="0" selected="selected">Select Medicine</option>
+								<option value="0" selected="selected">Select Medicine</option>
 
 
 								<?php
@@ -290,68 +292,68 @@
 
 				<div class="form3">
 					<center>
-					<form class="form-group" method="post">
-						<div class="column">
+						<form class="form-group" method="post">
+							<div class="column">
 
-							<label for="medid">Medicine ID:</label>
-							<input style="width: 50%;" class="form-control" type="number" name="medid" value="<?php echo $row4[0]; ?>" readonly><br><br>
+								<label for="medid">Medicine ID:</label>
+								<input style="width: 50%;" class="form-control" type="number" name="medid" value="<?php echo $row4[0]; ?>" readonly><br><br>
 
-							<label for="mdname">Medicine Name:</label>
-							<input class="form-control" style="width: 50%;" style="width: 50%;" type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
+								<label for="mdname">Medicine Name:</label>
+								<input class="form-control" style="width: 50%;" style="width: 50%;" type="text" name="mdname" value="<?php echo $row4[1]; ?>" readonly><br><br>
 
-						</div>
-						<div class="column">
+							</div>
+							<div class="column">
 
-							<label for="mcat">Category:</label>
-							<input style="width: 50%;" class="form-control" type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
+								<label for="mcat">Category:</label>
+								<input style="width: 50%;" class="form-control" type="text" name="mcat" value="<?php echo $row4[3]; ?>" readonly><br><br>
 
-							<label for="mloc">Location:</label>
-							<input class="form-control" style="width: 50%;" type="text" name="mloc" value="<?php echo $row4[5]; ?>" readonly><br><br>
+								<label for="mloc">Location:</label>
+								<input class="form-control" style="width: 50%;" type="text" name="mloc" value="<?php echo $row4[5]; ?>" readonly><br><br>
 
-						</div>
-						<div class="column">
+							</div>
+							<div class="column">
 
-							<label for="mqty">Quantity Available:</label>
-							<input style="width: 50%;" class="form-control" type="number" name="mqty" value="<?php echo $row4[2]; ?>" readonly><br><br>
+								<label for="mqty">Quantity Available:</label>
+								<input style="width: 50%;" class="form-control" type="number" name="mqty" value="<?php echo $row4[2]; ?>" readonly><br><br>
 
-							<label for="mprice">Price of One Unit:</label>
-							<input style="width: 50%;" class="form-control" type="number" name="mprice" value="<?php echo $row4[4]; ?>" readonly><br><br>
+								<label for="mprice">Price of One Unit:</label>
+								<input style="width: 50%;" class="form-control" type="number" name="mprice" value="<?php echo $row4[4]; ?>" readonly><br><br>
 
-						</div>
-						<label for="mcqty">Quantity Required:</label>
-						<input style="width: 50%;" class="form-control" type="number" name="mcqty">
-						&nbsp;&nbsp;&nbsp;
-						<input class="btn btn-primary mt-3" type="submit" name="add" value="Add Medicine">&nbsp;&nbsp;&nbsp;
+							</div>
+							<label for="mcqty">Quantity Required:</label>
+							<input style="width: 50%;" class="form-control" type="number" name="mcqty">
+							&nbsp;&nbsp;&nbsp;
+							<input class="btn btn-primary mt-3" type="submit" name="add" value="Add Medicine">&nbsp;&nbsp;&nbsp;
 
-						<?php
+							<?php
 
-						if (isset($_POST['add'])) {
+							if (isset($_POST['add'])) {
 
-							$qry5 = "select sale_id from sales ORDER BY sale_id DESC LIMIT 1";
-							$result5 = $conn->query($qry5);
-							$row5 = $result5->fetch_row();
-							$sid = $row5[0];
-							echo mysqli_error($conn);
-
-							$mid = $_POST['medid'];
-							$aqty = $_POST['mqty'];
-							$qty = $_POST['mcqty'];
-
-							if ($qty > $aqty || $qty == 0) {
-								echo "QUANTITY INVALID!";
-							} else {
-								$price = $_POST['mprice'] * $qty;
-								$qry6 = "INSERT INTO sales_items(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
-								$result6 = mysqli_query($conn, $qry6);
+								$qry5 = "select sale_id from sales ORDER BY sale_id DESC LIMIT 1";
+								$result5 = $conn->query($qry5);
+								$row5 = $result5->fetch_row();
+								$sid = $row5[0];
 								echo mysqli_error($conn);
 
-								echo "<br><br> <center>";
-								echo "<a class='button1 view-btn' href=pos2.php?sid=" . $sid . ">View Order</a>";
-								echo "</center>";
+								$mid = $_POST['medid'];
+								$aqty = $_POST['mqty'];
+								$qty = $_POST['mcqty'];
+
+								if ($qty > $aqty || $qty == 0) {
+									echo "QUANTITY INVALID!";
+								} else {
+									$price = $_POST['mprice'] * $qty;
+									$qry6 = "INSERT INTO sales_items(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
+									$result6 = mysqli_query($conn, $qry6);
+									echo mysqli_error($conn);
+
+									echo "<br><br> <center>";
+									echo "<a class='button1 view-btn' href=pos2.php?sid=" . $sid . ">View Order</a>";
+									echo "</center>";
+								}
 							}
-						}
-						?>
-					</form>
+							?>
+						</form>
 					</center>
 				</div>
 			</div>
@@ -360,18 +362,6 @@
 		</div>
 
 	</div>
-
-
-
-
-
-
-
-
-	<div class="one row" style="margin-right:160px;">
-
-	</div>
-
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
