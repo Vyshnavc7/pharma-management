@@ -36,6 +36,7 @@ function filtertable($query)
 	<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars-o.css">
 	<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
@@ -79,11 +80,17 @@ function filtertable($query)
 				<div style="width: 100%;height: 60px;padding-top: 5px; " class="mt-3 text-center">
 					<h2>CUSTOMERS LIST</h2>
 				</div>
-				<form method="post">
-					<input type="text" name="valuetosearch" placeholder="Enter any value to Search" style="width:400px; margin-left:250px;">&nbsp;&nbsp;&nbsp;
-					<input type="submit" name="search" value="Search">
-					<br><br>
+				<form class="form-group m-4 " method="post">
+				<div class="input-group rounded m-4" style="width: 50%;">
+					<input  type="text" name="valuetosearch" class="form-control rounded" placeholder="Enter any value to Search"  />
+					<input class="btn btn-primary m-2" type="submit" name="search" value="Search">
+				</div>
 				</form>
+				<!-- <form class="form-group" method="post">
+					<input type="text" name="valuetosearch" placeholder="Enter any value to Search" style="width:400px; margin-left:250px;">&nbsp;&nbsp;&nbsp;
+					<input class="btn btn-primary" type="submit" name="search" value="Search">
+					<br><br>
+				</form> -->
 
 				<table class="table table-bordered  table-hover">
 					<thead class="table-dark">
@@ -91,7 +98,6 @@ function filtertable($query)
 							<th>Customer ID</th>
 							<th>First Name</th>
 							<th>Last Name</th>
-
 							<th>Phone Number</th>
 						</tr>
 					</thead>
@@ -108,11 +114,17 @@ function filtertable($query)
 							echo "</tr>";
 						}
 						echo "</table>";
+					}else{
+						
+						echo "<td>0";
+						echo "<td>No such record/Customer";
+						echo "<td>0";
+						echo "<td>0";
 					}
 
 					$conn->close();
 					?>
-					<?php include('includes/footerr.php'); ?>
+					
 			</div>
 
 
