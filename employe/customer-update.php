@@ -27,11 +27,11 @@ if (isset($_GET['id'])) {
 	<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars-o.css">
 	<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="nav2.css">
-	<link rel="stylesheet" type="text/css" href="form4.css">
+
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -42,172 +42,25 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
+	<?php
+
+	include "config.php";
+	session_start();
+
+	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_row();
+
+	$ename = $row[0];
+
+	?>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
-		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-			<div style="background-color: #3b3a3a;" class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-				<a style="color:  white;" class="navbar-brand brand-logo" href="#">PHARMA</a>
-				<a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo" /></a>
-			</div>
-			<div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-				<button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-					<span class="icon-menu"></span>
-				</button>
-				<strong>
-				<a href="index.php"><p class="mb-0 font-weight-normal float-left dropdown-header"> ADMIN DASHBOARD</p></a>	
-				</strong>
-
-
-				<ul class="navbar-nav navbar-nav-right">
-
-
-					<li class="nav-item dropdown d-flex mr-4 ">
-						<a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-							<i class="icon-cog"></i>
-
-						</a>
-						<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-							<p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-							<a class="dropdown-item preview-item">
-								<i class="icon-head"></i> Profile
-							</a>
-							<a href="logout.php" class="dropdown-item preview-item">
-								<i class="icon-inbox"></i> Logout
-							</a>
-						</div>
-					</li>
-
-				</ul>
-				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-					<span class="icon-menu"></span>
-				</button>
-			</div>
-		</nav>
+		<?php include('includes/header.php'); ?>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper">
+		<div class="container-fluid page-body-wrapper" style="padding-left: 0px;">
 			<!-- partial:partials/_sidebar.html -->
-			<nav style="background-color: #3b3a3a;margin-left: -15px;" class="sidebar sidebar-offcanvas" id="sidebar">
-				<div class="user-profile">
-					<div class="user-image">
-						<img src="images/faces/pharm1.png">
-					</div>
-					<div class="user-name">
-						Pharma Management
-					</div>
-					<div class="user-designation">
-						Admin
-					</div>
-				</div>
-				<ul class="nav">
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" href="index.php">
-							<i class="icon-box menu-icon"></i>
-							<span class="menu-title">Dashboard</span>
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-							<i class="icon-disc menu-icon"></i>
-							<span class="menu-title">Inventory</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="ui-basic">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="inventory-add.php">Add New Medicine</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="inventory-view.php">Manage Inventory</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-							<i class="icon-disc menu-icon"></i>
-							<span class="menu-title">Suppliers</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="ui-basic">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="supplier-add.php">Add New Supplier</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="supplier-view.php">Manage Suppliers</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-							<i class="icon-disc menu-icon"></i>
-							<span class="menu-title">Stock Purchase</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="ui-basic">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="purchase-add.php">Add New Purchase</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="purchase-view.php">Manage Purchase</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-							<i class="icon-disc menu-icon"></i>
-							<span class="menu-title">Employees</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="ui-basic">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-add.php">Add New Employees</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="employee-view.php">Manage Employees</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-							<i class="icon-disc menu-icon"></i>
-							<span class="menu-title">Customers</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="ui-basic">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-add.php">Add New Customers</a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-view.php">Manage Customers</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" href="sales-view.php">
-							<i class="icon-file menu-icon"></i>
-							<span class="menu-title">Sales Invoice Details</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" href="salesitems-view.php">
-							<i class="icon-pie-graph menu-icon"></i>
-							<span class="menu-title">Sold Products Details</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" href="pos1.php">
-							<i class="icon-command menu-icon"></i>
-							<span class="menu-title">Add New Sale</span>
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-							<i class="icon-head menu-icon"></i>
-							<span class="menu-title">Reports</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="collapse" id="auth">
-							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="stockreport.php">Medicine:Low stock </a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="expiryreport.php"> Medicine Expiry </a></li>
-								<li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="salesreport.php"> Transaction Report </a></li>
-
-							</ul>
-						</div>
-
-					</li>
-				</ul>
-			</nav>
+			<?php include('includes/leftbar.php'); ?>
 			<!-- partial -->
 
 			<div class="container">
@@ -265,7 +118,7 @@ if (isset($_GET['id'])) {
 
 						</div>
 						<div style="float: left;width: 50%;" class="column">
-							
+
 
 							<p>
 								<label for="sex">Sex: </label><br>
@@ -333,4 +186,5 @@ if (isset($_GET['id'])) {
 <!-- Custom js for this page-->
 <script src="js/dashboard.js"></script>
 <!-- End custom js for this page-->
+
 </html>
