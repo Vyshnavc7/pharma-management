@@ -1,3 +1,23 @@
+<?php
+
+if (isset($_POST['search'])) {
+
+	$search = $_POST['valuetosearch'];
+	$query = "SELECT c_id, c_fname,c_lname,c_phno FROM `customer` 
+			WHERE CONCAT(c_id, c_fname,c_lname,c_phno) LIKE '%" . $search . "%';";
+	$search_result = filtertable($query);
+} else {
+	$query = "SELECT c_id, c_fname,c_lname,c_phno FROM `customer`";
+	$search_result = filtertable($query);
+}
+
+function filtertable($query)
+{
+	$conn = mysqli_connect("localhost", "root", "", "pharmacy");
+	$filter_result = mysqli_query($conn, $query);
+	return $filter_result;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,6 +79,11 @@
 				<div style="width: 100%;height: 60px;padding-top: 5px; " class="mt-3 text-center">
 					<h2>CUSTOMERS LIST</h2>
 				</div>
+				<form method="post">
+					<input type="text" name="valuetosearch" placeholder="Enter any value to Search" style="width:400px; margin-left:250px;">&nbsp;&nbsp;&nbsp;
+					<input type="submit" name="search" value="Search">
+					<br><br>
+				</form>
 
 				<table class="table table-bordered  table-hover">
 					<thead class="table-dark">
@@ -66,34 +91,20 @@
 							<th>Customer ID</th>
 							<th>First Name</th>
 							<th>Last Name</th>
-							<th>Age</th>
-							<th>Sex</th>
+
 							<th>Phone Number</th>
-							<th>Email Address</th>
-							<th>Action</th>
 						</tr>
 					</thead>
 					<?php
 
-					include "config.php";
-					$sql = "SELECT c_id,c_fname,c_lname,c_age,c_sex,c_phno,c_mail FROM customer";
-					$result = $conn->query($sql);
-					if ($result->num_rows > 0) {
-
-						while ($row = $result->fetch_assoc()) {
+					if ($search_result->num_rows > 0) {
+						while ($row = $search_result->fetch_assoc()) {
 
 							echo "<tr>";
 							echo "<td>" . $row["c_id"] . "</td>";
 							echo "<td>" . $row["c_fname"] . "</td>";
 							echo "<td>" . $row["c_lname"] . "</td>";
-							echo "<td>" . $row["c_age"] . "</td>";
-							echo "<td>" . $row["c_sex"] . "</td>";
 							echo "<td>" . $row["c_phno"] . "</td>";
-							echo "<td>" . $row["c_mail"] . "</td>";
-							echo "<td align=center>";
-							echo "<a class='btn btn-primary m-3' href=customer-update.php?id=" . $row['c_id'] . ">Edit</a>";
-							// echo "<a onclick='return confirm('Are you sure to delete?');' class='btn btn-danger' href=customer-delete.php?id=" . $row['c_id'] . ">Delete</a>";
-							echo "</td>";
 							echo "</tr>";
 						}
 						echo "</table>";
@@ -101,12 +112,12 @@
 
 					$conn->close();
 					?>
-<?php include('includes/footerr.php'); ?>
+					<?php include('includes/footerr.php'); ?>
 			</div>
-			
+
 
 		</div>
-		
+
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
