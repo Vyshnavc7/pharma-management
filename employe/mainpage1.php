@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../login1.css">
+<link rel="stylesheet" type="text/css" href="css//login1.css">
 <link rel="stylesheet" type="text/css" href="../header.css">
 <title>
 Pharma
@@ -58,7 +58,7 @@ Pharma
 				
 		if(isset($_POST['psubmit']))
 		{
-			header("location:../../admin/mainpage.php");
+			header("location:../admin/mainpage.php");
 		}
 	?>
 
