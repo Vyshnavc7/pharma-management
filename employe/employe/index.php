@@ -26,112 +26,15 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div style="background-color: #3b3a3a;" class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a style="color:  white;" class="navbar-brand brand-logo" href="#">PHARMA</a>
-        <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo-mini.svg" alt="logo" /></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="icon-menu"></span>
-        </button>
-        <strong>
-        <a href="index.php"><p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST DASHBOARD</p></a>
-        </strong>
-
-
-        <ul class="navbar-nav navbar-nav-right">
-
-
-          <li class="nav-item dropdown d-flex mr-4 ">
-            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-cog"></i>
-
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-              <a class="dropdown-item preview-item">
-                <i class="icon-head"></i> Profile
-              </a>
-              <a href="logout.php" class="dropdown-item preview-item">
-                <i class="icon-inbox"></i> Logout
-              </a>
-            </div>
-          </li>
-
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="icon-menu"></span>
-        </button>
-      </div>
-    </nav>
+    <!-- header -->
+    <?php include('includes/header.php');?>
+    <!-- header ends -->
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav style="background-color: #3b3a3a;" class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="user-profile">
-          <div class="user-image">
-            <img src="images/faces/pharm1.png">
-          </div>
-          <div class="user-name">
-            Pharma Management
-          </div>
-          <div class="user-designation">
-          PHARMACIST
-          </div>
-        </div>
-        <ul class="nav">
-          <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="index.php">
-              <i class="icon-box menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-
-          
-          <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="sales-view.php">
-              <i class="icon-file menu-icon"></i>
-              <span class="menu-title">View Inventory</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="salesitems-view.php">
-              <i class="icon-pie-graph menu-icon"></i>
-              <span class="menu-title">Sold Products Details</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="pos1.php">
-              <i class="icon-command menu-icon"></i>
-              <span class="menu-title">Add New Sale</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" href="expiryreport.php">
-              <i class="icon-file menu-icon"></i>
-              <span class="menu-title">Medicine Expiry</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">CUSTOMERS</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="stockreport.php">ADD NEW </a></li>
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="expiryreport.php"> VIEW THEM </a></li>
-                
-
-              </ul>
-            </div>
-
-          </li>
-        </ul>
-      </nav>
+      <!-- sidebar -->
+      <?php include('includes/leftbar.php');?>
+      <!-- sidebar ends -->
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">

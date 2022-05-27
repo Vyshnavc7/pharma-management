@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -212,12 +213,12 @@
 								<?php
 
 								include "config.php";
-								$qry = "SELECT c_id FROM customer";
+								$qry = "SELECT c_id,c_fname FROM customer";
 								$result = $conn->query($qry);
 								echo mysqli_error($conn);
 								if ($result->num_rows > 0) {
 									while ($row = $result->fetch_assoc()) {
-										echo "<option>" . $row["c_id"] . "</option>";
+										echo "<option>" . $row["c_id"] . " - Name: " . $row["c_fname"].  "</option>";
 									}
 								}
 								?>
@@ -230,13 +231,13 @@
 
 					<?php
 
-					session_start();
+					
 
 					$qry1 = "SELECT id from admin where a_username='$_SESSION[user]'";
 					$result1 = $conn->query($qry1);
 					$row1 = $result1->fetch_row();
 					$eid = $row1[0];
-
+					echo($eid);
 					if (isset($_GET['sid'])) {
 						$sid = $_GET['sid'];
 					}
