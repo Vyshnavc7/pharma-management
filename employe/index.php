@@ -21,99 +21,114 @@
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
   <?php
 
   include "config.php";
+  error_reporting(0);
   session_start();
 
   $sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
   $result = $conn->query($sql);
   $row = $result->fetch_row();
-
   $ename = $row[0];
 
   ?>
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <!-- header -->
-    <?php include('includes/header.php'); ?>
-    <!-- header ends -->
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <!-- sidebar -->
-      <?php include('includes/leftbar.php'); ?>
-      <!-- sidebar ends -->
+
+
+
+  <?php
+  if ($ename) {
+  ?>
+    <div class="container-scroller">
+    <?php
+  } else {
+    ?>
+      <div style="display: none;" class="container-scroller">
+      <?php
+    } ?>
+
+
+      <!-- partial:partials/_navbar.html -->
+      <!-- header -->
+      <?php include('includes/header.php'); ?>
+      <!-- header ends -->
       <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-sm-12 mb-4 mb-xl-0">
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <!-- sidebar -->
+        <?php include('includes/leftbar.php'); ?>
+        <!-- sidebar ends -->
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-sm-12 mb-4 mb-xl-0">
 
-              <h4 class="font-weight-bold text-dark">Hi, welcome back! <?php echo $ename; ?></h4>
-              <a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
-              <div class="row flex-grow">
-                <div class="col-sm-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">New Sale</h4>
-                      <a href="pos1.php" title="Add New Sale">
-                        <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/carticon1.png" alt="Add New Sale">
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Medicine Inventory</h4>
-                      <a href="pharm-inventory.php" title="View Inventory">
-                        <img src="images/meds/inventory.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Inventory">
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
+                <h4 class="font-weight-bold text-dark">Hi, welcome back! <?php echo $ename; ?></h4>
+                <a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
               </div>
             </div>
-            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
-              <div class="row flex-grow ">
-                <div class="col-sm-12 grid-margin ">
-                  <div class="card ">
-                    <div class="card-body">
-                      <h4 class="card-title">Sold Product details</h4>
-                      <a href="salesitems-view.php" title="View Employees">
-                        <img src="images/meds/emp.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
-                      </a>
+            <div class="row mt-3">
+              <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
+                <div class="row flex-grow">
+                  <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">New Sale</h4>
+                        <a href="pos1.php" title="Add New Sale">
+                          <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/carticon1.png" alt="Add New Sale">
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-12 grid-margin stretch-card ">
-                  <div class="card ">
-                    <div class="card-body">
-                      <h4 class="card-title">Low Stock Alert</h4>
-                      <a href="stockreport.php" title="View Employees">
-                        <img src="images/meds/alert.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
-                      </a>
+                  <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Medicine Inventory</h4>
+                        <a href="pharm-inventory.php" title="View Inventory">
+                          <img src="images/meds/inventory.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Inventory">
+                        </a>
+                      </div>
                     </div>
                   </div>
+
                 </div>
-
-
               </div>
-            </div>
+              <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
+                <div class="row flex-grow ">
+                  <div class="col-sm-12 grid-margin ">
+                    <div class="card ">
+                      <div class="card-body">
+                        <h4 class="card-title">Sold Product details</h4>
+                        <a href="salesitems-view.php" title="View Employees">
+                          <img src="images/meds/emp.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 grid-margin stretch-card ">
+                    <div class="card ">
+                      <div class="card-body">
+                        <h4 class="card-title">Low Stock Alert</h4>
+                        <a href="stockreport.php" title="View Employees">
+                          <img src="images/meds/alert.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
 
-            <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
-              <div class="row flex-grow ">
 
-                <!-- <div class="col-sm-12 grid-margin stretch-card">
+                </div>
+              </div>
+
+              <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
+                <div class="row flex-grow ">
+
+                  <!-- <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Sales Report</h4>
@@ -125,13 +140,13 @@
                 </div> -->
 
 
+                </div>
               </div>
+
             </div>
 
-          </div>
 
-
-          <!-- <div class="row">
+            <!-- <div class="row">
             <div class="col-xl-9 grid-margin-lg-0 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -449,35 +464,60 @@
               </div>
             </div>
           </div> -->
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <?php include('includes/footerr.php'); ?>
+          <!-- partial -->
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <?php include('includes/footerr.php'); ?>
-        <!-- partial -->
+        <!-- main-panel ends -->
       </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+      <!-- page-body-wrapper ends -->
+      </div>
+      <!-- container-scroller -->
+      <?php
+      if (!$ename) {
+      ?>
+        <div class="container  ">
 
-  <!-- base:js -->
-  <script src="vendors/base/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <!-- endinject -->
-  <!-- plugin js for this page -->
-  <script src="vendors/chart.js/Chart.min.js"></script>
-  <script src="vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-  <!-- End plugin js for this page -->
-  <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <!-- End custom js for this page-->
+          <div class="row " style="height: 700px; ">
+            <div class="col-md-12 text-center" style="padding-top: 239px;">
+              <h2>PLEASE LOGIN INTO THE ACCOUNT</h2>
+              <a href="mainpage1.php"> <button class="btn btn-primary">LOGIN</button></a>
+
+              
+            </div>
+
+          </div>
+
+
+        </div>
+
+      <?php
+      }
+      ?>
+
+
+      <!-- base:js -->
+      <script src="vendors/base/vendor.bundle.base.js"></script>
+      <!-- endinject -->
+      <!-- Plugin js for this page-->
+      <!-- End plugin js for this page-->
+      <!-- inject:js -->
+      <script src="js/off-canvas.js"></script>
+      <script src="js/hoverable-collapse.js"></script>
+      <script src="js/template.js"></script>
+      <!-- endinject -->
+      <!-- plugin js for this page -->
+      <script src="vendors/chart.js/Chart.min.js"></script>
+      <script src="vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+      <!-- End plugin js for this page -->
+      <!-- Custom js for this page-->
+      <script src="js/dashboard.js"></script>
+      <!-- End custom js for this page-->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 <script>
   var dropdown = document.getElementsByClassName("dropdown-btn");

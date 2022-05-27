@@ -24,6 +24,17 @@
 </head>
 
 <body>
+  <?php
+
+  include "config.php";
+  session_start();
+
+  $sql = "SELECT A_USERNAME from admin WHERE ID='$_SESSION[user]'";
+  $result = $conn->query($sql);
+  $row = $result->fetch_row();
+  $ename = $row;
+  
+  ?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php include('includes/mainheader.php'); ?>
@@ -36,14 +47,15 @@
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
 
+              <h4 class="font-weight-bold text-dark">Hi, welcome <?php echo $ename; ?></h4>
+              <a href="logout.php">Logout(signed in as <?php echo $ename; ?>)</a>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
               <div class="row flex-grow">
-              <div class="col-sm-12 grid-margin stretch-card ">
+                <div class="col-sm-12 grid-margin stretch-card ">
                   <div class="card ">
                     <div class="card-body">
                       <h4 class="card-title">Manage Employees</h4>
@@ -53,7 +65,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
@@ -69,7 +81,7 @@
             </div>
             <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
               <div class="row flex-grow ">
-                
+
                 <div class="col-lg-12 grid-margin stretch-card ">
                   <div class="card ">
                     <div class="card-body">

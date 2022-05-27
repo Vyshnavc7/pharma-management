@@ -49,8 +49,9 @@
 						if (!$row) {
 							echo "<p style='color:red;padding-top: 50px;'>Invalid username or password!</p>";
 						} else {
+							$emp=$row;
 							session_start();
-							$_SESSION['user'] = $uname;
+							$_SESSION['user'] = $emp;
 							header('location:index.php');
 						}
 					}
