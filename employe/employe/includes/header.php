@@ -8,7 +8,7 @@
           <span class="icon-menu"></span>
         </button>
         <strong>
-        <a href="index.php"><p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST DASHBOARD</p></a>
+        <a href="index.php"><p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST <?php echo $ename; ?> DASHBOARD</p></a>
         </strong>
 
 

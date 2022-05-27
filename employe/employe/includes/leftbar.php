@@ -52,8 +52,8 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="stockreport.php">ADD NEW </a></li>
-                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="expiryreport.php"> VIEW THEM </a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="../../employe/employe/customer-add.php">ADD NEW </a></li>
+                <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="../../employe/employe/customer-view.php"> VIEW THEM </a></li>
                 
 
               </ul>
