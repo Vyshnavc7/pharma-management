@@ -74,7 +74,7 @@
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Medicine Inventory</h4>
-                      <a href="inventory-view.php" title="View Inventory">
+                      <a href="pharm-inventory.php" title="View Inventory">
                         <img src="images/meds/inventory.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Inventory">
                       </a>
                     </div>

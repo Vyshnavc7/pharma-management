@@ -46,18 +46,18 @@ function filtertable($query)
 </head>
 
 <body>
-<?php
+  <?php
 
-include "config.php";
-session_start();
+  include "config.php";
+  session_start();
 
-$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-$result1 = $conn->query($sql1);
-$row1 = $result1->fetch_row();
+  $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+  $result1 = $conn->query($sql1);
+  $row1 = $result1->fetch_row();
 
-$ename = $row1[0];
+  $ename = $row1[0];
 
-?>
+  ?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <!-- header -->
@@ -74,14 +74,15 @@ $ename = $row1[0];
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
 
+              <h4 class="font-weight-bold text-dark">Hi, <?php echo $ename; ?></h4>
+              <a href="logout1.php">Logout(<?php echo $ename; ?>)</a>
             </div>
           </div>
           <div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
             <h2> MEDICINE INVENTORY</h2>
           </div>
-          
+
           <table class="table table-bordered  table-hover ">
             <thead class="table-dark">
               <tr>
@@ -149,22 +150,20 @@ $ename = $row1[0];
 </body>
 
 <script>
-	
-		var dropdown = document.getElementsByClassName("dropdown-btn");
-		var i;
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
 
-			for (i = 0; i < dropdown.length; i++) {
-			  dropdown[i].addEventListener("click", function() {
-			  this.classList.toggle("active");
-			  var dropdownContent = this.nextElementSibling;
-			  if (dropdownContent.style.display === "block") {
-			  dropdownContent.style.display = "none";
-			  } else {
-			  dropdownContent.style.display = "block";
-			  }
-			  });
-			}
-			
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
 </script>
 
 </html>
