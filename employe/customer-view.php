@@ -112,10 +112,10 @@ function filtertable($query)
 							echo "<td>" . $row["c_fname"] . "</td>";
 							echo "<td>" . $row["c_lname"] . "</td>";
 							echo "<td>" . $row["c_phno"] . "</td>";
-							echo "<td";
-							echo "<a class='btn btn-primary m-3' href=customer-update.php?id=" . $row['c_id'] . ">Edit</a>";
-							
+							echo "<td align=center>";
+							echo "<a class='btn btn-primary mr-2' href=customer-update.php?id=" . $row['c_id'] . ">Edit</a>";
 							echo "</td>";
+							
 							echo "</tr>";
 						}
 						echo "</table>";

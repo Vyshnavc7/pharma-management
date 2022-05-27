@@ -24,17 +24,7 @@
 </head>
 
 <body>
-  <?php
-
-  include "config.php";
-  session_start();
-
-  $sql = "SELECT A_USERNAME from admin WHERE ID='$_SESSION[user]'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_row();
-  $ename = $row;
   
-  ?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php include('includes/mainheader.php'); ?>
@@ -48,8 +38,8 @@
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
 
-              <h4 class="font-weight-bold text-dark">Hi, welcome <?php echo $ename; ?></h4>
-              <a href="logout.php">Logout(signed in as <?php echo $ename; ?>)</a>
+              <h4 class="font-weight-bold text-dark">Hi, welcome ADMIN</h4>
+              <a href="logout.php">Logout(signed in as ADMIN)</a>
             </div>
           </div>
           <div class="row mt-3">

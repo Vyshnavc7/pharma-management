@@ -12,9 +12,15 @@
                 <p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST <strong > <?php echo $ename; ?> </strong> DASHBOARD</p>
             </a>
         </strong>
+        <div style="width: 65%;" class="text-right">
+            <a href="profile.php"><button class="btn btn-link ">Profile</button></a>
+            <a href=""><button class="btn btn-link ">view orders</button></a>
+        </div>
+
+        
 
 
-        <ul class="navbar-nav navbar-nav-right">
+        <!-- <ul class="navbar-nav navbar-nav-right">
 
 
             <li class="nav-item dropdown d-flex mr-4 ">
@@ -33,7 +39,7 @@
                 </div>
             </li>
 
-        </ul>
+        </ul> -->
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
         </button>
