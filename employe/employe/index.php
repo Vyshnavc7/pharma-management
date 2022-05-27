@@ -24,24 +24,37 @@
 </head>
 
 <body>
+  <?php
+
+  include "config.php";
+  session_start();
+
+  $sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+  $result = $conn->query($sql);
+  $row = $result->fetch_row();
+
+  $ename = $row[0];
+
+  ?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <!-- header -->
-    <?php include('includes/header.php');?>
+    <?php include('includes/header.php'); ?>
     <!-- header ends -->
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
       <!-- sidebar -->
-      <?php include('includes/leftbar.php');?>
+      <?php include('includes/leftbar.php'); ?>
       <!-- sidebar ends -->
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark">Hi, welcome back!</h4>
 
+              <h4 class="font-weight-bold text-dark">Hi, welcome back! <?php echo $ename; ?></h4>
+              <a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
             </div>
           </div>
           <div class="row mt-3">
@@ -99,7 +112,7 @@
 
             <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
               <div class="row flex-grow ">
-                
+
                 <!-- <div class="col-sm-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
@@ -439,13 +452,7 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between ">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Pharma
-              2022</span>
-
-          </div>
-        </footer>
+        <?php include('includes/footerr.php'); ?>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -472,5 +479,21 @@
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
+<script>
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
+</script>
 
 </html>

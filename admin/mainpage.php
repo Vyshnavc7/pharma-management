@@ -2,7 +2,7 @@
 <html>
 
 <link rel="stylesheet" type="text/css" href="css/login1.css">
-<link rel="stylesheet" type="text/css" href="css/header.css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <head>
@@ -57,7 +57,7 @@
 				}
 
 				if (isset($_POST['psubmit'])) {
-					header("location:../employe/mainpage1.php");
+					header("location:../employe/employe/mainpage1.php");
 				}
 				?>
 

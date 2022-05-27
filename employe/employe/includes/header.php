@@ -25,7 +25,7 @@
               <a class="dropdown-item preview-item">
                 <i class="icon-head"></i> Profile
               </a>
-              <a href="logout.php" class="dropdown-item preview-item">
+              <a href="logout1.php" class="dropdown-item preview-item">
                 <i class="icon-inbox"></i> Logout
               </a>
             </div>
