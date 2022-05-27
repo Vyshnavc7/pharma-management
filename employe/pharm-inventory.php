@@ -88,7 +88,7 @@
 					<input  type="text" name="valuetosearch" class="form-control rounded" placeholder="Enter any value to Search"  />
 					<input class="btn btn-primary m-2" type="submit" name="search" value="Search">
 				</div>
-				</form>
+</form>
 
           <table class="table table-bordered  table-hover ">
             <thead class="table-dark">
