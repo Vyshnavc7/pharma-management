@@ -29,38 +29,38 @@
 </head>
 
 <body>
-<?php
+	<?php
 
-include "config.php";
-session_start();
+	include "config.php";
+	session_start();
 
-$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-$result = $conn->query($sql);
-$row = $result->fetch_row();
+	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_row();
 
-$ename = $row[0];
+	$ename = $row[0];
 
-?>
+	?>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/header.php'); ?>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper"style="padding-left: 0px;">
+		<div class="container-fluid page-body-wrapper" style="padding-left: 0px;">
 			<!-- partial:partials/_sidebar.html -->
 			<?php include('includes/leftbar.php'); ?>
 			<!-- partial -->
 
-			<div class="container" >
-			<div class="col-sm-12 mb-4 mb-xl-0">
+			<div class="container">
+				<div class="col-sm-12 mb-4 mb-xl-0 mt-4">
 
-<h4 class=" text-dark">Hi, <?php echo $ename; ?></h4>
-<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
-</div>
+					<h4 class=" text-dark">Hi, <?php echo $ename; ?></h4>
+					<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+				</div>
 				<div style="width: 100%;height: 60px;padding-top: 5px; " class="mt-3 text-center">
 					<h2>CUSTOMERS LIST</h2>
 				</div>
 
-				<table class="table table-bordered table-responsive table-hover">
+				<table class="table table-bordered  table-hover">
 					<thead class="table-dark">
 						<tr>
 							<th>Customer ID</th>
@@ -92,7 +92,7 @@ $ename = $row[0];
 							echo "<td>" . $row["c_mail"] . "</td>";
 							echo "<td align=center>";
 							echo "<a class='btn btn-primary m-3' href=customer-update.php?id=" . $row['c_id'] . ">Edit</a>";
-							echo "<a onclick='return confirm('Are you sure to delete?');' class='btn btn-danger' href=customer-delete.php?id=" . $row['c_id'] . ">Delete</a>";
+							// echo "<a onclick='return confirm('Are you sure to delete?');' class='btn btn-danger' href=customer-delete.php?id=" . $row['c_id'] . ">Delete</a>";
 							echo "</td>";
 							echo "</tr>";
 						}
@@ -101,12 +101,12 @@ $ename = $row[0];
 
 					$conn->close();
 					?>
-
+<?php include('includes/footerr.php'); ?>
 			</div>
-
+			
 
 		</div>
-
+		
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -148,4 +148,5 @@ $ename = $row[0];
 		});
 	}
 </script>
+
 </html>

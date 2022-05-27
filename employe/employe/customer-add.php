@@ -132,7 +132,7 @@ $ename = $row[0];
 
 				</div>
 
-
+				<?php include('includes/footerr.php'); ?>
 			</div>
 
 		</div>
