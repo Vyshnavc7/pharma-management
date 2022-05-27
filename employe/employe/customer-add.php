@@ -31,18 +31,18 @@
 </head>
 
 <body>
-<?php
+	<?php
 
-include "config.php";
-session_start();
+	include "config.php";
+	session_start();
 
-$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-$result = $conn->query($sql);
-$row = $result->fetch_row();
+	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_row();
 
-$ename = $row[0];
+	$ename = $row[0];
 
-?>
+	?>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/header.php'); ?>
@@ -53,6 +53,11 @@ $ename = $row[0];
 			<!-- partial -->
 
 			<div class="container">
+				<div class="col-sm-12 mb-4 mb-xl-0">
+
+					<h4 class="font-weight-bold text-dark mt-3">Hi, <?php echo $ename; ?></h4>
+					<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+				</div>
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
 					<h2> ADD CUSTOMER DETAILS</h2>
 				</div>
