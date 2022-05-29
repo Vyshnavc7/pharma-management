@@ -1,3 +1,22 @@
+<?php
+error_reporting(0);
+?>
+
+<?php
+
+    include "config.php";
+    session_start();
+
+    $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+    $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+    $result1 = $conn->query($sql1);
+    $result2 = $conn->query($sql2);
+    $row1 = $result1->fetch_row();
+    $row2 = $result2->fetch_row();
+    $ename = $row1[0];
+    $eid1 = $row2[0];
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +24,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pharma Admin</title>
+    <title>Pharma <?php echo $ename ?></title>
     <!-- base:css -->
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -31,21 +50,7 @@
 </head>
 
 <body>
-    <?php
-
-    include "config.php";
-    session_start();
-
-    $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-    $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-    $result1 = $conn->query($sql1);
-    $result2 = $conn->query($sql2);
-    $row1 = $result1->fetch_row();
-    $row2 = $result2->fetch_row();
-    $ename = $row1[0];
-    $eid1 = $row2[0];
-
-    ?>
+    
 
     <?php
     include "config.php";
@@ -59,14 +64,14 @@
         <!-- partial:partials/_navbar.html -->
         <?php include('includes/header.php'); ?>
         <!-- partial -->
-        <div class="container-fluid page-body-wrapper" style="padding-left: 0px;background-color: #ececce;">
+        <div class="container-fluid page-body-wrapper" style="padding-left: 0px;background-color: #f2f2f2;">
             <!-- partial:partials/_sidebar.html -->
             <?php include('includes/leftbar.php'); ?>
             <!-- partial -->
 
             <div class="container">
                 <div style="width: 100%;height: 60px;padding-top: 50px;" class="mt-3 text-center">
-                    <h2> YOUR PROFILE</h2>
+                    <h2>EDIT YOUR PROFILE</h2>
                 </div>
 
                 <div class="form-group ">
@@ -74,54 +79,55 @@
                         <div style="float: left;width: 50%;" class="column">
                             <p>
                                 <label for="eid">Employee ID:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eid" value="<?php echo $row_emp[0]; ?>" readonly>
+                                <label for="eid"><?php echo $row_emp[0]; ?></label><br>
+
                             </p>
                             <p>
                                 <label for="efname">First Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname" value="<?php echo $row_emp[1]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname" value="<?php echo $row_emp[1]; ?>" require>
                             </p>
                             <p>
                                 <label for="elname">Last Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname" value="<?php echo $row_emp[2]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname" value="<?php echo $row_emp[2]; ?>" Required>
                             </p>
                             <p>
                                 <label for="ebdate">Date of Birth:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate" value="<?php echo $row_emp[3]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate" value="<?php echo $row_emp[3]; ?>" require>
                             </p>
                             <p>
                                 <label for="eage">Age:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage" value="<?php echo $row_emp[4]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage" value="<?php echo $row_emp[4]; ?>" require>
                             </p>
                             <p>
                                 <label for="esex">Sex:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="esex" value="<?php echo $row_emp[5]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="esex" value="<?php echo $row_emp[5]; ?>" require>
                             </p>
                         </div>
                         <div style="float: left;width: 50%;" class="column">
                             <p>
                                 <label for="etype">Employee Type:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="etype" value="<?php echo $row_emp[6]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="etype" value="<?php echo $row_emp[6]; ?>" require>
                             </p>
                             <p>
                                 <label for="ejdate">Date of Joining:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate" value="<?php echo $row_emp[7]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate" value="<?php echo $row_emp[7]; ?>" require>
                             </p>
                             <p>
                                 <label for="esal">Salary:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal" value="<?php echo $row_emp[8]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal" value="<?php echo $row_emp[8]; ?>" Required>
                             </p>
                             <p>
                                 <label for="ephno">Phone Number:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno" value="<?php echo $row_emp[9]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno" value="<?php echo $row_emp[9]; ?>" require>
                             </p>
 
                             <p>
                                 <label for="e_mail">Email ID:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail" value="<?php echo $row_emp[10]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail" value="<?php echo $row_emp[10]; ?>" require>
                             </p>
                             <p>
                                 <label for="eadd">Address:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd" value="<?php echo $row_emp[11]; ?>">
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd" value="<?php echo $row_emp[11]; ?>" require>
                             </p>
 
                         </div>
@@ -132,7 +138,7 @@
 
                     <?php
                     if (isset($_POST['update'])) {
-                        $id = mysqli_real_escape_string($conn, $_REQUEST['eid']);
+
                         $fname = mysqli_real_escape_string($conn, $_REQUEST['efname']);
                         $lname = mysqli_real_escape_string($conn, $_REQUEST['elname']);
                         $bdate = mysqli_real_escape_string($conn, $_REQUEST['ebdate']);
@@ -145,11 +151,13 @@
                         $mail = mysqli_real_escape_string($conn, $_REQUEST['e_mail']);
                         $add = mysqli_real_escape_string($conn, $_REQUEST['eadd']);
 
-                        $sql = "UPDATE employee SET e_fname='$fname',e_lname='$lname',bdate='$bdate',e_age='$age',e_sex='$sex',e_type='$etype',e_jdate='$jdate',e_sal='$sal',e_phno='$phno',e_mail='$mail',e_add='$add' where e_id='$id'";
+                        $sql = "UPDATE employee SET e_fname='$fname',e_lname='$lname',bdate='$bdate',e_age='$age',e_sex='$sex',e_type='$etype',e_jdate='$jdate',e_sal='$sal',e_phno='$phno',e_mail='$mail',e_add='$add' where e_id='$eid1'";
 
-                        if ($conn->query($sql))
-                            header("location:employee-view.php");
-                        else
+                        if ($conn->query($sql)) {
+                            header("Location:profile.php");
+
+                            echo "Details updated";
+                        } else
                             echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
                     }
 

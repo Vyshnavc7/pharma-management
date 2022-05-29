@@ -59,7 +59,7 @@
         <!-- partial:partials/_navbar.html -->
         <?php include('includes/header.php'); ?>
         <!-- partial -->
-        <div class="container-fluid page-body-wrapper" style="padding-left: 0px;background-color: #ececce;">
+        <div class="container-fluid page-body-wrapper" style="padding-left: 0px;background-color: #f2f2f2;">
             <!-- partial:partials/_sidebar.html -->
             <?php include('includes/leftbar.php'); ?>
             <!-- partial -->
