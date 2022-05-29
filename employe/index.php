@@ -26,7 +26,7 @@
 
 <body>
 <?php
-
+error_reporting(0);
 include "config.php";
 session_start();
 // to retrieve data frm base using session details

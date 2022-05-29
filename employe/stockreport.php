@@ -54,11 +54,11 @@
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="row">
-						<div class="col-sm-12 mb-4 mb-xl-0">
+					<div class="col-sm-12 mb-4 mb-xl-0 mt-2">
 
-							<h4 class="font-weight-bold text-dark">Hi,<?php echo $ename; ?></h4>
-							<a href="logout1.php">Logout(<?php echo $ename; ?>)</a>
-						</div>
+<h4 class=" text-dark">Hi, <?php echo $ename; ?></h4>
+<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+</div>
 					</div>
 					<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
 						<h2>MEDICINES LOW ON STOCK(LESS THAN 50)</h2>
