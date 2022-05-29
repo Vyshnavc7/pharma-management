@@ -77,7 +77,7 @@ function filtertable($query)
 			<div class="container">
 				<div class="col-sm-12 mb-4 mb-xl-0 mt-4">
 
-					<h4 class=" text-dark">Hi, <?php echo $ename; ?></h4>
+					<h4 style="text-transform:uppercase;" class=" text-dark">Hi, <?php echo $ename; ?></h4>
 					<a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
 				</div>
 				<div style="width: 100%;height: 60px;padding-top: 5px; " class="mt-3 text-center">
