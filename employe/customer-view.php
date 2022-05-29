@@ -54,12 +54,15 @@ function filtertable($query)
 
 	include "config.php";
 	session_start();
-
-	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_row();
-
-	$ename = $row[0];
+	// to retrieve data frm base using session details
+	$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$result1 = $conn->query($sql1);
+	$result2 = $conn->query($sql2);
+	$row1 = $result1->fetch_row();
+	$row2 = $result2->fetch_row();
+	$ename = $row1[0];
+	$eid1 = $row2[0];
 
 	?>
 	<div class="container-scroller">
@@ -81,10 +84,10 @@ function filtertable($query)
 					<h2>CUSTOMERS LIST</h2>
 				</div>
 				<form class="form-group m-4 " method="post">
-				<div class="input-group rounded m-4" style="width: 50%;">
-					<input  type="text" name="valuetosearch" class="form-control rounded" placeholder="Enter any value to Search"  />
-					<input class="btn btn-primary m-2" type="submit" name="search" value="Search">
-				</div>
+					<div class="input-group rounded m-4" style="width: 50%;">
+						<input type="text" name="valuetosearch" class="form-control rounded" placeholder="Enter any value to Search" />
+						<input class="btn btn-primary m-2" type="submit" name="search" value="Search">
+					</div>
 				</form>
 				<!-- <form class="form-group" method="post">
 					<input type="text" name="valuetosearch" placeholder="Enter any value to Search" style="width:400px; margin-left:250px;">&nbsp;&nbsp;&nbsp;
@@ -115,12 +118,12 @@ function filtertable($query)
 							echo "<td align=center>";
 							echo "<a class='btn btn-primary mr-2' href=customer-update.php?id=" . $row['c_id'] . ">Edit</a>";
 							echo "</td>";
-							
+
 							echo "</tr>";
 						}
 						echo "</table>";
-					}else{
-						
+					} else {
+
 						echo "<td>0";
 						echo "<td>No such record/Customer";
 						echo "<td>0";
@@ -129,7 +132,7 @@ function filtertable($query)
 
 					$conn->close();
 					?>
-					
+
 			</div>
 
 

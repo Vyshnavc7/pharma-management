@@ -1,3 +1,24 @@
+<?php
+
+include "config.php";
+session_start();
+// to retrieve data frm base using session details
+$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+$result1 = $conn->query($sql1);
+$result2 = $conn->query($sql2);
+$row1 = $result1->fetch_row();
+$row2 = $result2->fetch_row();
+$ename = $row1[0];
+$eid1 = $row2[0];
+
+?>
+<!-- TO GET URL NAME -->
+<?php
+$curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +26,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Pharma Admin</title>
+	<title>Pharma Pharmacy<?php echo $ename ?></title>
 	<!-- base:css -->
 	<link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="vendors/feather/feather.css">
@@ -29,18 +50,7 @@
 </head>
 
 <body>
-	<?php
 
-	include "config.php";
-	session_start();
-
-	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_row();
-
-	$ename = $row[0];
-
-	?>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/header.php'); ?>
@@ -114,10 +124,20 @@
 						}
 					}
 					?>
+
+					<?php
+					include "config.php";
+					$seller = "SELECT sale_id FROM sales where e_id=$eid1";
+					$result_sel = $conn->query($seller);
+					$row_sel = $result_sel->fetch_row();
+					?>
 				</table>
 				<div class="one" style="background-color:white;">
 					<form method=post>
-						<a name='pos1' class='button1 view-btn' href=pos1.php?sid=".$sid.">Go Back to Sales Page</a>
+						<?php
+						echo "<a class='btn btn-link' href=pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
+						?>
+
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 						<input class="float-right btn btn-primary" type='submit' name='custadd' value='Complete Order'><br>
@@ -149,9 +169,9 @@
 				?>
 
 
-				
+
 			</div>
-			
+
 
 		</div>
 		<?php include('includes/footerr.php'); ?>

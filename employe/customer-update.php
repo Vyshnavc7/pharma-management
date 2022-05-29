@@ -7,8 +7,9 @@ if (isset($_GET['id'])) {
 	$result = $conn->query($qry1);
 	$row = $result->fetch_row();
 }
-
+error_reporting(0);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,12 +47,15 @@ if (isset($_GET['id'])) {
 
 	include "config.php";
 	session_start();
-
-	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_row();
-
-	$ename = $row[0];
+	// to retrieve data frm base using session details
+	$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$result1 = $conn->query($sql1);
+	$result2 = $conn->query($sql2);
+	$row1 = $result1->fetch_row();
+	$row2 = $result2->fetch_row();
+	$ename = $row1[0];
+	$eid1 = $row2[0];
 
 	?>
 	<div class="container-scroller">
@@ -64,7 +68,7 @@ if (isset($_GET['id'])) {
 			<!-- partial -->
 
 			<div class="container">
-				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
+				<div style="width: 100%;height: 60px;padding-top: 8px;" class="mt-3 text-center">
 					<h2> UPDATE CUSTOMER DETAILS</h2>
 				</div>
 
@@ -90,18 +94,22 @@ if (isset($_GET['id'])) {
 						$mail = $_POST['emid'];
 
 						$sql = "UPDATE customer SET c_fname='$fname',c_lname='$lname',c_age='$age',c_sex='$sex',c_phno='$phno',c_mail='$mail' where c_id='$id'";
-						if ($conn->query($sql))
+						if ($conn->query($sql)){
+
 							header("location:customer-view.php");
+							echo "Details Updated";
+						}
 						else
 							echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
 					}
 
 					?>
-					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border-radius: 10px;padding: 30px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="cid">Customer ID:</label><br>
-								<input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cid" value="<?php echo $row[0]; ?>" readonly>
+								<label for="eid"><?php echo $row[0]; ?></label><br>
+								
 							</p>
 							<p>
 								<label for="cfname">First Name:</label><br>
@@ -134,7 +142,7 @@ if (isset($_GET['id'])) {
 							</p>
 						</div>
 
-						<input style="height: 48px;width: 40%;margin-top: 33px;" class="btn btn-primary" type="submit" name="update" value="Update">
+						<input style="height: 48px;width: 40%;margin-top:12px;" class="btn btn-primary" type="submit" name="update" value="Update">
 
 					</form>
 

@@ -22,13 +22,13 @@
           <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" href="pharm-inventory.php">
               <i class="icon-file menu-icon"></i>
-              <span class="menu-title">View Inventory</span>
+              <span class="menu-title">View Medicine</span>
             </a>
           </li>
           <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" href="salesitems-view.php">
               <i class="icon-pie-graph menu-icon"></i>
-              <span class="menu-title">Sold Products Details</span>
+              <span class="menu-title">Sold Medicine Details</span>
             </a>
           </li>
           <li class="nav-item">

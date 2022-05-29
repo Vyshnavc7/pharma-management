@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-	<html lang="en">
+<html lang="en">
 
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Pharma Pharmacy</title>
-		<!-- base:css -->
-		<link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-		<link rel="stylesheet" href="vendors/feather/feather.css">
-		<link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
-		<!-- endinject -->
-		<!-- plugin css for this page -->
-		<link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css" />
-		<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars-o.css">
-		<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars.css">
-		<!-- End plugin css for this page -->
-		<!-- inject:css -->
-		<link rel="stylesheet" href="css/style.css">
-		<!-- endinject -->
-		<link rel="shortcut icon" href="images/favicon.png" />
-	</head>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Pharma Pharmacy</title>
+	<!-- base:css -->
+	<link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="vendors/feather/feather.css">
+	<link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
+	<!-- endinject -->
+	<!-- plugin css for this page -->
+	<link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css" />
+	<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars-o.css">
+	<link rel="stylesheet" href="vendors/jquery-bar-rating/fontawesome-stars.css">
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- endinject -->
+	<link rel="shortcut icon" href="images/favicon.png" />
+</head>
 
 <body>
 	<?php
 
 	include "config.php";
 	session_start();
-
+	// to retrieve data frm base using session details
 	$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
 	$result1 = $conn->query($sql1);
+	$result2 = $conn->query($sql2);
 	$row1 = $result1->fetch_row();
-
+	$row2 = $result2->fetch_row();
 	$ename = $row1[0];
+	$eid1 = $row2[0];
 
 	?>
 	<div class="container-scroller">
@@ -145,4 +148,3 @@
 </script>
 
 </html>
-

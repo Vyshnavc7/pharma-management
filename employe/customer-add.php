@@ -35,12 +35,15 @@
 
 	include "config.php";
 	session_start();
-
-	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_row();
-
-	$ename = $row[0];
+	// to retrieve data frm base using session details
+	$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$result1 = $conn->query($sql1);
+	$result2 = $conn->query($sql2);
+	$row1 = $result1->fetch_row();
+	$row2 = $result2->fetch_row();
+	$ename = $row1[0];
+	$eid1 = $row2[0];
 
 	?>
 	<div class="container-scroller">
@@ -63,7 +66,7 @@
 				</div>
 
 				<div class="form-group ">
-					<form class="mt-4" style="height: 500px;border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form class="mt-4" style="height: 500px; border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="cid">Customer ID:</label><br>

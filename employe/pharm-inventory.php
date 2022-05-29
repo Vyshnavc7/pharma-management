@@ -1,24 +1,24 @@
 <?php
 
-	include "config.php";
-	
-	if(isset($_POST['search'])) {
-		
-		$search=$_POST['valuetosearch'];
-		$search_result=mysqli_query($conn,"SET @p0='$search';")or die(mysqli_error($conn));
-		$search_result=mysqli_query($conn,"CALL `SEARCH_INVENTORY`(@p0);") or die(mysqli_error($conn));
-	}
-	else {
-			$query="SELECT med_id as medid, med_name as medname,med_qty as medqty,category as medcategory,med_price as medprice,location_rack as medlocation FROM meds";
-			$search_result=filtertable($query);
-	}
-	
-	function filtertable($query)
-	{	$conn = mysqli_connect("localhost", "root", "", "pharmacy");
-		$filter_result=mysqli_query($conn,$query);
-		return $filter_result;
-	}
-	
+include "config.php";
+
+if (isset($_POST['search'])) {
+
+  $search = $_POST['valuetosearch'];
+  $search_result = mysqli_query($conn, "SET @p0='$search';") or die(mysqli_error($conn));
+  $search_result = mysqli_query($conn, "CALL `SEARCH_INVENTORY`(@p0);") or die(mysqli_error($conn));
+} else {
+  $query = "SELECT med_id as medid, med_name as medname,med_qty as medqty,category as medcategory,med_price as medprice,location_rack as medlocation FROM meds";
+  $search_result = filtertable($query);
+}
+
+function filtertable($query)
+{
+  $conn = mysqli_connect("localhost", "root", "", "pharmacy");
+  $filter_result = mysqli_query($conn, $query);
+  return $filter_result;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,12 +51,15 @@
 
   include "config.php";
   session_start();
-
+  // to retrieve data frm base using session details
   $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+  $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
   $result1 = $conn->query($sql1);
+  $result2 = $conn->query($sql2);
   $row1 = $result1->fetch_row();
-
+  $row2 = $result2->fetch_row();
   $ename = $row1[0];
+  $eid1 = $row2[0];
 
   ?>
   <div class="container-scroller">
@@ -76,19 +79,19 @@
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
 
-              <h4 class="font-weight-bold text-dark">Hi, <?php echo $ename; ?></h4>
-              <a href="logout1.php">Logout(<?php echo $ename; ?>)</a>
+              <h4 class="font-weight-bold text-dark">Hi, welcome back! <?php echo $ename; ?></h4>
+              <a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
             </div>
           </div>
           <div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
             <h2> MEDICINE INVENTORY</h2>
           </div>
           <form class="form-group m-4 " method="post">
-				<div class="input-group rounded m-4" style="width: 50%;">
-					<input  type="text" name="valuetosearch" class="form-control rounded" placeholder="Enter any value to Search"  />
-					<input class="btn btn-primary m-2" type="submit" name="search" value="Search">
-				</div>
-</form>
+            <div class="input-group rounded m-4" style="width: 50%;">
+              <input type="text" name="valuetosearch" class="form-control rounded" placeholder="Enter any value to Search" />
+              <input class="btn btn-primary m-2" type="submit" name="search" value="Search">
+            </div>
+          </form>
 
           <table class="table table-bordered  table-hover ">
             <thead class="table-dark">
@@ -117,8 +120,8 @@
                 echo "</tr>";
               }
               echo "</table>";
-            }else{
-						
+            } else {
+
               echo "<td>0";
               echo "<td>No such item/Medicine";
               echo "<td>0";
@@ -162,8 +165,8 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- End custom js for this page-->
 </body>
 

@@ -5,7 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Pharma Admin</title>
+	<title>Pharma Pharmacy</title>
 	<!-- base:css -->
 	<link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="vendors/feather/feather.css">
@@ -34,12 +34,19 @@
 	include "config.php";
 	session_start();
 
-	$sql = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_row();
+	$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+	$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
 
-	$ename = $row[0];
+	$result1 = $conn->query($sql1);
+	$result2 = $conn->query($sql2);
 
+	$row1 = $result1->fetch_row();
+	$row2 = $result2->fetch_row();
+
+	$ename = $row1[0];
+	$eid1 = $row2[0];
+
+	error_reporting(0);
 	?>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
@@ -64,11 +71,14 @@
 
 								include "config.php";
 								$qry = "SELECT c_id FROM customer";
+								$qry1 = "SELECT cfname FROM customer";
 								$result = $conn->query($qry);
+								$result1 = $conn->query($qry1);
+								$cus3 = $result->fetch_row();
 								echo mysqli_error($conn);
 								if ($result->num_rows > 0) {
 									while ($row = $result->fetch_assoc()) {
-										echo "<option>" . $row["c_id"] . "</option>";
+										echo "<option>" . $row["c_id"] . $result1 . "</option>";
 									}
 								}
 								?>
@@ -76,19 +86,14 @@
 							</select>
 							&nbsp;&nbsp;
 							<input class="btn btn-primary" type="submit" name="custadd" value="Add to Proceed.">
+
 						</center>
 					</form>
 
+
+
+
 					<?php
-
-					
-
-					$qry1 = "SELECT id from admin where a_username='$_SESSION[user]'";
-					
-					$result1 = $conn->query($qry1);
-					
-					$row1 = $result1->fetch_row();
-					$eid = $row1[0];
 
 					if (isset($_GET['sid'])) {
 						$sid = $_GET['sid'];
@@ -99,11 +104,13 @@
 
 					if (isset($_POST['custadd'])) {
 
-						$qry2 = "INSERT INTO sales(c_id,e_id) VALUES ('$cid','$eid')";
+						$qry2 = "INSERT INTO sales(c_id,e_id) VALUES ('$cid','$_SESSION[user]')";
 						if (!($result2 = $conn->query($qry2))) {
 							echo "<p style='font-size:8; color:red;'>Invalid! Enter valid Customer ID to record Sales.</p>";
 						}
 					}
+
+
 					?>
 				</div>
 
@@ -145,7 +152,7 @@
 
 				<div class="form3">
 					<center>
-						<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="form-group" method="post">
+						<form style="border-radius: 18px;padding: 29px;background-color: #f2f2f2;" class="form-group" method="post">
 							<div style="float: left;width: 50%;" class="column">
 
 								<label for="medid">Medicine ID:</label>
@@ -206,7 +213,7 @@
 									echo mysqli_error($conn);
 
 									echo "<br><br> <center>";
-									echo "<a class='button1 view-btn' href=pos2.php?sid=" . $sid . ">View Order</a>";
+									echo "<a class='btn btn-link' href=pos2.php?sid=" . $sid . ">View Order</a>";
 									echo "</center>";
 								}
 							}
@@ -217,12 +224,12 @@
 				<?php include('includes/footerr.php'); ?>
 			</div>
 
-			
+
 		</div>
-		
+
 	</div>
-	
-	
+
+
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

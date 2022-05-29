@@ -4,19 +4,19 @@ error_reporting(0);
 
 <?php
 
-    include "config.php";
-    session_start();
+include "config.php";
+session_start();
 
-    $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-    $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-    $result1 = $conn->query($sql1);
-    $result2 = $conn->query($sql2);
-    $row1 = $result1->fetch_row();
-    $row2 = $result2->fetch_row();
-    $ename = $row1[0];
-    $eid1 = $row2[0];
+$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+$result1 = $conn->query($sql1);
+$result2 = $conn->query($sql2);
+$row1 = $result1->fetch_row();
+$row2 = $result2->fetch_row();
+$ename = $row1[0];
+$eid1 = $row2[0];
 
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +24,7 @@ error_reporting(0);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pharma <?php echo $ename ?></title>
+    <title>Pharma Pharmacy<?php echo $ename ?></title>
     <!-- base:css -->
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -50,7 +50,7 @@ error_reporting(0);
 </head>
 
 <body>
-    
+
 
     <?php
     include "config.php";
