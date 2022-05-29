@@ -66,7 +66,7 @@ function filtertable($query)
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/header.php'); ?>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper" style="padding-left: 0px;">
+		<div class="container-fluid page-body-wrapper" style="padding-left: 0px;    background-color: #f4f7fa;">
 			<!-- partial:partials/_sidebar.html -->
 			<?php include('includes/leftbar.php'); ?>
 			<!-- partial -->
