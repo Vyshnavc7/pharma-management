@@ -46,7 +46,7 @@
 				</div>
 
 				<div class="form-group ">
-					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 
 						<?php
 
@@ -77,19 +77,19 @@
 
 							<p>
 								<label for="pid">Purchase ID:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pid">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pid"required>
 							</p>
 							<p>
 								<label for="sid">Supplier ID:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="sid">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="sid"required>
 							</p>
 							<p>
 								<label for="mid">Medicine ID:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="mid">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="mid"required>
 							</p>
 							<p>
 								<label for="pqty">Purchase Quantity:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pqty">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pqty"required>
 							</p>
 
 
@@ -98,21 +98,21 @@
 
 							<p>
 								<label for="pcost">Purchase Cost:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="pcost">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="pcost"required>
 							</p>
 
 
 							<p>
 								<label for="pdate">Date of Purchase:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="pdate">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="pdate"required>
 							</p>
 							<p>
 								<label for="mdate">Manufacturing Date:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="mdate">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="mdate"required>
 							</p>
 							<p>
 								<label for="edate">Expiry Date:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="edate">
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="edate"required>
 							</p>
 
 						</div>

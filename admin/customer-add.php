@@ -46,23 +46,23 @@
 				</div>
 
 				<div class="form-group ">
-					<form class="mt-4" style="height: 500px;border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form class="mt-4" style="height: 500px;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="cid">Customer ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cid">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cid"required>
 							</p>
 							<p>
 								<label for="cfname">First Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="cfname">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="cfname"required>
 							</p>
 							<p>
 								<label for="clname">Last Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname"required>
 							</p>
 							<p>
 								<label for="age">Age:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="age">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="age"required>
 							</p>
 
 
@@ -71,7 +71,7 @@
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="sex">Sex: </label><br>
-								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="sex" name="sex">
+								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="sex" name="sex"required>
 									<option value="selected">Select</option>
 									<option>Female</option>
 									<option>Male</option>
@@ -81,11 +81,11 @@
 
 							<p>
 								<label for="phno">Phone Number: </label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="phno">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="phno"required>
 							</p>
 							<p>
 								<label for="emid">Email ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="emid">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="emid"required>
 							</p>
 						</div>
 

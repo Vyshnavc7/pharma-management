@@ -46,19 +46,19 @@
 				</div>
 
 				<div class="form-group ">
-					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border-radius: 10px;padding: 29px;background-color: #f2f2f2;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div class="column">
 							<p>
 								<label for="sid">Supplier ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="sid">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="sid"required>
 							</p>
 							<p>
 								<label for="sname">Supplier Company Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="sname">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="sname"required>
 							</p>
 							<p>
 								<label for="sadd">Address:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="sadd">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="sadd"required>
 							</p>
 
 
@@ -66,12 +66,12 @@
 						<div class="column">
 							<p>
 								<label for="sphno">Phone Number:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="sphno">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="number" name="sphno"required>
 							</p>
 
 							<p>
 								<label for="smail">Email Address </label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="smail">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-control" type="text" name="smail"required>
 							</p>
 
 						</div>

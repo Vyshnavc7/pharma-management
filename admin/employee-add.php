@@ -76,27 +76,27 @@
 					$conn->close();
 					?>
 
-					<form style="border: 3px solid #ccc;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+					<form style="border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="eid">Employee ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eid">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eid"required>
 							</p>
 							<p>
 								<label for="efname">First Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname"required>
 							</p>
 							<p>
 								<label for="elname">Last Name:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname"required>
 							</p>
 							<p>
 								<label for="ebdate">Date of Birth:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate"required>
 							</p>
 							<p>
 								<label for="eage">Age:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage"required>
 							</p>
 							<p>
 								<label for="esex">Sex:</label><br>
@@ -111,7 +111,7 @@
 						<div style="float: left;width: 50%;" class="column">
 							<p>
 								<label for="etype">Employee Type:</label><br>
-								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="etype" name="etype">
+								<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" id="etype" name="etype"required>
 									<option value="selected">Select</option>
 									<option>Pharmacist</option>
 									<option>Manager</option>
@@ -119,24 +119,24 @@
 							</p>
 							<p>
 								<label for="ejdate">Date of Joining:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate"required>
 							</p>
 							<p>
 								<label for="esal">Salary:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal"required>
 							</p>
 							<p>
 								<label for="ephno">Phone Number:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno"required>
 							</p>
 
 							<p>
 								<label for="e_mail">Email ID:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail"required>
 							</p>
 							<p>
 								<label for="eadd">Address:</label><br>
-								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd">
+								<input style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd"required>
 							</p>
 
 						</div>
