@@ -7,7 +7,7 @@
         </center>
         <p style="color: white;" class="text-center">Mangalore, 575004</p>
         </p>
-        <h4 style="color: white;" class="text-center">Developed by C Vyshnav </h4>
+        <h4 style="color: white;" class="text-center">Developed by <a style="color: white;" href="https://github.com/vyshnavc7/">C Vyshnav</a>  </h4>
     </div>
 
 
