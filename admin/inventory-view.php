@@ -43,7 +43,7 @@
 					<h2> MEDICINE INVENTORY</h2>
 				</div>
 
-				<table class="table table-bordered  table-hover table-responsive">
+				<table class="table table-bordered  table-hover ">
 					<thead class="table-dark">
 						<tr>
 							<th>Medicine ID</th>

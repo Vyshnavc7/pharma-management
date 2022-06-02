@@ -40,7 +40,7 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> SALES INVOICE DETAILS</h2>
+					<h2> SOLD PRODUCT DETAILS</h2>
 				</div>
 
 				<table class="table table-bordered  table-hover">

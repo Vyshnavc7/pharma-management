@@ -70,15 +70,15 @@
 								<?php
 
 								include "config.php";
-								$qry = "SELECT c_id FROM customer";
-								$qry1 = "SELECT cfname FROM customer";
+								$qry = "SELECT c_id,c_fname FROM customer";
+							
 								$result = $conn->query($qry);
-								$result1 = $conn->query($qry1);
-								$cus3 = $result->fetch_row();
+							
+								
 								echo mysqli_error($conn);
-								if ($result->num_rows > 0) {
+								if ($result->num_rows > 0 ) {
 									while ($row = $result->fetch_assoc()) {
-										echo "<option>" . $row["c_id"] . $result1 . "</option>";
+										echo "<option>" . $row["c_id"]  . " : " . $row["c_fname"]. "</option>";
 									}
 								}
 								?>

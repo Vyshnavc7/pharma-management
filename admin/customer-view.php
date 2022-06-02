@@ -43,7 +43,7 @@
 					<h2>CUSTOMERS LIST</h2>
 				</div>
 
-				<table class="table table-bordered table-responsive table-hover">
+				<table class="table table-bordered  table-hover">
 					<thead class="table-dark">
 						<tr>
 							<th>Customer ID</th>

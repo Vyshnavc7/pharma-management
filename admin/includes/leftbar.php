@@ -21,13 +21,13 @@
         <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="icon-disc menu-icon"></i>
-                <span class="menu-title">Inventory</span>
+                <span class="menu-title">MEDICINE</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="inventory-add.php">Add New Medicine</a></li>
-                    <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="inventory-view.php">Manage Inventory</a></li>
+                    <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="inventory-view.php">Manage Medicine</a></li>
                 </ul>
             </div>
         </li>
@@ -78,7 +78,7 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-add.php">Add New Customers</a></li>
+                    <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-add.php">Add Customers</a></li>
                     <li class="nav-item"> <a style="border-top: inset;" class="nav-link" href="customer-view.php">Manage Customers</a></li>
                 </ul>
             </div>
@@ -86,7 +86,7 @@
         <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" href="sales-view.php">
                 <i class="icon-file menu-icon"></i>
-                <span class="menu-title">Sales Invoice Details</span>
+                <span class="menu-title">Sales Details</span>
             </a>
         </li>
         <li class="nav-item">

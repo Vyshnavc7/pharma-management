@@ -42,7 +42,7 @@
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> ADD MEDICINE DETAILS</h2>
+					<h2> ADD SUPPLIER DETAILS</h2>
 				</div>
 
 				<div class="form-group ">
