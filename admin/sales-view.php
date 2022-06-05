@@ -33,7 +33,7 @@
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/mainheader.php'); ?>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper"style="padding-left: 0px;">
+		<div class="container-fluid page-body-wrapper" style="padding-left: 0px;">
 			<!-- partial:partials/_sidebar.html -->
 			<?php include('includes/leftbar.php'); ?>
 			<!-- partial -->

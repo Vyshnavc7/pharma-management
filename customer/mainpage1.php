@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css//login1.css">
 	<link rel="stylesheet" type="text/css" href="../header.css">
 	<title>
-		Pharma
+		Customer
 	</title>
 </head>
 
@@ -15,7 +15,7 @@
 	<div class="container">
 		<form method="post" action="">
 			<div id="div_login">
-				<h1>Pharmacist Login</h1>
+				<h1>Customer Login</h1>
 				<center>
 					<div>
 						<input type="text" class="textbox" id="uname" name="uname" placeholder="Username" />
@@ -25,7 +25,7 @@
 					</div>
 					<div>
 						<input type="submit" value="Submit" name="submit" id="submit" />
-						<input type="submit" value="Click here for Admin Login" name="psubmit" id="submit" />
+						<input type="submit" value="Click here for Sign UP" name="psubmit" id="submit" />
 					</div>
 
 
@@ -40,7 +40,7 @@
 
 						if ($uname != "" && $password != "") {
 
-							$sql = "SELECT e_id FROM emplogin WHERE e_username='$uname' AND e_pass='$password'";
+							$sql = "SELECT c_id FROM customer WHERE e_username='$uname' AND e_pass='$password'";
 							$result = $conn->query($sql);
 							$row = $result->fetch_row();
 							if (!$row) {
@@ -56,7 +56,7 @@
 					}
 
 					if (isset($_POST['psubmit'])) {
-						header("location:../admin/mainpage.php");
+						header("location:./sign_up/index.php");
 					}
 					?>
 
