@@ -19,8 +19,8 @@
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="nav2.css">
-	<link rel="stylesheet" type="text/css" href="form4.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- endinject -->
 	<link rel="shortcut icon" href="images/favicon.png" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/mainheader.php'); ?>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper"style="padding-left: 0px;">
+		<div class="container-fluid page-body-wrapper" style="padding-left: 0px;">
 			<!-- partial:partials/_sidebar.html -->
 			<?php include('includes/leftbar.php'); ?>
 			<!-- partial -->
@@ -46,7 +46,9 @@
 				</div>
 
 				<div class="form-group ">
-					<form style="border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+
+
+					<form style="height: 500px;border-radius: 10px;padding: 29px;background-color: #f2f2f2;" class="m-4" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
 
 						<?php
 
@@ -66,60 +68,109 @@
 							if (mysqli_query($conn, $sql)) {
 								echo "<p style='font-size:8;'>Purchase details successfully added!</p>";
 							} else {
-								echo "<p style='font-size:8;color:red;'>Error! Check details.</p>";
+								echo "<p style='font-size:8;color:red;'>Error! Check details of Med ID or Sup ID.</p>";
 							}
 						}
 
 						$conn->close();
 						?>
 
-						<div style="float: left;width: 50%;" class="column">
+
+
+						<div style="float: left;width: 45%;" class="column">
 
 							<p>
 								<label for="pid">Purchase ID:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pid"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pid" required>
 							</p>
+
+
 							<p>
-								<label for="sid">Supplier ID:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="sid"required>
+								<label for="pid">Supplier ID:</label><br>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="sid" required>
 							</p>
+
+
 							<p>
 								<label for="mid">Medicine ID:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="mid"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="mid" required>
 							</p>
 							<p>
 								<label for="pqty">Purchase Quantity:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pqty"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="pqty" required>
 							</p>
 
 
 						</div>
-						<div style="float: right;width: 50%;" class="column">
+						<div style="float: left;width: 39%;margin-left: -135px;" class="column mt-4">
+							<?php
+
+							include "config.php";
+							$qry = "SELECT sup_id,sup_name FROM suppliers";
+
+
+							$result = $conn->query($qry);
+							echo mysqli_error($conn);
+							echo "<h6> Choose The Suppier ID and will the Space </h6>";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) {
+
+									echo "<option> ID : " . $row["sup_id"] ."  | "."  Name : " . $row["sup_name"] . "</option>";
+								}
+							}
+
+							?>
+
+							<select style="width: 80%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="mt-3 form-select" id="med" name="med">
+								<option value="0" selected="selected">Check the Medicine ID</option>
+
+								<?php
+								$qry3 = "SELECT med_name,med_id FROM meds";
+								$result3 = $conn->query($qry3);
+								echo mysqli_error($conn);
+								if ($result3->num_rows > 0) {
+									while ($row4 = $result3->fetch_assoc()) {
+
+										echo "<option> ID : " . $row4["med_name"] ."   "."Name : ".$row4["med_id"]. "</option>";
+										$view = $row4['med_id'];
+									}
+								}
+								echo "<p value ='.$view.'> </p>";
+								?>
+
+							</select>
+
+
+						</div>
+						<div style="float: right;width: 45%;margin-right: -158px;" class="column">
 
 							<p>
 								<label for="pcost">Purchase Cost:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="pcost"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="pcost" required>
 							</p>
 
 
 							<p>
 								<label for="pdate">Date of Purchase:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="pdate"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="pdate" required>
 							</p>
 							<p>
 								<label for="mdate">Manufacturing Date:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="mdate"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="mdate" required>
 							</p>
 							<p>
 								<label for="edate">Expiry Date:</label><br>
-								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="edate"required>
+								<input class="form-control" style="width: 50%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="edate" required>
 							</p>
-
+							<inpuT class="btn btn-primary" type="submit" name="add" value="Add Purchase">
 						</div>
 
 
-						<inpuT class="btn btn-primary" type="submit" name="add" value="Add Purchase">
+
+
+
 					</form>
+
 
 
 				</div>
