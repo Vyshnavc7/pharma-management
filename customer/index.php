@@ -30,21 +30,21 @@ error_reporting(0);
 include "config.php";
 session_start();
 // to retrieve data frm base using session details
-$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+$sql1 = "SELECT c_username from cuslogin WHERE c_ID='$_SESSION[user]'";
+$sql2 = "SELECT c_id from cuslogin WHERE c_id='$_SESSION[user]'";
 $result1 = $conn->query($sql1);
 $result2 = $conn->query($sql2);
 $row1 = $result1->fetch_row();
 $row2 = $result2->fetch_row();
-$ename = $row1[0];
-$eid1 = $row2[0];
+$cname = $row1[0];
+$cid1 = $row2[0];
 
 ?>
 
 
 
   <?php
-  if ($ename) {
+  if ($cname) {
   ?>
     <div class="container-scroller">
     <?php
@@ -71,8 +71,8 @@ $eid1 = $row2[0];
             <div class="row">
               <div class="col-sm-12 mb-4 mb-xl-0">
 
-                <h4 style="text-transform:uppercase;" class="font-weight-bold text-dark">Hi, <?php echo $ename; ?></h4>
-                <a href="logout1.php">Logout(signed in as <?php echo $ename; ?>)</a>
+                <h4 style="text-transform:uppercase;" class="font-weight-bold text-dark">Hi, <?php echo $cname; ?></h4>
+                <a href="logout1.php">Logout(signed in as <?php echo $cname; ?>)</a>
               </div>
             </div>
             <div class="row mt-3">

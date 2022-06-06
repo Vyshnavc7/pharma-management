@@ -40,16 +40,16 @@
 
 						if ($uname != "" && $password != "") {
 
-							$sql = "SELECT c_id FROM customer WHERE e_username='$uname' AND e_pass='$password'";
+							$sql = "SELECT c_id FROM cuslogin WHERE c_username='$uname' AND c_pass='$password'";
 							$result = $conn->query($sql);
 							$row = $result->fetch_row();
 							if (!$row) {
 								echo "<p style='color:red;'>Invalid username or password!</p>";
 							} else {
 
-								$emp = $row[0];
+								$cus = $row[0];
 								session_start();
-								$_SESSION['user'] = $emp;
+								$_SESSION['user'] = $cus;
 								header("location:index.php");
 							}
 						}
