@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pharma Pharmacy</title>
+    <title>Pharma Customer</title>
     <!-- base:css -->
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>
-        Update Employee
+        Update Customer
     </title>
 </head>
 
@@ -36,23 +36,25 @@
     include "config.php";
     session_start();
 
-    $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-    $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+    $sql1 = "SELECT c_username from cuslogin WHERE c_id='$_SESSION[user]'";
+    $sql2 = "SELECT c_id from cuslogin WHERE c_id='$_SESSION[user]'";
     $result1 = $conn->query($sql1);
     $result2 = $conn->query($sql2);
     $row1 = $result1->fetch_row();
     $row2 = $result2->fetch_row();
-    $ename = $row1[0];
-    $eid1 = $row2[0];
+    $cname = $row1[0];
+    $cid1 = $row2[0];
+    
 
     ?>
 
     <?php
     include "config.php";
-
-    $empl_id = "SELECT * FROM employee WHERE e_id='$eid1'";
-    $result_emp = $conn->query($empl_id);
-    $row_emp = $result_emp->fetch_row();
+    
+    $cus_id = "SELECT * FROM customer WHERE C_ID='$cid1'";
+    $result_cus = $conn->query($cus_id);
+    $row_cus = $result_cus->fetch_row();
+    
     ?>
 
     <div class="container-scroller">
@@ -73,59 +75,45 @@
                 <div class="form-group ">
                     <form class="m-4" style="padding-top: 100px;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                         <div style="float: left;width: 50%;" class="column">
-                            <!-- <p>
-                                <label for="eid">Employee ID:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eid" value="<?php echo $row_emp[0]; ?>" readonly>
-                            </p> -->
-                            <p>
-                                <label for="efname">First Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="efname" value="<?php echo $row_emp[1]; ?>" readonly>
+                        <p>
+                                <label for="cid">Customer ID:</label><br>
+                                <label for="cid"><?php echo $row_cus[0]; ?></label><br>
+
                             </p>
                             <p>
-                                <label for="elname">Last Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="elname" value="<?php echo $row_emp[2]; ?>" readonly>
+                                <label for="cfname">First Name:</label><br>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="cfname" value="<?php echo $row_cus[1]; ?>" readonly>
                             </p>
                             <p>
-                                <label for="ephno">Phone Number:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="ephno" value="<?php echo $row_emp[9]; ?>" readonly>
+                                <label for="clname">Last Name:</label><br>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname" value="<?php echo $row_cus[2]; ?>" readonly>
                             </p>
+                            
+                            
                             <p>
-                                <label for="e_mail">Email ID:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="e_mail" value="<?php echo $row_emp[10]; ?>" readonly>
+                                <label for="cage">Age:</label><br>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cage" value="<?php echo $row_cus[3]; ?>">
                             </p>
-                            <!-- <p>
-                                <label for="ebdate">Date of Birth:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ebdate" value="<?php echo $row_emp[3]; ?>">
-                            </p> -->
-                            <!-- <p>
-                                <label for="eage">Age:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="eage" value="<?php echo $row_emp[4]; ?>">
-                            </p> -->
-                            <!-- <p>
-                                <label for="esex">Sex:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="esex" value="<?php echo $row_emp[5]; ?>">
-                            </p> -->
+                            
                         </div>
                         <div style="float: left;width: 50%;" class="column">
-                            <!-- <p>
-                                <label for="etype">Employee Type:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="etype" value="<?php echo $row_emp[6]; ?>">
-                            </p> -->
+                            
                             <p>
-                                <label for="ejdate">Date of Joining:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="date" name="ejdate" value="<?php echo $row_emp[7]; ?>" readonly>
+                                <label for="csex">Sex:</label><br>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="csex" value="<?php echo $row_cus[4]; ?>">
                             </p>
                             <p>
-                                <label for="esal">Salary:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" step="0.01" name="esal" value="<?php echo $row_emp[8]; ?>" readonly>
+                                <label for="cphno">Phone Number:</label><br>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cphno" value="<?php echo $row_cus[5]; ?>" readonly>
+                            </p>
+                            <p>
+                                <label for="c_mail">Email ID:</label><br>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="c_mail" value="<?php echo $row_cus[6]; ?>" readonly>
                             </p>
 
 
 
-                            <p>
-                                <label for="eadd">Address:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="eadd" value="<?php echo $row_emp[11]; ?>" readonly>
-                            </p>
+                    
 
                         </div>
 

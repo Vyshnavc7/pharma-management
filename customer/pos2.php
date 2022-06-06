@@ -3,14 +3,14 @@
 include "config.php";
 session_start();
 // to retrieve data frm base using session details
-$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+$sql1 = "SELECT c_username from cuslogin WHERE c_id='$_SESSION[user]'";
+$sql2 = "SELECT c_id from cuslogin WHERE c_id='$_SESSION[user]'";
 $result1 = $conn->query($sql1);
 $result2 = $conn->query($sql2);
 $row1 = $result1->fetch_row();
 $row2 = $result2->fetch_row();
-$ename = $row1[0];
-$eid1 = $row2[0];
+$cname = $row1[0];
+$cid1 = $row2[0];
 
 ?>
 <!-- TO GET URL NAME -->
@@ -26,7 +26,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Pharma Pharmacy<?php echo $ename ?></title>
+	<title>Pharma CUSTOMER<?php echo $cname ?></title>
 	<!-- base:css -->
 	<link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="vendors/feather/feather.css">
@@ -127,7 +127,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 
 					<?php
 					include "config.php";
-					$seller = "SELECT sale_id FROM sales where e_id=$eid1";
+					$seller = "SELECT sale_id FROM sales where e_id=$cid1";
 					$result_sel = $conn->query($seller);
 					$row_sel = $result_sel->fetch_row();
 					?>

@@ -11,7 +11,7 @@
         </button>
         <strong>
             <a href="index.php">
-                <p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST <strong> <?php echo $ename;?> | ID : <?php echo $eid1; ?> </strong> DASHBOARD</p>
+                <p class="mb-0 font-weight-normal float-left dropdown-header"> CUSTOMER <strong> <?php echo $cname;?> | ID : <?php echo $cid1; ?> </strong> DASHBOARD</p>
             </a>
         </strong>
         
