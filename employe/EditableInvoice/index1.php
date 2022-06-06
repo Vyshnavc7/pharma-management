@@ -7,7 +7,7 @@ include "config.php"
 <head>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
-  <title>Editable Invoice</title>
+  <title>Invoice</title>
 
   <link rel='stylesheet' type='text/css' href='css/style.css' />
   <link rel='stylesheet' type='text/css' href='css/print.css' media="print" />
@@ -28,12 +28,7 @@ include "config.php"
 
       <div id="identity">
 
-        <textarea id="address">CPharmacy Address
-No.4-6-574/11-14, K R Rao Road, Karangalpady, Mangalore
-City
-Mangalore
-PIN Code
-575003</textarea>
+        <textarea id="address">CPharmacy Address</textarea>
 
         <div id="logo">
 
@@ -44,7 +39,7 @@ PIN Code
           <div id="logohelp">
 
           </div>
-          <img id="image" src="./images/apple-touch-icon-144-precomposed.png" style="width:125px;height:113px;" alt="logo" />
+          <img id="image" src="images/p1.png" style="width:125px;height:113px;" alt="logo" />
         </div>
 
       </div>
