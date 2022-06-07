@@ -469,27 +469,7 @@ $cid1 = $row2[0];
       <!-- page-body-wrapper ends -->
       </div>
       <!-- container-scroller -->
-      <?php
-      if (!$ename) {
-      ?>
-        <div class="container  ">
-
-          <div class="row " style="height: 700px; ">
-            <div class="col-md-12 text-center" style="padding-top: 239px;">
-              <h2>PLEASE LOGIN INTO THE ACCOUNT</h2>
-              <a href="mainpage1.php"> <button class="btn btn-primary">LOGIN</button></a>
-
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-      <?php
-      }
-      ?>
+      
 
 
       <!-- base:js -->
