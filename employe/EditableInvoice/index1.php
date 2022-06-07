@@ -7,7 +7,7 @@ include "config.php"
 <head>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
-  <title>Invoice</title>
+  <title>Editable Invoice</title>
 
   <link rel='stylesheet' type='text/css' href='css/style.css' />
   <link rel='stylesheet' type='text/css' href='css/print.css' media="print" />
@@ -19,6 +19,25 @@ include "config.php"
 </head>
 
 <body>
+  <?php
+
+  include "config.php";
+  session_start();
+
+  $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+  $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+
+  $result1 = $conn->query($sql1);
+  $result2 = $conn->query($sql2);
+
+  $row1 = $result1->fetch_row();
+  $row2 = $result2->fetch_row();
+
+  $ename = $row1[0];
+  $eid1 = $row2[0];
+
+
+  ?>
   <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; 
         padding-left: 25px; padding-top: 10px;">
 
@@ -28,7 +47,12 @@ include "config.php"
 
       <div id="identity">
 
-        <textarea id="address">CPharmacy Address</textarea>
+        <textarea id="address">CPharmacy Address
+No.4-6-574/11-14, K R Rao Road, Karangalpady, Mangalore
+City
+Mangalore
+PIN Code
+575003</textarea>
 
         <div id="logo">
 
@@ -39,7 +63,7 @@ include "config.php"
           <div id="logohelp">
 
           </div>
-          <img id="image" src="images/p1.png" style="width:125px;height:113px;" alt="logo" />
+          <img id="image" src="./images/apple-touch-icon-144-precomposed.png" style="width:125px;height:113px;" alt="logo" />
         </div>
 
       </div>
@@ -52,7 +76,7 @@ include "config.php"
 
         <table id="meta">
           <tr>
-            <td class="meta-head" style="background-color: #60b974;">No</td>
+            <td class="meta-head" style="background-color: #60b974;color: #F0F0F1;">No</td>
             <?php $r = rand(10, 90); ?>
             <td><textarea><?php echo $r ?></textarea></td>
           </tr>
@@ -73,71 +97,92 @@ include "config.php"
         <table id="items">
 
           <tr>
-            <th style="background-color: #60b974; color: white;">SI no</th>
-            <th style="background-color: #60b974; color: white;">Vechile Name</th>
-            <th style="background-color: #60b974; color: white;">Cost</th>
-            <th style="background-color: #60b974; color: white;">From date</th>
-            <th style="background-color: #60b974; color: white;">To date</th>
-          </tr>
-          <?php
-          $num = 1;
 
-          $id = $_GET['bid'];
-          $stmt = $admin->ret("SELECT * FROM `booking` inner join `vehicle`  on `booking`.VehicleId=`vehicle`.id  where booking.id='" . $id . "'");
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $amount = $row['tamount'];
+            <th style="background-color: #60b974; color: white;">Medicine ID</th>
+            <th style="background-color: #60b974; color: white;">Medicine Name</th>
+            <th style="background-color: #60b974; color: white;">Quantity</th>
+            <th style="background-color: #60b974; color: white;">Price</th>
+            <th style="background-color: #60b974; color: white;">Total Price</th>
+          </tr>
+
+
+          <?php
+          include "config.php";
+          if (isset($_GET['saleid'])) {
+            $sid = $_GET['saleid'];
+          }
+          $medid1 = "SELECT * FROM sales_items where sale_id=$sid";
+          $result_med = $conn->query($medid1);
+          $row_med = $result_med->fetch_row();
+
+
+
+          $item = "SELECT * FROM sales where sale_id=$sid";
+          $result_sel = $conn->query($item);
+          $row_item = $result_sel->fetch_row();
+          echo "<option>" . $row_item[0] . "</option>";
+          echo "<table>";
+          echo "<tr>";
+
+          if (!empty($sid)) {
+            $qry1 = "SELECT med_id,sale_qty,tot_price FROM sales_items where sale_id=$sid";
+            $result1 = $conn->query($qry1);
+            $sum = 0;
+
+            if ($result1->num_rows > 0) {
+
+              while ($row1 = $result1->fetch_assoc()) {
+
+                $medid = $row1["med_id"];
+                $qry2 = "SELECT med_name,med_price FROM meds where med_id=$medid";
+                $result2 = $conn->query($qry2);
+                $row2 = $result2->fetch_row();
+
+                echo "<tr>";
+                echo "<td style='padding-left: 130px;'>" . $row1["med_id"] . "</td>";
+                echo "<td style='padding-left: 172px;' >" . $row2[0] . "</td>";
+                echo "<td style='padding-left: 123px;'>" . $row1["sale_qty"] . "</td>";
+                echo "<td style='padding-left: 55px;'>" . $row2[1] . "</td>";
+                echo "<td style='padding-left: 121px;'>" . $row1["tot_price"] . "</td>";
+              }
+
+              echo "</table>";
+
+              echo "<a class='btn btn-link' href=../pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
+              
+            }
+          }
+
 
           ?>
 
-            <tr class="item-row">
-              <td class="item-name">
-                <div class="delete-wpr"><span><?php echo $num++ ?></span><a class="delete" href="javascript:;" title="Remove row">X</a></div>
-              </td>
-              <td class="description"><span><?php echo $row['VehiclesTitle']; ?></span></td>
-              <td><span class="cost">₹<?php echo $row['tamount']; ?></span></td>
-              <td><span class="qty"><?php echo $row['FromDate']; ?></span></td>
-              <td><span class="price"><?php echo $row['ToDate']; ?></span></td>
-            </tr>
-          <?php } ?>
 
 
 
 
 
 
-
-          <tr>
-
-            <td colspan="2" class="blank"> </td>
-            <td colspan="2" class="total-line">Total</td>
-            <td class="total-value">
-              <div id="total">₹<?php echo $amount; ?></div>
-            </td>
-          </tr>
 
 
         </table>
-        <input id="btn-Preview-Image" style="    background-color: #6a6767;
-    color: white;
-    border: none;" type="button" value="Preview" />
-        <a id="btn-Convert-Html2Image" href="#">Download</a>
-        <br />
         <h3 s>Preview :</h3>
+        <div style="text-align: right;">
+          <a id="btn-Convert-Html2Image" href="#">Download</a>
+
+        </div>
+        <br />
+
         <div id="previewImage">
         </div>
 
 
 
-        <!-- <div id="terms">
-			<p>Click on the image to download it:<p>
-<a href="" download="/images/myw3schoolsimage.jpg">
-  <img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
-</a>
-</p>
-		  <h5>Terms</h5>
-		  <textarea>NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
-		</div>
-	 -->
+        <div id="terms">
+
+          <h5>Terms</h5>
+          <textarea style="background-color: #F0F0F1;">NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
+        </div>
+
       </div>
     </div>
     <script>

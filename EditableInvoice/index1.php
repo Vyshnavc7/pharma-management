@@ -1,5 +1,5 @@
 <?php
-include "config.php"
+include "../employe/config.php"
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,7 +19,7 @@ include "config.php"
 </head>
 
 <body>
-  <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; 
+  <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; width: 2000px;
         padding-left: 25px; padding-top: 10px;">
 
     <div id="page-wrap">
