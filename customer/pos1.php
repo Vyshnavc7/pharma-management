@@ -29,25 +29,21 @@
 </head>
 
 <body>
-	<?php
+<?php
+error_reporting(0);
+include "config.php";
+session_start();
+// to retrieve data frm base using session details
+$sql1 = "SELECT c_username from cuslogin WHERE c_ID='$_SESSION[user]'";
+$sql2 = "SELECT c_id from cuslogin WHERE c_id='$_SESSION[user]'";
+$result1 = $conn->query($sql1);
+$result2 = $conn->query($sql2);
+$row1 = $result1->fetch_row();
+$row2 = $result2->fetch_row();
+$cname = $row1[0];
+$cid1 = $row2[0];
 
-	include "config.php";
-	session_start();
-
-	$sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-	$sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-
-	$result1 = $conn->query($sql1);
-	$result2 = $conn->query($sql2);
-
-	$row1 = $result1->fetch_row();
-	$row2 = $result2->fetch_row();
-
-	$ename = $row1[0];
-	$eid1 = $row2[0];
-
-	error_reporting(0);
-	?>
+?>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
 		<?php include('includes/header.php'); ?>

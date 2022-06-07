@@ -136,8 +136,8 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 					<form method=post>
 						<?php
 						echo "<a class='btn btn-link' href=pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
+						echo "<a href=../employe/EditableInvoice/index1.php?saleid=".$sid. "&med".$medid.">View Bill</a>";
 						?>
-
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 						<input class="float-right btn btn-primary" type='submit' name='custadd' value='Complete Order'><br>
