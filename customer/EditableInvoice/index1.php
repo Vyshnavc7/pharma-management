@@ -27,31 +27,26 @@ include "config.php"
     </div>
     
 </div>
-  <?php
+<?php
+error_reporting(0);
+include "config.php";
+session_start();
+// to retrieve data frm base using session details
+$sql1 = "SELECT c_username from cuslogin WHERE c_ID='$_SESSION[user]'";
+$sql2 = "SELECT c_id from cuslogin WHERE c_id='$_SESSION[user]'";
+$result1 = $conn->query($sql1);
+$result2 = $conn->query($sql2);
+$row1 = $result1->fetch_row();
+$row2 = $result2->fetch_row();
+$cname = $row1[0];
+$cid1 = $row2[0];
 
-  include "config.php";
-  session_start();
+$pharma = "SELECT e_id from sales WHERE c_id='$_SESSION[user]'";
+$pharm1 = $conn->query($pharma);
+$pharm2 = $pharm1->fetch_row();
 
-  $sql1 = "SELECT E_FNAME from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
-  $sql2 = "SELECT E_ID from EMPLOYEE WHERE E_ID='$_SESSION[user]'";
+?>
 
-  $result1 = $conn->query($sql1);
-  $result2 = $conn->query($sql2);
-
-  $row1 = $result1->fetch_row();
-  $row2 = $result2->fetch_row();
-
-  $ename = $row1[0];
-  $eid1 = $row2[0];
-
-  $customer = "SELECT c_id from sales WHERE e_id='$_SESSION[user]'";
-  $custo = $conn->query($customer);
-  $custo1 = $custo->fetch_row();
-
-
-
-
-  ?>
   <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; 
         padding-left: 25px; padding-top: 10px;">
 
@@ -64,12 +59,12 @@ include "config.php"
 
         <table>
           <tr>
-            <th style="color: black; border:none; text-align: left;">Pharmacist Name :</th>
-            <td style="border:none; text-align: right;"><?php echo $ename; ?></td>
+            <th style="color: black; border:none; text-align: left;">Customer Name :</th>
+            <td style="border:none; text-align: right;"><?php echo $cname; ?></td>
           </tr>
           <tr>
-            <th style="color: black;border:none; text-align: left;">Customer ID :</th>
-            <td style="border:none; text-align: right;"><?php echo $custo1[0]; ?></td>
+            <th style="color: black;border:none; text-align: left;">Pharmacist ID :</th>
+            <td style="border:none; text-align: right;"><?php echo $pharm2[0]; ?></td>
           </tr>
         </table>
 
