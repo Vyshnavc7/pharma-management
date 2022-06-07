@@ -19,6 +19,14 @@ include "config.php"
 </head>
 
 <body>
+<div class="header" >
+    <div class="header " style="font-size: 25px; text-align: center;background-color: #F0F0F1;">
+        <h1 style="color: black;" class="text-center">Pharma Management </h1>
+        <p style="color: black;" class="text-center">Mangalore, 575004</p>
+        
+    </div>
+    
+</div>
   <?php
 
   include "config.php";
@@ -36,6 +44,12 @@ include "config.php"
   $ename = $row1[0];
   $eid1 = $row2[0];
 
+  $customer = "SELECT c_id from sales WHERE e_id='$_SESSION[user]'";
+  $custo = $conn->query($customer);
+  $custo1 = $custo->fetch_row();
+
+
+
 
   ?>
   <div id="html-content-holder" style="background-color: #F0F0F1; color: #00cc65; 
@@ -47,12 +61,20 @@ include "config.php"
 
       <div id="identity">
 
-        <textarea id="address">CPharmacy Address
-No.4-6-574/11-14, K R Rao Road, Karangalpady, Mangalore
-City
-Mangalore
-PIN Code
-575003</textarea>
+
+        <table>
+          <tr>
+            <th style="color: black; border:none; text-align: left;">Pharmacist Name :</th>
+            <td style="border:none; text-align: right;"><?php echo $ename; ?></td>
+          </tr>
+          <tr>
+            <th style="color: black;border:none; text-align: left;">Customer ID :</th>
+            <td style="border:none; text-align: right;"><?php echo $custo1[0]; ?></td>
+          </tr>
+        </table>
+
+
+
 
         <div id="logo">
 
@@ -63,7 +85,7 @@ PIN Code
           <div id="logohelp">
 
           </div>
-          <img id="image" src="./images/apple-touch-icon-144-precomposed.png" style="width:125px;height:113px;" alt="logo" />
+          <img id="image" src="./images/p1.png" style="width:125px;height:113px;" alt="logo" />
         </div>
 
       </div>
@@ -72,9 +94,9 @@ PIN Code
 
       <div id="customer">
 
-        <textarea id="customer-title"></textarea>
+        <textarea style="font-size: 19px !important;" id="customer-title"></textarea>
 
-        <table id="meta">
+        <table id="meta" style="    margin-top: 14px;">
           <tr>
             <td class="meta-head" style="background-color: #60b974;color: #F0F0F1;">No</td>
             <?php $r = rand(10, 90); ?>
@@ -85,11 +107,7 @@ PIN Code
             <td class="meta-head" style="background-color: #60b974;color: white;">Date</td>
             <td><textarea id="date"><?php echo date("d-m-Y"); ?></textarea></td>
           </tr>
-          <!--  <tr>
-                    <td class="meta-head" style="background-color: #60b974">Amount Due</td>
-                    <td><div class="due">$875.00</div></td>
-                </tr> -->
-
+          
         </table>
 
 
@@ -98,11 +116,11 @@ PIN Code
 
           <tr>
 
-            <th style="background-color: #60b974; color: white;">Medicine ID</th>
-            <th style="background-color: #60b974; color: white;">Medicine Name</th>
-            <th style="background-color: #60b974; color: white;">Quantity</th>
-            <th style="background-color: #60b974; color: white;">Price</th>
-            <th style="background-color: #60b974; color: white;">Total Price</th>
+            <th style="background-color: #60b974; color: black;">Medicine ID</th>
+            <th style="background-color: #60b974; color: black;">Medicine Name</th>
+            <th style="background-color: #60b974; color: black;">Quantity</th>
+            <th style="background-color: #60b974; color: black;">Price</th>
+            <th style="background-color: #60b974; color: black;">Total Price</th>
           </tr>
 
 
@@ -120,7 +138,7 @@ PIN Code
           $item = "SELECT * FROM sales where sale_id=$sid";
           $result_sel = $conn->query($item);
           $row_item = $result_sel->fetch_row();
-          echo "<option>" . $row_item[0] . "</option>";
+
           echo "<table>";
           echo "<tr>";
 
@@ -138,19 +156,17 @@ PIN Code
                 $result2 = $conn->query($qry2);
                 $row2 = $result2->fetch_row();
 
-                echo "<tr>";
-                echo "<td style='padding-left: 130px;'>" . $row1["med_id"] . "</td>";
+
+                echo "<td style='text-align:center;padding-left: 130px;'><p>" . $row1["med_id"] . "</p></td>";
                 echo "<td style='padding-left: 172px;' >" . $row2[0] . "</td>";
                 echo "<td style='padding-left: 123px;'>" . $row1["sale_qty"] . "</td>";
-                echo "<td style='padding-left: 55px;'>" . $row2[1] . "</td>";
-                echo "<td style='padding-left: 121px;'>" . $row1["tot_price"] . "</td>";
+                echo "<td style='padding-left: 55px;color: red;'>" . $row2[1] . "</td>";
+                echo "<td style='padding-left: 121px; color: red;'>" . $row1["tot_price"] . "</td>";
               }
 
               echo "</table>";
-
-              echo "<a class='btn btn-link' href=../pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
-              
             }
+            echo "<a class='btn btn-link' href=../pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
           }
 
 
@@ -179,8 +195,8 @@ PIN Code
 
         <div id="terms">
 
-          <h5>Terms</h5>
-          <textarea style="background-color: #F0F0F1;">NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
+          <h5>Terms & conditions</h5>
+          <textarea style="background-color: #F0F0F1;">Medicines purchased once cannot be returned back.</textarea>
         </div>
 
       </div>
@@ -217,6 +233,21 @@ PIN Code
     </script>
     </p>
   </div>
+  
+<div class="footer mt-4">
+
+<div class="copyrightbottom-w3ls-agile mt-3" style="background-color: #F0F0F1;">
+    <center>
+        <p>© 2020 Pharma Management. All Rights Reserved
+    </center>
+    <p style="color: Black; text-align: center;" class="text-center">Mangalore, 575004</p>
+    </p>
+    <h4 style="color: Black;text-align: center;" class="text-center">Developed by <a style="color: Black;" href="https://github.com/vyshnavc7/">C Vyshnav</a>  </h4>
+</div>
+
+
+</div>
+</div>
 </body>
 
 </html>

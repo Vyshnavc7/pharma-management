@@ -50,6 +50,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 </head>
 
 <body>
+	<?php error_reporting(0);?>
 
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
@@ -124,6 +125,13 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 							}
 
 							echo "</table>";
+						}
+						else{
+							echo "<tr>";
+							echo "<td>";
+							echo "No items";
+							echo "</td>";
+							echo "</tr>";
 						}
 					}
 					?>

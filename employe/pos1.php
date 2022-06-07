@@ -213,7 +213,7 @@
 									echo mysqli_error($conn);
 
 									echo "<br><br> <center>";
-									echo "<a class='btn btn-link' href=pos2.php?sid=" . $sid . ">View Order</a>";
+									echo "<a class='btn btn-link' href=pos2.php?sid=" . $sid ."&cname :".$row['c_fname'].">View Order</a>";
 									echo "</center>";
 								}
 							}
