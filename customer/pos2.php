@@ -62,7 +62,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> SALES INNOVACE</h2>
+					<h2> CURRENT ORDERS</h2>
 				</div>
 
 				<table class="table table-bordered  table-hover ">
