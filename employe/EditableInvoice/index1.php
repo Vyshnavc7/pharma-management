@@ -7,7 +7,7 @@ include "config.php"
 <head>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
-  <title>Reciept</title>
+  <title>getMED | Reciept</title>
 
   <link rel='stylesheet' type='text/css' href='css/style.css' />
   <link rel='stylesheet' type='text/css' href='css/print.css' media="print" />
@@ -21,7 +21,7 @@ include "config.php"
 <body>
 <div class="header" >
     <div class="header " style="font-size: 25px; text-align: center;background-color: #F0F0F1;">
-        <h1 style="color: black;" class="text-center">Pharma Management </h1>
+        <h1 style="color: black;" class="text-center">getmyMED</h1>
         <p style="color: black;" class="text-center">Mangalore, 575004</p>
         
     </div>
@@ -238,7 +238,7 @@ include "config.php"
 
 <div class="copyrightbottom-w3ls-agile mt-3" style="background-color: #F0F0F1;">
     <center>
-        <p>© 2020 Pharma Management. All Rights Reserved
+        <p>© 2022 getmyMED. All Rights Reserved
     </center>
     <p style="color: Black; text-align: center;" class="text-center">Mangalore, 575004</p>
     </p>
