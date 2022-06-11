@@ -4,7 +4,7 @@
             <img src="images/faces/pharm1.png">
           </div>
           <div class="user-name">
-            Pharma Management
+            getmymED
           </div>
           <div class="user-designation">
           PHARMACIST
