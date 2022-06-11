@@ -9,7 +9,7 @@
 
 
 	<title>
-		Pharma | Admin Login
+		getMED | Admin Login
 	</title>
 </head>
 

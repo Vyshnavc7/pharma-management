@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css//login1.css">
 	<link rel="stylesheet" type="text/css" href="../header.css">
 	<title>
-		Pharma
+		getMED
 	</title>
 </head>
 
