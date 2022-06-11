@@ -166,7 +166,7 @@ include "config.php"
 
               echo "</table>";
             }
-            echo "<a class='btn btn-link' href=../pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
+            echo "<a class='btn btn-link' href=../pos2.php?sid=" . $sid . ">Go Back to Order Page</a>";
           }
 
 
