@@ -4,7 +4,7 @@
             <img src="images/faces/pharm1.png">
         </div>
         <div class="user-name">
-            Pharma Management
+            getmyMED
         </div>
         <div class="user-designation">
             Admin
@@ -95,7 +95,7 @@
                 <span class="menu-title">Sold Products Details</span>
             </a>
         </li>
-        
+
 
         <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">

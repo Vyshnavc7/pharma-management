@@ -75,15 +75,14 @@ $cid1 = $row2[0];
                 </div>
 
                 <div class="form-group ">
-                <?php
+                    <?php
                     include "config.php";
                     if (isset($_GET['cid'])) {
                         $cid = $_GET['cid'];
-                        
+
                         $qry1 = "SELECT * FROM cuslogin WHERE c_id='$cid'";
                         $result = $conn->query($qry1);
                         $row_cus = $result->fetch_row();
-                        
                     }
                     ?>
                     <form class="m-4" style="padding: 29px;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
@@ -99,7 +98,7 @@ $cid1 = $row2[0];
                             </p>
                             <p>
                                 <label for="clname">Last Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname" value="<?php echo $row_cus[2]; ?>" Required>
+                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname" value="" Required>
                             </p>
 
                             <p>
@@ -132,24 +131,27 @@ $cid1 = $row2[0];
 
                     <?php
                     if (isset($_POST['update'])) {
+                        if (isset($_GET['cid'])) {
+                            $cid = $_GET['cid'];
 
-                        $fname = mysqli_real_escape_string($conn, $_REQUEST['cfname']);
-                        $lname = mysqli_real_escape_string($conn, $_REQUEST['clname']);
+                            $fname = mysqli_real_escape_string($conn, $_REQUEST['cfname']);
+                            $lname = mysqli_real_escape_string($conn, $_REQUEST['clname']);
 
-                        $age = mysqli_real_escape_string($conn, $_REQUEST['cage']);
-                        $sex = mysqli_real_escape_string($conn, $_REQUEST['csex']);
+                            $age = mysqli_real_escape_string($conn, $_REQUEST['cage']);
+                            $sex = mysqli_real_escape_string($conn, $_REQUEST['csex']);
 
-                        $phno = mysqli_real_escape_string($conn, $_REQUEST['cphno']);
-                        $mail = mysqli_real_escape_string($conn, $_REQUEST['c_mail']);
+                            $phno = mysqli_real_escape_string($conn, $_REQUEST['cphno']);
+                            $mail = mysqli_real_escape_string($conn, $_REQUEST['c_mail']);
 
-                        $sql = "UPDATE customer SET c_fname='$fname',c_lname='$lname',c_age='$age',c_sex='$sex',c_phno='$phno',c_mail='$mail', where c_id='$cid'";
 
-                        if ($conn->query($sql)) {
-                            header("Location:profile.php");
+                            $sql = "UPDATE customer SET c_fname='$fname',c_lname='$lname',c_age='$age',c_sex='$sex',c_phno='$phno',c_mail='$mail', where c_id='$cid'";
+                            if ($conn->query($sql)) {
+                                header("Location:profile.php");
 
-                            echo "Details updated";
-                        } else
-                            echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
+                                echo "Details updated";
+                            } else
+                                echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
+                        }
                     }
 
                     ?>
