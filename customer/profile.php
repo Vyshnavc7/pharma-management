@@ -44,18 +44,11 @@
     $row2 = $result2->fetch_row();
     $cname = $row1[0];
     $cid1 = $row2[0];
-    
+
 
     ?>
 
-    <?php
-    include "config.php";
-    
-    $cus_id = "SELECT * FROM customer WHERE C_ID='$cid1'";
-    $result_cus = $conn->query($cus_id);
-    $row_cus = $result_cus->fetch_row();
-    
-    ?>
+
 
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
@@ -73,54 +66,87 @@
                 </div>
 
                 <div class="form-group ">
+                    <?php
+                    include "config.php";
+                    if (isset($_GET['cid'])) {
+                        $cid = $_GET['cid'];
+                        
+                        $qry1 = "SELECT * FROM cuslogin WHERE c_id='$cid'";
+                        $result = $conn->query($qry1);
+                        $row_cus = $result->fetch_row();
+                        
+                    }
+                    ?>
                     <form class="m-4" style="padding-top: 100px;" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                         <div style="float: left;width: 50%;" class="column">
-                        <p>
+                            <p>
                                 <label for="cid">Customer ID:</label><br>
-                                <label for="cid"><?php echo $row_cus[0]; ?></label><br>
+                                <label style="width: 80%;padding: 12px;" for="cid"><?php echo $row_cus[0]; ?></label><br>
 
                             </p>
                             <p>
                                 <label for="cfname">First Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="cfname" value="<?php echo $row_cus[1]; ?>" readonly>
+                                <label style="width: 80%;padding: 12px;" for="cfname"><?php echo $row_cus[1]; ?></label><br>
+                                
                             </p>
                             <p>
                                 <label for="clname">Last Name:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="clname" value="<?php echo $row_cus[2]; ?>" readonly>
+                                <label style="height: 40px;width: 80%;padding: 12px;" for="clname"></label><br>
+                                
                             </p>
-                            
-                            
+
+
                             <p>
                                 <label for="cage">Age:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cage" value="<?php echo $row_cus[3]; ?>">
+                                <label style="height: 40px; width: 80%;padding: 12px; border-color:yellowgreen; border: 3px solid #ccc;border-radius: 4px;" for="cage"></label><br>
+                                
                             </p>
-                            
+
                         </div>
                         <div style="float: left;width: 50%;" class="column">
-                            
+
                             <p>
                                 <label for="csex">Sex:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="csex" value="<?php echo $row_cus[4]; ?>">
+                                <label style="height: 40px; width: 80%;padding: 12px; border-color:yellowgreen; border: 3px solid #ccc;border-radius: 4px;" for="csex"></label><br>
+                                
                             </p>
                             <p>
                                 <label for="cphno">Phone Number:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="number" name="cphno" value="<?php echo $row_cus[5]; ?>" readonly>
+                                <label style="height: 40px; width: 80%;padding: 12px; border-color:yellowgreen; border: 3px solid #ccc;border-radius: 4px;" for="cphno"></label><br>
+                                
                             </p>
                             <p>
                                 <label for="c_mail">Email ID:</label><br>
-                                <input style="width: 80%;padding: 12px;border: 3px solid #ccc;border-radius: 4px;" type="text" name="c_mail" value="<?php echo $row_cus[6]; ?>" readonly>
+                                <label style="width: 80%;padding: 12px;" for="c_mail"><?php echo $row_cus[2]; ?></label><br>
+                                
                             </p>
 
 
 
-                    
+
 
                         </div>
 
-
-                        <a style="width: 40%; " class="btn btn-primary mt-4" href="update-profile.php">Edit profile</a>
+                        <?php echo "<a style='width: 40%;' class='btn btn-primary  mt-4' href=update-profile.php?cid=" . $cid1 . ">Edit Profile</a>"; ?>
+                        
                     </form>
+                    <?php
+                    if (isset($_POST['update'])) {
+                        $id = $_POST['cid'];
+                        $fname = $_POST['cfname'];
+                        $lname = $_POST['clname'];
+                        $age = $_POST['cage'];
+                        $sex = $_POST['csex'];
+                        $phno = $_POST['cphno'];
+                        $mail = $_POST['c_mail'];
 
+                        $sql = "UPDATE customer SET c_fname='$fname',c_lname='$lname',c_age='$age',c_sex='$sex',c_phno='$phno',c_mail='$mail' where c_id='$cid1'";
+                        if ($conn->query($sql))
+                            header("location:customer-view.php");
+                        else
+                            echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
+                    }
+                    ?>
 
                 </div>
 

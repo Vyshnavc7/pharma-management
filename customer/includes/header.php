@@ -16,7 +16,8 @@
         </strong>
         
         <div style="width: 74%;" class="text-right">
-            <a class='btn btn-link mr-2' href="profile.php">My Profile </a>
+            
+            <?php echo "<a class='btn btn-link m-3' href=profile.php?cid=" . $cid1 . ">My Profile</a>"; ?>
             <a href="pos2.php"><button class="btn btn-link ">View orders</button></a>
         </div>
 
