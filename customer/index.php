@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>getMED Pharmacy</title>
+  <title>getMED Customer</title>
   <!-- base:css -->
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/feather/feather.css">
@@ -81,7 +81,7 @@ $cid1 = $row2[0];
                   <div class="col-sm-12 grid-margin stretch-card">
                     <div class="card">
                       <div class="card-body">
-                        <h4 class="card-title">Buy Medicine</h4>
+                        <h4 class="card-title">Give Order</h4>
                         <a href="pos1.php" title="Add New Sale">
                           <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/carticon1.png" alt="Add New Sale">
                         </a>
@@ -107,6 +107,16 @@ $cid1 = $row2[0];
                   <div class="col-lg-12 grid-margin  ">
                     <div class="card ">
                       <div class="card-body">
+                        <h4 class="card-title">View Orders</h4>
+                        <a href="stockreport.php" title="View Employees">
+                          <img src="images/meds/order.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 grid-margin  ">
+                    <div class="card ">
+                      <div class="card-body">
                         <h4 class="card-title">Low Stock Alert</h4>
                         <a href="stockreport.php" title="View Employees">
                           <img src="images/meds/alert.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
@@ -114,8 +124,6 @@ $cid1 = $row2[0];
                       </div>
                     </div>
                   </div>
-
-
                 </div>
               </div>
 
