@@ -1,5 +1,5 @@
 
-<div class="footer mt-4">
+<div class="footer mt-4" style="background-color: #6b10c6;">
 
     <div class="copyrightbottom-w3ls-agile mt-3">
         <center>

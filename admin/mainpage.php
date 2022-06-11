@@ -19,7 +19,7 @@
 	<div class="container mt-3">
 		<form class="text-center " method="post" action="">
 			<div class="mt-5" style="width: 40%;" id="div_login">
-				<h1 class="text-center">Admin Login</h1>
+				<h1 style="background-color: #6b10c6;" class="text-center">Admin Login</h1>
 				<center>
 					<div>
 						<input type="text" class="textbox" id="uname" name="uname" placeholder="Username" />

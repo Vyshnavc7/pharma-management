@@ -14,8 +14,8 @@
 	<br><br><br><br>
 	<div class="container">
 		<form method="post" action="">
-			<div id="div_login">
-				<h1>Pharmacist Login</h1>
+			<div id="div_login" >
+				<h1 style="background-color: #6b10c6;">Pharmacist Login</h1>
 				<center>
 					<div>
 						<input type="text" class="textbox" id="uname" name="uname" placeholder="Username" />

@@ -15,7 +15,7 @@
 	<div class="container">
 		<form method="post" action="">
 			<div id="div_login">
-				<h1>Customer Login</h1>
+				<h1 style="background-color: #6b10c6;">Customer Login</h1>
 				<center>
 					<div>
 						<input type="text" class="textbox" id="uname" name="uname" placeholder="Username" />
