@@ -93,7 +93,7 @@ function filtertable($query)
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <h4 class="card-title text-center">Given Order</h4>
-                                            <a href="pos1.php" title="Give new order">
+                                            <a href="pos3c.php" title="Give new order">
                                                 <img  style="width: 65%;height: 80%;padding-top: 29px;" src="images/meds/givenorder.png" alt="Add New Sale">
                                             </a>
                                         </div>

@@ -62,17 +62,19 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 
 			<div class="container">
 				<div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
-					<h2> CURRENT ORDERS</h2>
+					<h2> GIVEN ORDERS</h2>
 				</div>
 
 				<table class="table table-bordered  table-hover ">
 					<thead class="table-dark">
 						<tr>
+							<th>Customer ID</th>
 							<th>Medicine ID</th>
 							<th>Medicine Name</th>
 							<th>Quantity</th>
 							<th>Price</th>
 							<th>Total Price</th>
+
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -95,7 +97,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 					}
 
 					if (!empty($sid)) {
-						$qry1 = "SELECT med_id,sale_qty,tot_price FROM sales_items where sale_id=$sid";
+						$qry1 = "SELECT cus_id,med_id,sale_qty,tot_price FROM cusorder where sale_id=$sid";
 						$result1 = $conn->query($qry1);
 						$sum = 0;
 
@@ -109,6 +111,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 								$row2 = $result2->fetch_row();
 
 								echo "<tr>";
+								echo "<td>" . $row1["cus_id"] . "</td>";
 								echo "<td>" . $row1["med_id"] . "</td>";
 								echo "<td>" . $row2[0] . "</td>";
 								echo "<td>" . $row1["sale_qty"] . "</td>";
@@ -121,12 +124,6 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 							}
 
 							echo "</table>";
-						}else{
-							echo "<tr>";
-							echo "<td>";
-							echo "No items";
-							echo "</td>";
-							echo "</tr>";
 						}
 					}
 					?>
@@ -142,11 +139,11 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 					<form method=post>
 						<?php
 						echo "<a class='btn btn-link' href=pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
-						echo "<a href=../customer/EditableInvoice/index1.php?saleid=".$sid. "&med".$medid.">View Bill</a>";
+						
 						?>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-						<input class="float-right btn btn-primary" type='submit' name='custadd' value='Complete Order'><br>
+						
 					</form>
 				</div>
 				<?php

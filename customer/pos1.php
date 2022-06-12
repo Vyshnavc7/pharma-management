@@ -55,7 +55,7 @@ $cid1 = $row2[0];
 
 			<div class="container">
 				<div style="width: 100%;height: 100px;padding-top: 34px;" class="mt-3 text-center">
-					<h2> POINT OF SALE</h2>
+					<h2> GIVE ORDER</h2>
 				</div>
 				
 
@@ -165,7 +165,7 @@ $cid1 = $row2[0];
 									echo mysqli_error($conn);
 
 									echo "<br><br> <center>";
-									echo "<a class='btn btn-link' href=pos2.php?sid=" . $sid . ">View Order</a>";
+									echo "<a class='btn btn-link' href=bothorderpage.php?sid=" . $sid . ">View Order</a>";
 									echo "</center>";
 								}
 							}
