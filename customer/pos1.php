@@ -136,8 +136,14 @@ $cid1 = $row2[0];
 							<input class="btn btn-primary mt-3" type="submit" name="add" value="Add Medicine">&nbsp;&nbsp;&nbsp;
 
 							<?php
+							include "config.php";
 
 							if (isset($_POST['add'])) {
+
+								if(isset($_GET['cid'])){
+									$cid=$_GET['cid'];
+								}
+								echo "ggggg" .$cid;
 
 								$qry5 = "select sale_id from sales ORDER BY sale_id DESC LIMIT 1";
 								$result5 = $conn->query($qry5);
@@ -146,6 +152,7 @@ $cid1 = $row2[0];
 								echo mysqli_error($conn);
 
 								$mid = $_POST['medid'];
+								$mname = $_POST['mdname'];
 								$aqty = $_POST['mqty'];
 								$qty = $_POST['mcqty'];
 
@@ -153,7 +160,7 @@ $cid1 = $row2[0];
 									echo "QUANTITY INVALID!";
 								} else {
 									$price = $_POST['mprice'] * $qty;
-									$qry6 = "INSERT INTO sales_items(`sale_id`,`med_id`,`sale_qty`,`tot_price`) VALUES($sid,$mid,$qty,$price)";
+									$qry6 = "INSERT INTO cusorder(`cus_id`,`sale_id`,`med_id`,`med_name`,`sale_qty`,`tot_price`) VALUES($cid,$sid,$mid,'$mname',$qty,$price)";
 									$result6 = mysqli_query($conn, $qry6);
 									echo mysqli_error($conn);
 
