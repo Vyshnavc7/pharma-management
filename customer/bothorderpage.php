@@ -86,16 +86,14 @@ function filtertable($query)
                     <div style="width: 100%;height: 60px;padding-top: 5px;" class="mt-3 text-center">
                         <h2> BOTH ORDERS</h2>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
+                    <div class="row mt-3 ">
+                        <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4 ">
                             <div class="row flex-grow">
                                 <div class="col-sm-12 grid-margin stretch-card">
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <h4 class="card-title text-center">Given Order</h4>
-                                            <a href="pos3c.php" title="Give new order">
-                                                <img  style="width: 65%;height: 80%;padding-top: 29px;" src="images/meds/givenorder.png" alt="Add New Sale">
-                                            </a>
+                                            <?php echo "<a title='Show Given order'href=pos3c.php?cid=" . $cid1 ."><img style='width: 65%;height: 80%;padding-top: 29px;' src='images/meds/givenorder.png' alt='Show given Orders'</a>"; ?>
                                         </div>
                                     </div>
                                 </div>
