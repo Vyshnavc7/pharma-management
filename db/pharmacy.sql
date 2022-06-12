@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 07:06 PM
+-- Generation Time: Jun 11, 2022 at 09:53 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -126,10 +126,8 @@ CREATE TABLE `cuslogin` (
 --
 
 INSERT INTO `cuslogin` (`c_id`, `c_username`, `c_mail`, `c_pass`) VALUES
-(1, 'Vyshnav C', '0', '123'),
-(2, 'makitha', 'vysh@gmail.com', '123'),
-(3, 'makitha', 'vysh@gmail.com', '123'),
-(4, 'clevin', 'clevin@gmail.com', '123');
+(4, 'clevin', 'clevin@gmail.com', '123'),
+(5, 'Vyshnav C', 'vyshnavc123@gmail.co', '123');
 
 -- --------------------------------------------------------
 
@@ -152,7 +150,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`C_ID`, `C_FNAME`, `C_LNAME`, `C_AGE`, `C_SEX`, `C_PHNO`, `C_MAIL`) VALUES
-('0', 'Vyshnav C', NULL, 0, '', '0', 'vyshnavc050@gmail.com'),
+('5', 'Vyshnav C', NULL, 0, '', '0', 'vyshnavc123@gmail.com'),
 ('987101', 'Safia', 'Malik', 22, 'Female', '9632587415', 'safia@gmail.com'),
 ('987102', 'Varun', 'Ilango', 24, 'Male', '9987565423', 'varun@gmail.com'),
 ('987103', 'Suja', 'Suresh', 45, 'Female', '7896541236', 'suja@hotmail.com'),
@@ -243,8 +241,8 @@ CREATE TABLE `meds` (
 INSERT INTO `meds` (`MED_ID`, `MED_NAME`, `MED_QTY`, `CATEGORY`, `MED_PRICE`, `LOCATION_RACK`) VALUES
 ('123001', 'Dolo 650 MG', 625, 'Tablet', '1.00', 'rack 5'),
 ('123002', 'Panadol Cold & Flu', 90, 'Tablet', '2.50', 'rack 6'),
-('123003', 'Livogen', 25, 'Capsule', '5.00', 'rack 3'),
-('123004', 'Gelusil', 440, 'Tablet', '1.25', 'rack 4'),
+('123003', 'Livogen', 20, 'Capsule', '5.00', 'rack 3'),
+('123004', 'Gelusil', 436, 'Tablet', '1.25', 'rack 4'),
 ('123005', 'Cyclopam', 120, 'Tablet', '6.00', 'rack 2'),
 ('123006', 'Benadryl 200 ML', 35, 'Syrup', '50.00', 'rack 10'),
 ('123007', 'Lopamide', 15, 'Capsule', '5.00', 'rack 7'),
@@ -340,7 +338,8 @@ INSERT INTO `sales` (`SALE_ID`, `C_ID`, `S_DATE`, `S_TIME`, `TOTAL_AMT`, `E_ID`)
 (16, '987106', '2020-12-04', '18:52:21', '30.00', '1'),
 (17, '987103', '2020-12-04', '19:35:56', '57.50', '1'),
 (18, '987105', '2020-12-04', '19:36:56', '160.00', '4567001'),
-(20, '987103', '2020-12-04', '22:53:18', '150.00', '4567001');
+(20, '987103', '2020-12-04', '22:53:18', '150.00', '4567001'),
+(21, '987101', '2022-06-12', '01:19:24', '40.00', '4567005');
 
 --
 -- Triggers `sales`
@@ -393,7 +392,9 @@ INSERT INTO `sales_items` (`SALE_ID`, `MED_ID`, `SALE_QTY`, `TOT_PRICE`) VALUES
 (17, '123007', 5, '25.00'),
 (17, '123009', 5, '20.00'),
 (18, '123011', 2, '160.00'),
-(20, '123005', 25, '150.00');
+(20, '123005', 25, '150.00'),
+(21, '123003', 5, '25.00'),
+(21, '123004', 4, '5.00');
 
 --
 -- Triggers `sales_items`
@@ -518,13 +519,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `cuslogin`
 --
 ALTER TABLE `cuslogin`
-  MODIFY `c_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `c_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `SALE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `SALE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

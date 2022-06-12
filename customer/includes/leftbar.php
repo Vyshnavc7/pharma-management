@@ -29,7 +29,7 @@
           <li class="nav-item">
             <a style="border-top: solid;" class="nav-link" href="pos1.php">
               <i class="icon-command menu-icon"></i>
-              <span class="menu-title">Buy Medicine</span>
+              <span class="menu-title">Give Order</span>
             </a>
           </li>
           

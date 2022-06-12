@@ -82,7 +82,7 @@ $cid1 = $row2[0];
                     <div class="card">
                       <div class="card-body">
                         <h4 class="card-title">Give Order</h4>
-                        <a href="pos1.php" title="Add New Sale">
+                        <a href="pos1.php" title="Give new order">
                           <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/carticon1.png" alt="Add New Sale">
                         </a>
                       </div>
@@ -108,7 +108,7 @@ $cid1 = $row2[0];
                     <div class="card ">
                       <div class="card-body">
                         <h4 class="card-title">View Orders</h4>
-                        <a href="stockreport.php" title="View Employees">
+                        <a href="bothorderpage.php" title="View Both orders">
                           <img src="images/meds/order.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
                         </a>
                       </div>
@@ -118,7 +118,7 @@ $cid1 = $row2[0];
                     <div class="card ">
                       <div class="card-body">
                         <h4 class="card-title">Low Stock Alert</h4>
-                        <a href="stockreport.php" title="View Employees">
+                        <a href="stockreport.php" title="View Stocks">
                           <img src="images/meds/alert.png" style="    padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" alt="Employees List">
                         </a>
                       </div>
@@ -477,7 +477,27 @@ $cid1 = $row2[0];
       <!-- page-body-wrapper ends -->
       </div>
       <!-- container-scroller -->
-      
+      <?php
+      if (!$cname) {
+      ?>
+        <div class="container  ">
+
+          <div class="row " style="height: 700px; ">
+            <div class="col-md-12 text-center" style="padding-top: 239px;">
+              <h2>PLEASE LOGIN INTO THE ACCOUNT</h2>
+              <a href="mainpage1.php"> <button class="btn btn-primary">LOGIN</button></a>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      <?php
+      }
+      ?>
 
 
       <!-- base:js -->
