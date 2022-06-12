@@ -129,6 +129,13 @@ include "config.php"
           if (isset($_GET['saleid'])) {
             $sid = $_GET['saleid'];
           }
+
+          if(isset($_GET['eid'])){
+
+
+          }
+
+          
           $medid1 = "SELECT * FROM sales_items where sale_id=$sid";
           $result_med = $conn->query($medid1);
           $row_med = $result_med->fetch_row();

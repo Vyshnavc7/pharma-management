@@ -112,9 +112,8 @@ function filtertable($query)
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <h4 class="card-title">Current Order</h4>
-                                            <a href="pos2.php" title="Show Current Order">
-                                                <img style="width: 65%;height: 80%;padding-top: 29px;" src="images/meds/currentorder.png" alt="Add New Sale">
-                                            </a>
+                                            <?php echo "<a title='Show Current Order' class='btn btn-link mr-3' href=pos2.php?eid=" . $eid1 . "><img alt='Add New Sale' style='width: 65%;height: 80%;padding-top: 29px;' src='images/meds/currentorder.png'</a>"; ?>
+                                            
                                         </div>
                                     </div>
                                 </div>

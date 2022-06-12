@@ -99,6 +99,9 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 					if (!empty($sid)) {
 						$qry1 = "SELECT cus_id,med_id,sale_qty,tot_price FROM cusorder where sale_id=$sid";
 						$result1 = $conn->query($qry1);
+						$qry2 = "SELECT e_id from sales where sale_id=$sid";
+						$result9 = $conn->query($qry2);
+						$row10 = $result9->fetch_assoc();
 						$sum = 0;
 
 						if ($result1->num_rows > 0) {
@@ -118,7 +121,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 								echo "<td>" . $row2[1] . "</td>";
 								echo "<td>" . $row1["tot_price"] . "</td>";
 								echo "<td align=center>";
-								echo "<a name='delete' class='button1 del-btn' href=pos-delete.php?mid=" . $row1['med_id'] . "&slid=" . $sid . ">Delete</a>";
+								echo "<a name='delete' class='button1 del-btn' href=pos-delete.php?mid=" . $row1['med_id'] . "&slid=" . $sid ."&eid=".$row10['e_id']. ">Delete</a>";
 								echo "</td>";
 								echo "</tr>";
 							}

@@ -1,5 +1,3 @@
-
-
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div style="background-color: #000000;" class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a style="color:  white;font-family: Karla, sans-serif;" class="navbar-brand brand-logo" href="#">getMED</a>
@@ -11,13 +9,14 @@
         </button>
         <strong>
             <a href="index.php">
-                <p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST <strong> <?php echo $ename;?> | ID : <?php echo $eid1; ?> </strong> DASHBOARD</p>
+                <p class="mb-0 font-weight-normal float-left dropdown-header"> PHARMACIST <strong> <?php echo $ename; ?> | ID : <?php echo $eid1; ?> </strong> DASHBOARD</p>
             </a>
         </strong>
-        
+
         <div style="width: 74%;" class="text-right">
-            <a class='btn btn-link mr-2' href="profile.php">My Profile </a>
-            <a href="bothorderpage.php"><button class="btn btn-link ">View orders</button></a>
+            <?php echo "<a class='btn btn-link m-3' href=profile.php?eid=" . $eid1 . ">My Profile</a>"; ?>
+            <?php echo "<a class='btn btn-link mr-3' href=bothorderpage.php?eid=" . $eid1 . ">View orders</a>"; ?>
+
         </div>
 
 
