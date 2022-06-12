@@ -100,7 +100,7 @@ function filtertable($query)
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <h4 class="card-title text-center">Order Received</h4>
-                                            <?php echo "<a title='Show Given order'href=pos3c.php?eid=" . $eid1 . "><img style='width: 65%;height: 80%;padding-top: 29px;' src='images/meds/givenorder.png' alt='Show given Orders'</a>"; ?>
+                                            <?php echo "<a title='Show Received order'href=pos3e.php?eid=" . $eid1 . "><img style='width: 65%;height: 80%;padding-top: 29px;' src='images/meds/givenorder.png' alt='Show given Orders'</a>"; ?>
                                         </div>
                                     </div>
                                 </div>

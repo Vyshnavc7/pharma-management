@@ -146,7 +146,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 						?>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-						<input class="float-right btn btn-primary" type='submit' name='custadd' value='Complete Order'><br>
+						
 					</form>
 				</div>
 				<?php
