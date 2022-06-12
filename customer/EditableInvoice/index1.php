@@ -168,7 +168,7 @@ $pharm2 = $pharm1->fetch_row();
           ?>
 
         </table>
-        <h3 s>Preview :</h3>
+        <h3>Preview :</h3>
         <div style="text-align: right;">
           <a id="btn-Convert-Html2Image" href="#">Download</a>
 

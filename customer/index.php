@@ -82,9 +82,7 @@ $cid1 = $row2[0];
                     <div class="card">
                       <div class="card-body">
                         <h4 class="card-title">Give Order</h4>
-                        <a href="pos1.php" title="Give new order">
-                          <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/carticon1.png" alt="Add New Sale">
-                        </a>
+                        <?php echo "<a title='Give new order' image href=pos1.php?cid=" . $cid1 . "><img style='padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;' src='images/meds/carticon1.png' alt='Add New Sale'</a>"; ?>
                       </div>
                     </div>
                   </div>

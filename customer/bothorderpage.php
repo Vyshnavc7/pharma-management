@@ -91,10 +91,10 @@ function filtertable($query)
                             <div class="row flex-grow">
                                 <div class="col-sm-12 grid-margin stretch-card">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Given Order</h4>
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title text-center">Given Order</h4>
                                             <a href="pos1.php" title="Give new order">
-                                                <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/givenorder.png" alt="Add New Sale">
+                                                <img  style="width: 65%;height: 80%;padding-top: 29px;" src="images/meds/givenorder.png" alt="Add New Sale">
                                             </a>
                                         </div>
                                     </div>
@@ -107,10 +107,10 @@ function filtertable($query)
                             <div class="row flex-grow">
                                 <div class="col-sm-12 grid-margin stretch-card">
                                     <div class="card">
-                                        <div class="card-body">
+                                        <div class="card-body text-center">
                                             <h4 class="card-title">Current Order</h4>
                                             <a href="pos2.php" title="Show Current Order">
-                                                <img style="padding-left: 52px;width: 65%;height: 80%;padding-top: 29px;" src="images/meds/currentorder.png" alt="Add New Sale">
+                                                <img style="width: 65%;height: 80%;padding-top: 29px;" src="images/meds/currentorder.png" alt="Add New Sale">
                                             </a>
                                         </div>
                                     </div>

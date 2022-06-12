@@ -57,58 +57,7 @@ $cid1 = $row2[0];
 				<div style="width: 100%;height: 100px;padding-top: 34px;" class="mt-3 text-center">
 					<h2> POINT OF SALE</h2>
 				</div>
-				<div class="form1">
-					<form class="form-group" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-						<center>
-
-							<select style="width: 35%;padding: 7px;border: 3px solid #ccc;border-radius: 4px;" class="form-select" id="cid" name="cid">
-								<option value="0" selected="selected">*Select Customer ID (only once for a customer's sales)</option>
-								<?php
-
-								include "config.php";
-								$qry = "SELECT c_id,c_fname FROM customer";
-							
-								$result = $conn->query($qry);
-							
-								
-								echo mysqli_error($conn);
-								if ($result->num_rows > 0 ) {
-									while ($row = $result->fetch_assoc()) {
-										echo "<option>" . $row["c_id"]  . " : " . $row["c_fname"]. "</option>";
-									}
-								}
-								?>
-
-							</select>
-							&nbsp;&nbsp;
-							<input class="btn btn-primary" type="submit" name="custadd" value="Add to Proceed.">
-
-						</center>
-					</form>
-
-
-
-
-					<?php
-
-					if (isset($_GET['sid'])) {
-						$sid = $_GET['sid'];
-					}
-
-					if (isset($_POST['cid']))
-						$cid = $_POST['cid'];
-
-					if (isset($_POST['custadd'])) {
-
-						$qry2 = "INSERT INTO sales(c_id,e_id) VALUES ('$cid','$_SESSION[user]')";
-						if (!($result2 = $conn->query($qry2))) {
-							echo "<p style='font-size:8; color:red;'>Invalid! Enter valid Customer ID to record Sales.</p>";
-						}
-					}
-
-
-					?>
-				</div>
+				
 
 				<div class="form-group">
 					<center>
