@@ -18,7 +18,7 @@
         <div style="width: 74%;" class="text-right">
             
             <?php echo "<a class='btn btn-link m-3' href=profile.php?cid=" . $cid1 . ">My Profile</a>"; ?>
-            <a href="pos2.php"><button class="btn btn-link ">View orders</button></a>
+            <a href="bothorderpage.php"><button class="btn btn-link ">View orders</button></a>
         </div>
 
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

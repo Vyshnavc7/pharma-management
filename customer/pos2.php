@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include "config.php";
 session_start();
 // to retrieve data frm base using session details
@@ -141,7 +141,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
 				<div class="one" style="background-color:white;">
 					<form method=post>
 						<?php
-						echo "<a class='btn btn-link' href=pos1.php?sid=" . $sid . ">Go Back to Sales Page</a>";
+						echo "<a class='btn btn-link' href=bothorderpage.php?sid=" . $sid . ">Go Back to Order Page</a>";
 						echo "<a href=../customer/EditableInvoice/index1.php?saleid=".$sid. "&med".$medid.">View Bill</a>";
 						?>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

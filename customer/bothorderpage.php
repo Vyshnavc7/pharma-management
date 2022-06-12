@@ -62,6 +62,13 @@ function filtertable($query)
     $cid1 = $row2[0];
 
     ?>
+
+    <?php
+        if(isset($_GET['sid'])){
+            $sid = $_GET['sid'];
+        }
+    
+    ?>
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
         <!-- header -->
@@ -97,8 +104,6 @@ function filtertable($query)
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="col-xl-3 flex-column d-flex grid-margin stretch-card m-4">
