@@ -17,7 +17,7 @@
         <ul class="navbar-nav navbar-nav-right">
 
 
-            <li class="nav-item dropdown d-flex mr-4 ">
+            <!-- <li class="nav-item dropdown d-flex mr-4 ">
                 <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
                     <i class="icon-cog"></i>
 
@@ -31,7 +31,7 @@
                         <i class="icon-inbox"></i> Logout
                     </a>
                 </div>
-            </li>
+            </li> -->
 
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
