@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 09:53 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jun 12, 2022 at 06:28 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,13 +25,11 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EXPIRY` ()  NO SQL
-BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EXPIRY` ()  NO SQL BEGIN
 SELECT p_id,sup_id,med_id,p_qty,p_cost,pur_date,mfg_date,exp_date FROM purchase where exp_date between CURDATE() and DATE_SUB(CURDATE(), INTERVAL -6 MONTH);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SEARCH_INVENTORY` (IN `search` VARCHAR(255))  NO SQL
-BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SEARCH_INVENTORY` (IN `search` VARCHAR(255))  NO SQL BEGIN
 DECLARE mid DECIMAL(6);
 DECLARE mname VARCHAR(50);
 DECLARE mqty INT;
@@ -58,13 +56,11 @@ CLOSE MED_CURSOR;
 SELECT medid,medname,medqty,medcategory,medprice,medlocation FROM T1; 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `STOCK` ()  NO SQL
-BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `STOCK` ()  NO SQL BEGIN
 SELECT med_id, med_name,med_qty,category,med_price,location_rack FROM meds where med_qty<=50;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `TOTAL_AMT` (IN `ID` INT, OUT `AMT` DECIMAL(8,2))  NO SQL
-BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TOTAL_AMT` (IN `ID` INT, OUT `AMT` DECIMAL(8,2))  NO SQL BEGIN
 UPDATE SALES SET S_DATE=SYSDATE(),S_TIME=CURRENT_TIMESTAMP(),TOTAL_AMT=(SELECT SUM(TOT_PRICE) FROM SALES_ITEMS WHERE SALES_ITEMS.SALE_ID=ID) WHERE SALES.SALE_ID=ID;
 SELECT TOTAL_AMT INTO AMT FROM SALES WHERE SALE_ID=ID;
 END$$
@@ -72,16 +68,13 @@ END$$
 --
 -- Functions
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `P_AMT` (`start` DATE, `end` DATE) RETURNS DECIMAL(8,2) NO SQL
-    DETERMINISTIC
-BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `P_AMT` (`start` DATE, `end` DATE) RETURNS DECIMAL(8,2) DETERMINISTIC NO SQL BEGIN
 DECLARE PAMT DECIMAL(8,2) DEFAULT 0.0;
 SELECT SUM(P_COST) INTO PAMT FROM PURCHASE WHERE PUR_DATE >= start AND PUR_DATE<= end;
 RETURN PAMT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `S_AMT` (`start` DATE, `end` DATE) RETURNS DECIMAL(8,2) NO SQL
-BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `S_AMT` (`start` DATE, `end` DATE) RETURNS DECIMAL(8,2) NO SQL BEGIN
 DECLARE SAMT DECIMAL(8,2) DEFAULT 0.0;
 SELECT SUM(TOTAL_AMT) INTO SAMT FROM SALES WHERE S_DATE >= start AND S_DATE<= end;
 RETURN SAMT;
@@ -128,6 +121,31 @@ CREATE TABLE `cuslogin` (
 INSERT INTO `cuslogin` (`c_id`, `c_username`, `c_mail`, `c_pass`) VALUES
 (4, 'clevin', 'clevin@gmail.com', '123'),
 (5, 'Vyshnav C', 'vyshnavc123@gmail.co', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cusorder`
+--
+
+CREATE TABLE `cusorder` (
+  `order_id` int(20) NOT NULL,
+  `cus_id` varchar(20) NOT NULL,
+  `sale_id` varchar(20) NOT NULL,
+  `med_id` varchar(20) NOT NULL,
+  `med_name` text NOT NULL,
+  `sale_qty` varchar(20) NOT NULL,
+  `tot_price` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cusorder`
+--
+
+INSERT INTO `cusorder` (`order_id`, `cus_id`, `sale_id`, `med_id`, `med_name`, `sale_qty`, `tot_price`) VALUES
+(4, '5', '21', '123006', 'Benadryl 200 ML', '2', '100'),
+(5, '5', '21', '123009', 'Omeprazole', '3', '12'),
+(6, '5', '22', '123002', 'Panadol Cold & Flu', '4', '10');
 
 -- --------------------------------------------------------
 
@@ -239,10 +257,10 @@ CREATE TABLE `meds` (
 --
 
 INSERT INTO `meds` (`MED_ID`, `MED_NAME`, `MED_QTY`, `CATEGORY`, `MED_PRICE`, `LOCATION_RACK`) VALUES
-('123001', 'Dolo 650 MG', 625, 'Tablet', '1.00', 'rack 5'),
-('123002', 'Panadol Cold & Flu', 90, 'Tablet', '2.50', 'rack 6'),
+('123001', 'Dolo 650 MG', 620, 'Tablet', '1.00', 'rack 5'),
+('123002', 'Panadol Cold & Flu', 80, 'Tablet', '2.50', 'rack 6'),
 ('123003', 'Livogen', 20, 'Capsule', '5.00', 'rack 3'),
-('123004', 'Gelusil', 436, 'Tablet', '1.25', 'rack 4'),
+('123004', 'Gelusil', 440, 'Tablet', '1.25', 'rack 4'),
 ('123005', 'Cyclopam', 120, 'Tablet', '6.00', 'rack 2'),
 ('123006', 'Benadryl 200 ML', 35, 'Syrup', '50.00', 'rack 10'),
 ('123007', 'Lopamide', 15, 'Capsule', '5.00', 'rack 7'),
@@ -339,7 +357,10 @@ INSERT INTO `sales` (`SALE_ID`, `C_ID`, `S_DATE`, `S_TIME`, `TOTAL_AMT`, `E_ID`)
 (17, '987103', '2020-12-04', '19:35:56', '57.50', '1'),
 (18, '987105', '2020-12-04', '19:36:56', '160.00', '4567001'),
 (20, '987103', '2020-12-04', '22:53:18', '150.00', '4567001'),
-(21, '987101', '2022-06-12', '01:19:24', '40.00', '4567005');
+(21, '987101', '2022-06-12', '17:37:13', '253.75', '4567005'),
+(22, '5', NULL, NULL, NULL, '4567005'),
+(23, '5', NULL, NULL, NULL, '4567005'),
+(24, '5', '2022-06-12', '21:42:13', '50.00', '4567005');
 
 --
 -- Triggers `sales`
@@ -393,8 +414,9 @@ INSERT INTO `sales_items` (`SALE_ID`, `MED_ID`, `SALE_QTY`, `TOT_PRICE`) VALUES
 (17, '123009', 5, '20.00'),
 (18, '123011', 2, '160.00'),
 (20, '123005', 25, '150.00'),
-(21, '123003', 5, '25.00'),
-(21, '123004', 4, '5.00');
+(22, '123001', 5, '5.00'),
+(24, '123002', 10, '25.00'),
+(24, '123003', 5, '25.00');
 
 --
 -- Triggers `sales_items`
@@ -454,6 +476,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `cuslogin`
   ADD PRIMARY KEY (`c_id`);
+
+--
+-- Indexes for table `cusorder`
+--
+ALTER TABLE `cusorder`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `customer`
@@ -522,10 +550,16 @@ ALTER TABLE `cuslogin`
   MODIFY `c_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `cusorder`
+--
+ALTER TABLE `cusorder`
+  MODIFY `order_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `SALE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `SALE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
